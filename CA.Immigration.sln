@@ -3,20 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{1AB65D42-38CC-4870-9EB0-469B19D0774B}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Policy", "Policy", "{CC2CD777-2189-431C-AA77-76AC7DD9749B}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utility", "Utility", "{AD060314-4F19-4641-A232-E6B9EC740109}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PDF", "PDF", "{CEA2EB4C-8D29-4A2F-814A-40AC71FA09C8}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Word", "Word", "{FB32E0FC-7070-45A6-94E4-A3D714F28E02}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Excel", "Excel", "{889E5005-7E5F-4C09-89AC-001A3A8A4C9C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Outlook", "Outlook", "{020714FA-58B0-4973-AB5C-D1CE2F7598B5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA.Immigration.Startup", "CA.Immigration.Startup\CA.Immigration.Startup.csproj", "{16A81E3D-7C92-4DD5-BE22-4A05851BAF3B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA.Immigration.BCPNP", "CA.Immigration.BCPNP\CA.Immigration.BCPNP.csproj", "{257C8A7C-5B22-4BF7-8057-0439766325A7}"
@@ -32,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA.Immigration.Family", "CA.Immigration.Family\CA.Immigration.Family.csproj", "{7D033185-03BF-445E-B381-315FC5B8B2CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA.Immigration.EE", "CA.Immigration.EE\CA.Immigration.EE.csproj", "{AA278FB7-FDD8-4776-B51E-40D90A4F0A0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CA.Immigration", "CA.Immigration\CA.Immigration.csproj", "{19574404-F8AA-466F-86CA-E8FC82BFB922}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +59,10 @@ Global
 		{AA278FB7-FDD8-4776-B51E-40D90A4F0A0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA278FB7-FDD8-4776-B51E-40D90A4F0A0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA278FB7-FDD8-4776-B51E-40D90A4F0A0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19574404-F8AA-466F-86CA-E8FC82BFB922}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19574404-F8AA-466F-86CA-E8FC82BFB922}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19574404-F8AA-466F-86CA-E8FC82BFB922}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19574404-F8AA-466F-86CA-E8FC82BFB922}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
