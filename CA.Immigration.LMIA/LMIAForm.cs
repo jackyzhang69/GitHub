@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CA.Immigration.Policy;
 using CA.Immigration.Utility;
 using CA.Immigration.Data;
+using CA.Immigration.PDF;
 
 
 namespace CA.Immigration.LMIA
@@ -17,6 +18,8 @@ namespace CA.Immigration.LMIA
     public partial class LMIAForm : Form
     {
         LMIAPolicy initApp = new LMIAPolicy();
+        DCDataContext dc = new DCDataContext();
+
         public LMIAForm()
         {
             InitializeComponent();
@@ -24,6 +27,8 @@ namespace CA.Immigration.LMIA
 
         private void LMIAForm_Load(object sender, EventArgs e)
         {
+            
+
             stsEmployer.Text = "Employer has not bee assigned\t";
             stsEmployer.ForeColor = Color.Red;
             stsEmployee.Text = "Employee has not bee assigned\t";
@@ -45,6 +50,9 @@ namespace CA.Immigration.LMIA
             lblOtherEmployer.Visible = false;
             txtAnotherEmployer.Visible = false;
 
+
+            dgvPositionQualification.DataSource = dc.tblMedias;
+
             // Initialize Province 
             for(int i = 0; i < Address.CndProvince.Length / 2; i++)
             {
@@ -61,7 +69,7 @@ namespace CA.Immigration.LMIA
             //md.Cost = 0f;
             //md.Duration = 30;
             //md.Comments = "Good";
-            DCDataContext dc = new DCDataContext();
+            
             DataGridViewCheckBoxColumn dcom = new DataGridViewCheckBoxColumn();
             dcom.HeaderText = "Pick";
             dgvMedia.Columns.Add(dcom);
@@ -98,6 +106,11 @@ namespace CA.Immigration.LMIA
             jobAd.AppendLine("Term of Employment: " + txtEmploymentTerm.Text);
 
             txtJobAdPreview.Text = jobAd.ToString();
+
+            PDFTools p=new PDFTools();
+            p.generatePDF(dc);
+
+
         }
     }
 }

@@ -60,6 +60,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DCLMIA.dbml</DependentUpon>
     </Compile>
+    <Compile Include="PDF\PDFTools.cs" />
+    <Compile Include="PDF\PDFChinese.cs" />
     <Compile Include="Policy\BCPNP.cs" />
     <Compile Include="Policy\LMIAPolicy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,7 +75,6 @@
   <ItemGroup>
     <Folder Include="Excel\" />
     <Folder Include="Outlook\" />
-    <Folder Include="PDF\" />
     <Folder Include="Word\" />
   </ItemGroup>
   <ItemGroup>
