@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CA.Immigration.LMIA;
 
 namespace CA.Immigration.Startup
 {
@@ -15,6 +16,12 @@ namespace CA.Immigration.Startup
         public Startup()
         {
             InitializeComponent();
+        }
+
+        private void lMIAToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            LMIAForm lmiaForm=new LMIAForm();
+            lmiaForm.Show();
         }
     }
 }

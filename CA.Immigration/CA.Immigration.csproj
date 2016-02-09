@@ -45,6 +45,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,17 +54,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\App.cs" />
+    <Compile Include="Data\DCLMIA.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DCLMIA.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Policy\BCPNP.cs" />
-    <Compile Include="Policy\LMIA.cs" />
+    <Compile Include="Policy\LMIAPolicy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\Common.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\" />
     <Folder Include="Excel\" />
     <Folder Include="Outlook\" />
     <Folder Include="PDF\" />
-    <Folder Include="Utility\" />
     <Folder Include="Word\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Data\DCLMIA.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DCLMIA.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\DCLMIA.dbml.layout">
+      <DependentUpon>DCLMIA.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

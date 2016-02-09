@@ -79,6 +79,40 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CA.Immigration.BCPNP\CA.Immigration.BCPNP.csproj">
+      <Project>{257c8a7c-5b22-4bf7-8057-0439766325a7}</Project>
+      <Name>CA.Immigration.BCPNP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CA.Immigration.EE\CA.Immigration.EE.csproj">
+      <Project>{aa278fb7-fdd8-4776-b51e-40d90a4f0a0f}</Project>
+      <Name>CA.Immigration.EE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CA.Immigration.Family\CA.Immigration.Family.csproj">
+      <Project>{7d033185-03bf-445e-b381-315fc5b8b2cf}</Project>
+      <Name>CA.Immigration.Family</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CA.Immigration.LMIA\CA.Immigration.LMIA.csproj">
+      <Project>{e8fb5979-2e8b-4fd6-8e72-a902c616290f}</Project>
+      <Name>CA.Immigration.LMIA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CA.Immigration.SP\CA.Immigration.SP.csproj">
+      <Project>{96530fa5-a791-406a-ab95-8e99dae4fa7c}</Project>
+      <Name>CA.Immigration.SP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CA.Immigration.TRV\CA.Immigration.TRV.csproj">
+      <Project>{3db7d56e-8d20-4e9a-9173-46276a3bfa55}</Project>
+      <Name>CA.Immigration.TRV</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CA.Immigration.WP\CA.Immigration.WP.csproj">
+      <Project>{46568a41-9e82-4aed-9e28-b09a2e897cc8}</Project>
+      <Name>CA.Immigration.WP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CA.Immigration\CA.Immigration.csproj">
+      <Project>{19574404-f8aa-466f-86ca-e8fc82bfb922}</Project>
+      <Name>CA.Immigration</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
