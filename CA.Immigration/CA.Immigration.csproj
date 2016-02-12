@@ -73,7 +73,6 @@
   <ItemGroup>
     <Folder Include="Excel\" />
     <Folder Include="Outlook\" />
-    <Folder Include="PDF\" />
     <Folder Include="Word\" />
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +94,9 @@
     <None Include="Data\DCLMIA.dbml.layout">
       <DependentUpon>DCLMIA.dbml</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PDF\IMMForm-Dictionary.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
