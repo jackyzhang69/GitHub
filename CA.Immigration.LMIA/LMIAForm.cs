@@ -99,6 +99,13 @@ namespace CA.Immigration.LMIA
 
             txtJobAdPreview.Text = jobAd.ToString();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string title = "Jacky " + (tbcADandMedia.TabCount + 1).ToString();
+            TabPage myTabPage = new TabPage(title);
+            tbcADandMedia.TabPages.Add(myTabPage);
+        }
     }
 }
 

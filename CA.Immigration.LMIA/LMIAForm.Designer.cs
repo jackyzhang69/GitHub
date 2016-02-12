@@ -126,6 +126,7 @@
             this.lblOtherEmployer = new System.Windows.Forms.Label();
             this.cmbApplicationType = new System.Windows.Forms.ComboBox();
             this.lblApplicationType = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.pnlBase.SuspendLayout();
             this.tbcADandMedia.SuspendLayout();
             this.tbAD.SuspendLayout();
@@ -761,6 +762,7 @@
             this.grbLabourMarketFactor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grbLabourMarketFactor.Controls.Add(this.button4);
             this.grbLabourMarketFactor.Controls.Add(this.textBox5);
             this.grbLabourMarketFactor.Controls.Add(this.button3);
             this.grbLabourMarketFactor.Controls.Add(this.textBox4);
@@ -1124,6 +1126,16 @@
             this.lblApplicationType.TabIndex = 0;
             this.lblApplicationType.Text = "Select Application Type";
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(943, 45);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 6;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // LMIAForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1280,6 +1292,7 @@
         private System.Windows.Forms.ToolStripStatusLabel stsEmployer;
         private System.Windows.Forms.ToolStripStatusLabel stsEmployee;
         private System.Windows.Forms.ToolStripStatusLabel stsAppId;
+        private System.Windows.Forms.Button button4;
     }
 }
 
