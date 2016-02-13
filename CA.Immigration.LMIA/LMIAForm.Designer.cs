@@ -124,7 +124,6 @@
             this.lblOtherEmployer = new System.Windows.Forms.Label();
             this.cmbApplicationType = new System.Windows.Forms.ComboBox();
             this.lblApplicationType = new System.Windows.Forms.Label();
-            this.dgvEmployer = new System.Windows.Forms.DataGridView();
             this.pnlBase.SuspendLayout();
             this.tbcADandMedia.SuspendLayout();
             this.tbAD.SuspendLayout();
@@ -149,7 +148,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPositionQualification)).BeginInit();
             this.pnlApplicationType.SuspendLayout();
             this.grbApplicationType.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployer)).BeginInit();
+           // ((System.ComponentModel.ISupportInitialize)(this.dgvEmployer)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlBase
@@ -249,7 +248,7 @@
             // 
             // grpSelectEmployer
             // 
-            this.grpSelectEmployer.Controls.Add(this.dgvEmployer);
+            //this.grpSelectEmployer.Controls.Add(this.dgvEmployer);
             this.grpSelectEmployer.Controls.Add(this.textBox7);
             this.grpSelectEmployer.Controls.Add(this.lblEmployer);
             this.grpSelectEmployer.Location = new System.Drawing.Point(395, 155);
@@ -736,7 +735,9 @@
             // 
             // grbLabourMarketFactor
             // 
-            this.grbLabourMarketFactor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.grbLabourMarketFactor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grbLabourMarketFactor.Controls.Add(this.textBox5);
             this.grbLabourMarketFactor.Controls.Add(this.button3);
             this.grbLabourMarketFactor.Controls.Add(this.textBox4);
@@ -1100,17 +1101,6 @@
             this.lblApplicationType.TabIndex = 0;
             this.lblApplicationType.Text = "Select Application Type";
             // 
-            // dgvEmployer
-            // 
-            this.dgvEmployer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvEmployer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmployer.Location = new System.Drawing.Point(6, 79);
-            this.dgvEmployer.Name = "dgvEmployer";
-            this.dgvEmployer.RowTemplate.Height = 28;
-            this.dgvEmployer.Size = new System.Drawing.Size(1005, 355);
-            this.dgvEmployer.TabIndex = 4;
-            // 
             // LMIAForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1159,7 +1149,7 @@
             this.pnlApplicationType.ResumeLayout(false);
             this.grbApplicationType.ResumeLayout(false);
             this.grbApplicationType.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployer)).EndInit();
+        //    ((System.ComponentModel.ISupportInitialize)(this.dgvEmployer)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1262,7 +1252,6 @@
         private System.Windows.Forms.ToolStripStatusLabel stsEmployer;
         private System.Windows.Forms.ToolStripStatusLabel stsEmployee;
         private System.Windows.Forms.ToolStripStatusLabel stsAppId;
-        private System.Windows.Forms.DataGridView dgvEmployer;
     }
 }
 
