@@ -96,6 +96,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\SQL\LMIA.sql" />
     <Content Include="PDF\IMMForm-Dictionary.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
