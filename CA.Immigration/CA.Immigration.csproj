@@ -55,13 +55,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App\App.cs" />
-    <Compile Include="Data\DCLMIA.designer.cs">
+    <Compile Include="Data\Common.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DCLMIA.dbml</DependentUpon>
+      <DependentUpon>Common.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Data\LMIADC.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LMIADC.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="PDF\FillForm.cs" />
     <Compile Include="PDF\PDFTools.cs" />
     <Compile Include="PDF\PDFChinese.cs" />
+    <Compile Include="PDF\tblMedia.cs" />
     <Compile Include="Policy\BCPNP.cs" />
     <Compile Include="Policy\LMIAPolicy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,9 +86,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Data\DCLMIA.dbml">
+    <None Include="Data\Common.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DCLMIA.designer.cs</LastGenOutput>
+      <LastGenOutput>Common.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data\LMIADC.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>LMIADC.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
@@ -93,13 +105,18 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\DCLMIA.dbml.layout">
-      <DependentUpon>DCLMIA.dbml</DependentUpon>
+    <Content Include="Data\SQL\LMIA.sql" />
+    <Content Include="PDF\FillForms\IMMForm-Dictionary.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\LMIADC.dbml.layout">
+      <DependentUpon>LMIADC.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\SQL\LMIA.sql" />
-    <Content Include="PDF\IMMForm-Dictionary.txt" />
+    <None Include="Data\Common.dbml.layout">
+      <DependentUpon>Common.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

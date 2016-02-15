@@ -2,7 +2,7 @@ use common
 go
 
 -- Create country PK table
-create table tblCountries
+create table tblCountry
 (
 Id int not null primary key Identity(1,1),
 CountryCode int not null,  -- Match with CIC country code defenition
@@ -10,7 +10,7 @@ Country varchar(30) not null
 )
 
 -- Create Canada province PK table
-create table tblCNDProvinces
+create table tblCNDProvince
 (
 Id int not null primary key Identity(1,1),
 ProvinceCode int not null,  -- Match with CIC country code defenition
@@ -31,7 +31,7 @@ insert into tblCNDProvinces values(12,'SK')
 insert into tblCNDProvinces values(13,'YT')
 
 -- PK Table indicates education level
-create table tblEducationLevels
+create table tblEducationLevel
 (
 Id int not null primary key Identity(1,1),
 LevelCode int not null,  -- Matchs CIC defenition code
@@ -58,7 +58,7 @@ insert into tblEducationLevels values(18,'Not Applicable')
 
 
 -- Creat Gender type PK table 
-create table tblGenders
+create table tblGender
 (
 Id int not null primary key Identity(1,1),
 Gender varchar(7) not null
@@ -69,7 +69,7 @@ insert into tblGenders values('Female')
 insert into tblGenders values('Unknown')
 
 -- Create Canada visit purpose PK table
-create table tblCNDVisitPurposes
+create table tblCNDVisitPurpose
 (
 Id int not null primary key Identity(1,1),
 PurposeCode int not null,  -- Matchs CIC defenition code
@@ -84,7 +84,7 @@ insert into tblCNDVisitPurposes values (5,'Other')
 insert into tblCNDVisitPurposes values (6,'Family Visit')
 
 -- Creat phone type PK table
-create table tblPhoneTypes
+create table tblPhoneType
 (
 Id int not null primary key Identity(1,1),
 TypeCode int not null,  -- Code matchs CIC Definition
@@ -96,7 +96,7 @@ insert into tblPhoneTypes values(2, 'Cellular')
 insert into tblPhoneTypes values(3, 'Business')
 
 -- Creat address type PK table
-create table tblAddressTypes
+create table tblAddressType
 (
 Id int not null primary key Identity(1,1),
 AddressType varchar(15) not null
@@ -106,7 +106,7 @@ insert into tblAddressTypes values('Residential')
 insert into tblAddressTypes values('Mailing')
 
 -- Creat language type PK table
-create table tblLanguageTypes
+create table tblLanguageType
 (
 Id int not null primary key Identity(1,1),
 TypeCode int not null,  -- Code matchs CIC Definition
@@ -114,7 +114,7 @@ LanguageType varchar(10) not null
 )
 
 -- Create marriage status type PK table
-create table tblMarriageStatusTypes
+create table tblMarriageStatusType
 (
 Id int not null primary key Identity(1,1),
 TypeCode int not null,   -- Type code matchs CIC defenition
@@ -131,7 +131,7 @@ insert into tblMarriageStatusTypes values (7, 'Unknown')
 insert into tblMarriageStatusTypes values (8, 'Widowed')
 
 -- Create Status type PK table
-create table tblStatusTypes
+create table tblStatusType
 (
 Id int not null primary key Identity(1,1),
 TypeCode int not null,  -- Code matchs CIC Definition
@@ -167,7 +167,7 @@ insert into tblResidenceTypeId values('Country where applying')
 -- PersonId: FK to reference the person who owns this education
 -- LevelId: FK to reference the level of this eduation
 
-create table tblEducations
+create table tblEducation
 (
 Id int not null primary key Identity(1,1),
 PersonId int not null,  -- Fk to reference the education owner
@@ -182,7 +182,7 @@ ProvinceId int  --Fk to reference the Canada province
 )
 
 -- Create employment table
-create table tblEmployments
+create table tblEmployment
 (
 Id int not null primary key Identity(1,1),
 PersonId int not null,  -- FK to reference the Person Id
@@ -198,7 +198,7 @@ ProvinceId int  --Fk to reference the Canada province
 -- Create 
 
 -- Create background information table
-create table tblTRBackgroundInfos
+create table tblTRBackgroundInfo
 (
 Id int not null primary key Identity(1,1),
 PersonId int not null,  -- FK to reference the Person Id,
@@ -218,7 +218,7 @@ Q6 bit not null,
 )
 
 -- Create coming to Canada table
-create table tblTRCanadaVisits
+create table tblTRCanadaVisit
 (
 Id int not null primary key Identity(1,1),
 PersonId int not null,  -- FK to reference the Person Id,
@@ -232,7 +232,7 @@ MostRecentyDocNumber varchar(20)
 )
 
 -- Create Phone table
-create table tblPhones
+create table tblPhone
 (
 Id int not null primary key Identity(1,1),
 PersonId int not null,  -- FK to reference the Person Id,
@@ -242,7 +242,7 @@ Number int not null
 )
 
 --Create Address table
-create table tblAddresses
+create table tblAddress
 (
 Id int not null primary key Identity(1,1),
 PersonId int not null,  -- FK to reference the Person Id,
@@ -258,24 +258,24 @@ AddressTypeId int not null
 )
 
 -- Create passport table
-create table tblPassports
+create table tblPassport
 (
 Id int not null primary key Identity(1,1),
 PersonId int not null,  -- FK to reference the Person Id,
-PassportNumber varchar(10) not null,
-Name varchar(30) not null,
-GenderId int not null,   --FK to reference the gender 
-NationalityId int not null,   --FK to reference the country code which Matchs CIC country definition
-DOB date not null,
-BrithPlace varchar(20) not null,
-IssueDate date not null,
-IssuePlace varchar(20) not null,
-ExpiryDate date not null,
-IsValid bit not null
+PassportNumber nvarchar(10),
+Name nvarchar(30), --Native name
+Gender nvarchar(10),
+Nationality nvarchar(30),   
+DOB date,
+BrithPlace nvarchar(20),
+IssueDate date ,
+IssuePlace nvarchar(20),
+ExpiryDate date,
+IsValid bit
 )
 
 -- Create language table
-create table tblLanguages
+create table tblLanguage
 (
 Id int not null primary key Identity(1,1),
 PersonId int not null,  -- FK to reference the Person Id,
@@ -285,7 +285,7 @@ French bit not null
 )
 
 -- Create marriage status table 
-create table tblMarriages
+create table tblMarriage
 (
 Id int not null primary key Identity(1,1),
 PersonId int not null,  -- FK to reference the Person Id,
@@ -297,7 +297,7 @@ EndDate date
 
 -- Create residence table
 
-create table tblResidences
+create table tblResidence
 (
 Id int not null primary key Identity(1,1),
 PersonId int not null,  -- FK to reference the Person Id,
@@ -311,7 +311,7 @@ ResidenceTypeId int not null  --FK to reference the type of residence
 
 -- Create person table
 
-create table tblPersons
+create table tblPerson
 (
 Id int not null primary key Identity(1,1),
 FirstName varchar(20) not null,

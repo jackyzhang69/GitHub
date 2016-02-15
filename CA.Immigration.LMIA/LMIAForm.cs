@@ -13,12 +13,13 @@ using CA.Immigration.Data;
 using CA.Immigration.PDF;
 
 
+
 namespace CA.Immigration.LMIA
 {
     public partial class LMIAForm : Form
     {
         LMIAPolicy initApp = new LMIAPolicy();
-        DCDataContext dc = new DCDataContext();
+        CommonDataContext dc = new CommonDataContext();
 
         public LMIAForm()
         {
@@ -108,17 +109,13 @@ namespace CA.Immigration.LMIA
             txtJobAdPreview.Text = jobAd.ToString();
 
             PDFTools p=new PDFTools();
-            p.generatePDF(dc);
+           // p.generatePDF(dc);
 
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            string title = "Jacky " + (tbcADandMedia.TabCount + 1).ToString();
-            TabPage myTabPage = new TabPage(title);
-            tbcADandMedia.TabPages.Add(myTabPage);
-        }
+      
+     
     }
 }
 

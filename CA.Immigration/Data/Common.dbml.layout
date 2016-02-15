@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 10.25" name="Common">
+  <DataContextMoniker Name="/CommonDataContext" />
+  <nestedChildShapes>
+    <classShape Id="7f541f8b-0227-4e5b-8e8b-35ebac746c38" absoluteBounds="3.75, 0.75, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/CommonDataContext/tblPerson" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ff20b207-8daa-4177-984e-8124b5a0112d" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3593c0a0-a19c-4c06-8e0f-df67e0a63af4" absoluteBounds="6.625, 2.875, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/CommonDataContext/tblAddress" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ac0f8e8f-f17a-427b-8e4a-9985f14e245c" absoluteBounds="6.64, 3.335, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="31eba029-7c38-423b-9ce7-11c623459c9a" absoluteBounds="2.25, 5.375, 2, 4.6554182942708326">
+      <DataClassMoniker Name="/CommonDataContext/tblRCIC" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5c806908-436e-43ef-8f76-3cac6c94bccd" absoluteBounds="2.265, 5.835, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d777aca3-e816-4476-aa47-1b23e323df0a" absoluteBounds="6, 6, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/CommonDataContext/tblMedia" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ffbb3fa5-0270-482d-9b79-23486df4071a" absoluteBounds="6.015, 6.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="79d1adca-ff34-4c04-815b-afd9d2fed80f" absoluteBounds="1, 1.125, 2, 3.1170068359375">
+      <DataClassMoniker Name="/CommonDataContext/tblPassport" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6b9bb0c6-6755-42bf-9d41-adf7f1918757" absoluteBounds="1.0150000000000001, 1.585, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

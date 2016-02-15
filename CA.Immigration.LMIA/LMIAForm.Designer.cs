@@ -29,6 +29,36 @@
         private void InitializeComponent()
         {
             this.pnlBase = new System.Windows.Forms.Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.grbLabourMarketFactor = new System.Windows.Forms.GroupBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.grbPosition = new System.Windows.Forms.GroupBox();
+            this.btnCheckNOC = new System.Windows.Forms.Button();
+            this.btnJobBank = new System.Windows.Forms.Button();
+            this.btnTop100 = new System.Windows.Forms.Button();
+            this.cmbProvince = new System.Windows.Forms.ComboBox();
+            this.lblProvince = new System.Windows.Forms.Label();
+            this.txtWorkingHours = new System.Windows.Forms.TextBox();
+            this.lblWorkingHours = new System.Windows.Forms.Label();
+            this.txtLocalNOCMedian = new System.Windows.Forms.TextBox();
+            this.lblLocalNOCMedian = new System.Windows.Forms.Label();
+            this.txtProvincialMedian = new System.Windows.Forms.TextBox();
+            this.lblProvincialMedian = new System.Windows.Forms.Label();
+            this.txtHourlyRate = new System.Windows.Forms.TextBox();
+            this.lblWage = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lblNOC = new System.Windows.Forms.Label();
+            this.txtJobTitle = new System.Windows.Forms.TextBox();
+            this.lblJobTitle = new System.Windows.Forms.Label();
+            this.grbQualification = new System.Windows.Forms.GroupBox();
+            this.dgvPositionQualification = new System.Windows.Forms.DataGridView();
+            this.CheckPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbcADandMedia = new System.Windows.Forms.TabControl();
             this.tbAD = new System.Windows.Forms.TabPage();
             this.stsStatus = new System.Windows.Forms.StatusStrip();
@@ -85,36 +115,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.tbADPreview = new System.Windows.Forms.TabPage();
             this.txtJobAdPreview = new System.Windows.Forms.TextBox();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.grbLabourMarketFactor = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.grbPosition = new System.Windows.Forms.GroupBox();
-            this.btnCheckNOC = new System.Windows.Forms.Button();
-            this.btnJobBank = new System.Windows.Forms.Button();
-            this.btnTop100 = new System.Windows.Forms.Button();
-            this.cmbProvince = new System.Windows.Forms.ComboBox();
-            this.lblProvince = new System.Windows.Forms.Label();
-            this.txtWorkingHours = new System.Windows.Forms.TextBox();
-            this.lblWorkingHours = new System.Windows.Forms.Label();
-            this.txtLocalNOCMedian = new System.Windows.Forms.TextBox();
-            this.lblLocalNOCMedian = new System.Windows.Forms.Label();
-            this.txtProvincialMedian = new System.Windows.Forms.TextBox();
-            this.lblProvincialMedian = new System.Windows.Forms.Label();
-            this.txtHourlyRate = new System.Windows.Forms.TextBox();
-            this.lblWage = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.lblNOC = new System.Windows.Forms.Label();
-            this.txtJobTitle = new System.Windows.Forms.TextBox();
-            this.lblJobTitle = new System.Windows.Forms.Label();
-            this.grbQualification = new System.Windows.Forms.GroupBox();
-            this.dgvPositionQualification = new System.Windows.Forms.DataGridView();
-            this.CheckPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlApplicationType = new System.Windows.Forms.Panel();
             this.grbApplicationType = new System.Windows.Forms.GroupBox();
             this.txtAnotherEmployer = new System.Windows.Forms.TextBox();
@@ -125,6 +125,14 @@
             this.cmbApplicationType = new System.Windows.Forms.ComboBox();
             this.lblApplicationType = new System.Windows.Forms.Label();
             this.pnlBase.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.grbLabourMarketFactor.SuspendLayout();
+            this.grbPosition.SuspendLayout();
+            this.grbQualification.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPositionQualification)).BeginInit();
             this.tbcADandMedia.SuspendLayout();
             this.tbAD.SuspendLayout();
             this.stsStatus.SuspendLayout();
@@ -138,17 +146,8 @@
             this.tbMedia.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedia)).BeginInit();
             this.tbADPreview.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.grbLabourMarketFactor.SuspendLayout();
-            this.grbPosition.SuspendLayout();
-            this.grbQualification.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPositionQualification)).BeginInit();
             this.pnlApplicationType.SuspendLayout();
             this.grbApplicationType.SuspendLayout();
-           // ((System.ComponentModel.ISupportInitialize)(this.dgvEmployer)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlBase
@@ -161,6 +160,299 @@
             this.pnlBase.Name = "pnlBase";
             this.pnlBase.Size = new System.Drawing.Size(1472, 1183);
             this.pnlBase.TabIndex = 0;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.IsSplitterFixed = true;
+            this.splitContainer1.Location = new System.Drawing.Point(12, 125);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.grbLabourMarketFactor);
+            this.splitContainer1.Panel1.Controls.Add(this.grbPosition);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.grbQualification);
+            this.splitContainer1.Panel2.Enabled = false;
+            this.splitContainer1.Size = new System.Drawing.Size(1448, 245);
+            this.splitContainer1.SplitterDistance = 1096;
+            this.splitContainer1.TabIndex = 0;
+            // 
+            // grbLabourMarketFactor
+            // 
+            this.grbLabourMarketFactor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grbLabourMarketFactor.Controls.Add(this.textBox5);
+            this.grbLabourMarketFactor.Controls.Add(this.button3);
+            this.grbLabourMarketFactor.Controls.Add(this.textBox4);
+            this.grbLabourMarketFactor.Controls.Add(this.button2);
+            this.grbLabourMarketFactor.Controls.Add(this.textBox3);
+            this.grbLabourMarketFactor.Controls.Add(this.button1);
+            this.grbLabourMarketFactor.Location = new System.Drawing.Point(3, 141);
+            this.grbLabourMarketFactor.Name = "grbLabourMarketFactor";
+            this.grbLabourMarketFactor.Size = new System.Drawing.Size(1090, 101);
+            this.grbLabourMarketFactor.TabIndex = 1;
+            this.grbLabourMarketFactor.TabStop = false;
+            this.grbLabourMarketFactor.Text = "Labour Market Factors";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(773, 47);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(96, 26);
+            this.textBox5.TabIndex = 5;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(574, 43);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(172, 35);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Occupation Profile";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(453, 47);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(85, 26);
+            this.textBox4.TabIndex = 3;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(289, 43);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(140, 34);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "COPS Rating";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(193, 47);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(73, 26);
+            this.textBox3.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 43);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(170, 34);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Unemployment Rate";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // grbPosition
+            // 
+            this.grbPosition.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.grbPosition.Controls.Add(this.btnCheckNOC);
+            this.grbPosition.Controls.Add(this.btnJobBank);
+            this.grbPosition.Controls.Add(this.btnTop100);
+            this.grbPosition.Controls.Add(this.cmbProvince);
+            this.grbPosition.Controls.Add(this.lblProvince);
+            this.grbPosition.Controls.Add(this.txtWorkingHours);
+            this.grbPosition.Controls.Add(this.lblWorkingHours);
+            this.grbPosition.Controls.Add(this.txtLocalNOCMedian);
+            this.grbPosition.Controls.Add(this.lblLocalNOCMedian);
+            this.grbPosition.Controls.Add(this.txtProvincialMedian);
+            this.grbPosition.Controls.Add(this.lblProvincialMedian);
+            this.grbPosition.Controls.Add(this.txtHourlyRate);
+            this.grbPosition.Controls.Add(this.lblWage);
+            this.grbPosition.Controls.Add(this.textBox2);
+            this.grbPosition.Controls.Add(this.lblNOC);
+            this.grbPosition.Controls.Add(this.txtJobTitle);
+            this.grbPosition.Controls.Add(this.lblJobTitle);
+            this.grbPosition.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grbPosition.Location = new System.Drawing.Point(0, 0);
+            this.grbPosition.Name = "grbPosition";
+            this.grbPosition.Size = new System.Drawing.Size(1096, 143);
+            this.grbPosition.TabIndex = 0;
+            this.grbPosition.TabStop = false;
+            this.grbPosition.Text = "Position Information";
+            // 
+            // btnCheckNOC
+            // 
+            this.btnCheckNOC.Location = new System.Drawing.Point(923, 30);
+            this.btnCheckNOC.Name = "btnCheckNOC";
+            this.btnCheckNOC.Size = new System.Drawing.Size(139, 34);
+            this.btnCheckNOC.TabIndex = 9;
+            this.btnCheckNOC.Text = "Check NOC Code";
+            this.btnCheckNOC.UseVisualStyleBackColor = true;
+            // 
+            // btnJobBank
+            // 
+            this.btnJobBank.Location = new System.Drawing.Point(923, 84);
+            this.btnJobBank.Name = "btnJobBank";
+            this.btnJobBank.Size = new System.Drawing.Size(139, 34);
+            this.btnJobBank.TabIndex = 9;
+            this.btnJobBank.Text = "Check Job Bank";
+            this.btnJobBank.UseVisualStyleBackColor = true;
+            // 
+            // btnTop100
+            // 
+            this.btnTop100.Location = new System.Drawing.Point(694, 30);
+            this.btnTop100.Name = "btnTop100";
+            this.btnTop100.Size = new System.Drawing.Size(191, 34);
+            this.btnTop100.TabIndex = 8;
+            this.btnTop100.Text = "BC Ocuupation Top 100";
+            this.btnTop100.UseVisualStyleBackColor = true;
+            // 
+            // cmbProvince
+            // 
+            this.cmbProvince.FormattingEnabled = true;
+            this.cmbProvince.Location = new System.Drawing.Point(589, 34);
+            this.cmbProvince.Name = "cmbProvince";
+            this.cmbProvince.Size = new System.Drawing.Size(66, 28);
+            this.cmbProvince.TabIndex = 7;
+            // 
+            // lblProvince
+            // 
+            this.lblProvince.AutoSize = true;
+            this.lblProvince.Location = new System.Drawing.Point(452, 39);
+            this.lblProvince.Name = "lblProvince";
+            this.lblProvince.Size = new System.Drawing.Size(73, 20);
+            this.lblProvince.TabIndex = 6;
+            this.lblProvince.Text = "Province ";
+            // 
+            // txtWorkingHours
+            // 
+            this.txtWorkingHours.Location = new System.Drawing.Point(138, 91);
+            this.txtWorkingHours.Name = "txtWorkingHours";
+            this.txtWorkingHours.Size = new System.Drawing.Size(62, 26);
+            this.txtWorkingHours.TabIndex = 5;
+            // 
+            // lblWorkingHours
+            // 
+            this.lblWorkingHours.AutoSize = true;
+            this.lblWorkingHours.Location = new System.Drawing.Point(18, 94);
+            this.lblWorkingHours.Name = "lblWorkingHours";
+            this.lblWorkingHours.Size = new System.Drawing.Size(114, 20);
+            this.lblWorkingHours.TabIndex = 4;
+            this.lblWorkingHours.Text = "Working Hours";
+            // 
+            // txtLocalNOCMedian
+            // 
+            this.txtLocalNOCMedian.Location = new System.Drawing.Point(837, 88);
+            this.txtLocalNOCMedian.Name = "txtLocalNOCMedian";
+            this.txtLocalNOCMedian.Size = new System.Drawing.Size(66, 26);
+            this.txtLocalNOCMedian.TabIndex = 3;
+            // 
+            // lblLocalNOCMedian
+            // 
+            this.lblLocalNOCMedian.AutoSize = true;
+            this.lblLocalNOCMedian.Location = new System.Drawing.Point(690, 91);
+            this.lblLocalNOCMedian.Name = "lblLocalNOCMedian";
+            this.lblLocalNOCMedian.Size = new System.Drawing.Size(141, 20);
+            this.lblLocalNOCMedian.TabIndex = 2;
+            this.lblLocalNOCMedian.Text = "Local NOC Median";
+            // 
+            // txtProvincialMedian
+            // 
+            this.txtProvincialMedian.Location = new System.Drawing.Point(589, 88);
+            this.txtProvincialMedian.Name = "txtProvincialMedian";
+            this.txtProvincialMedian.Size = new System.Drawing.Size(66, 26);
+            this.txtProvincialMedian.TabIndex = 1;
+            // 
+            // lblProvincialMedian
+            // 
+            this.lblProvincialMedian.AutoSize = true;
+            this.lblProvincialMedian.Location = new System.Drawing.Point(452, 91);
+            this.lblProvincialMedian.Name = "lblProvincialMedian";
+            this.lblProvincialMedian.Size = new System.Drawing.Size(131, 20);
+            this.lblProvincialMedian.TabIndex = 0;
+            this.lblProvincialMedian.Text = "Provincial Median";
+            // 
+            // txtHourlyRate
+            // 
+            this.txtHourlyRate.Location = new System.Drawing.Point(362, 88);
+            this.txtHourlyRate.Name = "txtHourlyRate";
+            this.txtHourlyRate.Size = new System.Drawing.Size(66, 26);
+            this.txtHourlyRate.TabIndex = 1;
+            // 
+            // lblWage
+            // 
+            this.lblWage.AutoSize = true;
+            this.lblWage.Location = new System.Drawing.Point(238, 94);
+            this.lblWage.Name = "lblWage";
+            this.lblWage.Size = new System.Drawing.Size(93, 20);
+            this.lblWage.TabIndex = 0;
+            this.lblWage.Text = "Hourly Rate";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(362, 36);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(62, 26);
+            this.textBox2.TabIndex = 1;
+            // 
+            // lblNOC
+            // 
+            this.lblNOC.AutoSize = true;
+            this.lblNOC.Location = new System.Drawing.Point(288, 39);
+            this.lblNOC.Name = "lblNOC";
+            this.lblNOC.Size = new System.Drawing.Size(43, 20);
+            this.lblNOC.TabIndex = 0;
+            this.lblNOC.Text = "NOC";
+            // 
+            // txtJobTitle
+            // 
+            this.txtJobTitle.Location = new System.Drawing.Point(92, 25);
+            this.txtJobTitle.Name = "txtJobTitle";
+            this.txtJobTitle.Size = new System.Drawing.Size(163, 26);
+            this.txtJobTitle.TabIndex = 1;
+            // 
+            // lblJobTitle
+            // 
+            this.lblJobTitle.AutoSize = true;
+            this.lblJobTitle.Location = new System.Drawing.Point(18, 39);
+            this.lblJobTitle.Name = "lblJobTitle";
+            this.lblJobTitle.Size = new System.Drawing.Size(68, 20);
+            this.lblJobTitle.TabIndex = 0;
+            this.lblJobTitle.Text = "Job Title";
+            // 
+            // grbQualification
+            // 
+            this.grbQualification.Controls.Add(this.dgvPositionQualification);
+            this.grbQualification.Location = new System.Drawing.Point(-1, 3);
+            this.grbQualification.Name = "grbQualification";
+            this.grbQualification.Size = new System.Drawing.Size(341, 245);
+            this.grbQualification.TabIndex = 0;
+            this.grbQualification.TabStop = false;
+            this.grbQualification.Text = "Position Qualification";
+            // 
+            // dgvPositionQualification
+            // 
+            this.dgvPositionQualification.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvPositionQualification.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPositionQualification.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CheckPoint,
+            this.Result});
+            this.dgvPositionQualification.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPositionQualification.EnableHeadersVisualStyles = false;
+            this.dgvPositionQualification.Location = new System.Drawing.Point(3, 22);
+            this.dgvPositionQualification.Name = "dgvPositionQualification";
+            this.dgvPositionQualification.RowTemplate.Height = 28;
+            this.dgvPositionQualification.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPositionQualification.Size = new System.Drawing.Size(335, 220);
+            this.dgvPositionQualification.TabIndex = 0;
+            // 
+            // CheckPoint
+            // 
+            this.CheckPoint.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CheckPoint.HeaderText = "Check Point";
+            this.CheckPoint.Name = "CheckPoint";
+            this.CheckPoint.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Result
+            // 
+            this.Result.HeaderText = "Result";
+            this.Result.Name = "Result";
             // 
             // tbcADandMedia
             // 
@@ -248,7 +540,6 @@
             // 
             // grpSelectEmployer
             // 
-            //this.grpSelectEmployer.Controls.Add(this.dgvEmployer);
             this.grpSelectEmployer.Controls.Add(this.textBox7);
             this.grpSelectEmployer.Controls.Add(this.lblEmployer);
             this.grpSelectEmployer.Location = new System.Drawing.Point(395, 155);
@@ -712,299 +1003,6 @@
             this.txtJobAdPreview.Size = new System.Drawing.Size(1447, 766);
             this.txtJobAdPreview.TabIndex = 0;
             // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(12, 125);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.grbLabourMarketFactor);
-            this.splitContainer1.Panel1.Controls.Add(this.grbPosition);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.grbQualification);
-            this.splitContainer1.Panel2.Enabled = false;
-            this.splitContainer1.Size = new System.Drawing.Size(1448, 245);
-            this.splitContainer1.SplitterDistance = 1096;
-            this.splitContainer1.TabIndex = 0;
-            // 
-            // grbLabourMarketFactor
-            // 
-            this.grbLabourMarketFactor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grbLabourMarketFactor.Controls.Add(this.textBox5);
-            this.grbLabourMarketFactor.Controls.Add(this.button3);
-            this.grbLabourMarketFactor.Controls.Add(this.textBox4);
-            this.grbLabourMarketFactor.Controls.Add(this.button2);
-            this.grbLabourMarketFactor.Controls.Add(this.textBox3);
-            this.grbLabourMarketFactor.Controls.Add(this.button1);
-            this.grbLabourMarketFactor.Location = new System.Drawing.Point(3, 141);
-            this.grbLabourMarketFactor.Name = "grbLabourMarketFactor";
-            this.grbLabourMarketFactor.Size = new System.Drawing.Size(1090, 101);
-            this.grbLabourMarketFactor.TabIndex = 1;
-            this.grbLabourMarketFactor.TabStop = false;
-            this.grbLabourMarketFactor.Text = "Labour Market Factors";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(773, 47);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(96, 26);
-            this.textBox5.TabIndex = 5;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(574, 43);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(172, 35);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Occupation Profile";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(453, 47);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(85, 26);
-            this.textBox4.TabIndex = 3;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(289, 43);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 34);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "COPS Rating";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(193, 47);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(73, 26);
-            this.textBox3.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(6, 43);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(170, 34);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Unemployment Rate";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // grbPosition
-            // 
-            this.grbPosition.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.grbPosition.Controls.Add(this.btnCheckNOC);
-            this.grbPosition.Controls.Add(this.btnJobBank);
-            this.grbPosition.Controls.Add(this.btnTop100);
-            this.grbPosition.Controls.Add(this.cmbProvince);
-            this.grbPosition.Controls.Add(this.lblProvince);
-            this.grbPosition.Controls.Add(this.txtWorkingHours);
-            this.grbPosition.Controls.Add(this.lblWorkingHours);
-            this.grbPosition.Controls.Add(this.txtLocalNOCMedian);
-            this.grbPosition.Controls.Add(this.lblLocalNOCMedian);
-            this.grbPosition.Controls.Add(this.txtProvincialMedian);
-            this.grbPosition.Controls.Add(this.lblProvincialMedian);
-            this.grbPosition.Controls.Add(this.txtHourlyRate);
-            this.grbPosition.Controls.Add(this.lblWage);
-            this.grbPosition.Controls.Add(this.textBox2);
-            this.grbPosition.Controls.Add(this.lblNOC);
-            this.grbPosition.Controls.Add(this.txtJobTitle);
-            this.grbPosition.Controls.Add(this.lblJobTitle);
-            this.grbPosition.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grbPosition.Location = new System.Drawing.Point(0, 0);
-            this.grbPosition.Name = "grbPosition";
-            this.grbPosition.Size = new System.Drawing.Size(1096, 143);
-            this.grbPosition.TabIndex = 0;
-            this.grbPosition.TabStop = false;
-            this.grbPosition.Text = "Position Information";
-            // 
-            // btnCheckNOC
-            // 
-            this.btnCheckNOC.Location = new System.Drawing.Point(923, 30);
-            this.btnCheckNOC.Name = "btnCheckNOC";
-            this.btnCheckNOC.Size = new System.Drawing.Size(139, 34);
-            this.btnCheckNOC.TabIndex = 9;
-            this.btnCheckNOC.Text = "Check NOC Code";
-            this.btnCheckNOC.UseVisualStyleBackColor = true;
-            // 
-            // btnJobBank
-            // 
-            this.btnJobBank.Location = new System.Drawing.Point(923, 84);
-            this.btnJobBank.Name = "btnJobBank";
-            this.btnJobBank.Size = new System.Drawing.Size(139, 34);
-            this.btnJobBank.TabIndex = 9;
-            this.btnJobBank.Text = "Check Job Bank";
-            this.btnJobBank.UseVisualStyleBackColor = true;
-            // 
-            // btnTop100
-            // 
-            this.btnTop100.Location = new System.Drawing.Point(694, 30);
-            this.btnTop100.Name = "btnTop100";
-            this.btnTop100.Size = new System.Drawing.Size(191, 34);
-            this.btnTop100.TabIndex = 8;
-            this.btnTop100.Text = "BC Ocuupation Top 100";
-            this.btnTop100.UseVisualStyleBackColor = true;
-            // 
-            // cmbProvince
-            // 
-            this.cmbProvince.FormattingEnabled = true;
-            this.cmbProvince.Location = new System.Drawing.Point(589, 34);
-            this.cmbProvince.Name = "cmbProvince";
-            this.cmbProvince.Size = new System.Drawing.Size(66, 28);
-            this.cmbProvince.TabIndex = 7;
-            // 
-            // lblProvince
-            // 
-            this.lblProvince.AutoSize = true;
-            this.lblProvince.Location = new System.Drawing.Point(452, 39);
-            this.lblProvince.Name = "lblProvince";
-            this.lblProvince.Size = new System.Drawing.Size(73, 20);
-            this.lblProvince.TabIndex = 6;
-            this.lblProvince.Text = "Province ";
-            // 
-            // txtWorkingHours
-            // 
-            this.txtWorkingHours.Location = new System.Drawing.Point(138, 91);
-            this.txtWorkingHours.Name = "txtWorkingHours";
-            this.txtWorkingHours.Size = new System.Drawing.Size(62, 26);
-            this.txtWorkingHours.TabIndex = 5;
-            // 
-            // lblWorkingHours
-            // 
-            this.lblWorkingHours.AutoSize = true;
-            this.lblWorkingHours.Location = new System.Drawing.Point(18, 94);
-            this.lblWorkingHours.Name = "lblWorkingHours";
-            this.lblWorkingHours.Size = new System.Drawing.Size(114, 20);
-            this.lblWorkingHours.TabIndex = 4;
-            this.lblWorkingHours.Text = "Working Hours";
-            // 
-            // txtLocalNOCMedian
-            // 
-            this.txtLocalNOCMedian.Location = new System.Drawing.Point(837, 88);
-            this.txtLocalNOCMedian.Name = "txtLocalNOCMedian";
-            this.txtLocalNOCMedian.Size = new System.Drawing.Size(66, 26);
-            this.txtLocalNOCMedian.TabIndex = 3;
-            // 
-            // lblLocalNOCMedian
-            // 
-            this.lblLocalNOCMedian.AutoSize = true;
-            this.lblLocalNOCMedian.Location = new System.Drawing.Point(690, 91);
-            this.lblLocalNOCMedian.Name = "lblLocalNOCMedian";
-            this.lblLocalNOCMedian.Size = new System.Drawing.Size(141, 20);
-            this.lblLocalNOCMedian.TabIndex = 2;
-            this.lblLocalNOCMedian.Text = "Local NOC Median";
-            // 
-            // txtProvincialMedian
-            // 
-            this.txtProvincialMedian.Location = new System.Drawing.Point(589, 88);
-            this.txtProvincialMedian.Name = "txtProvincialMedian";
-            this.txtProvincialMedian.Size = new System.Drawing.Size(66, 26);
-            this.txtProvincialMedian.TabIndex = 1;
-            // 
-            // lblProvincialMedian
-            // 
-            this.lblProvincialMedian.AutoSize = true;
-            this.lblProvincialMedian.Location = new System.Drawing.Point(452, 91);
-            this.lblProvincialMedian.Name = "lblProvincialMedian";
-            this.lblProvincialMedian.Size = new System.Drawing.Size(131, 20);
-            this.lblProvincialMedian.TabIndex = 0;
-            this.lblProvincialMedian.Text = "Provincial Median";
-            // 
-            // txtHourlyRate
-            // 
-            this.txtHourlyRate.Location = new System.Drawing.Point(362, 88);
-            this.txtHourlyRate.Name = "txtHourlyRate";
-            this.txtHourlyRate.Size = new System.Drawing.Size(66, 26);
-            this.txtHourlyRate.TabIndex = 1;
-            // 
-            // lblWage
-            // 
-            this.lblWage.AutoSize = true;
-            this.lblWage.Location = new System.Drawing.Point(238, 94);
-            this.lblWage.Name = "lblWage";
-            this.lblWage.Size = new System.Drawing.Size(93, 20);
-            this.lblWage.TabIndex = 0;
-            this.lblWage.Text = "Hourly Rate";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(362, 36);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(62, 26);
-            this.textBox2.TabIndex = 1;
-            // 
-            // lblNOC
-            // 
-            this.lblNOC.AutoSize = true;
-            this.lblNOC.Location = new System.Drawing.Point(288, 39);
-            this.lblNOC.Name = "lblNOC";
-            this.lblNOC.Size = new System.Drawing.Size(43, 20);
-            this.lblNOC.TabIndex = 0;
-            this.lblNOC.Text = "NOC";
-            // 
-            // txtJobTitle
-            // 
-            this.txtJobTitle.Location = new System.Drawing.Point(92, 25);
-            this.txtJobTitle.Name = "txtJobTitle";
-            this.txtJobTitle.Size = new System.Drawing.Size(163, 26);
-            this.txtJobTitle.TabIndex = 1;
-            // 
-            // lblJobTitle
-            // 
-            this.lblJobTitle.AutoSize = true;
-            this.lblJobTitle.Location = new System.Drawing.Point(18, 39);
-            this.lblJobTitle.Name = "lblJobTitle";
-            this.lblJobTitle.Size = new System.Drawing.Size(68, 20);
-            this.lblJobTitle.TabIndex = 0;
-            this.lblJobTitle.Text = "Job Title";
-            // 
-            // grbQualification
-            // 
-            this.grbQualification.Controls.Add(this.dgvPositionQualification);
-            this.grbQualification.Location = new System.Drawing.Point(-1, 3);
-            this.grbQualification.Name = "grbQualification";
-            this.grbQualification.Size = new System.Drawing.Size(341, 245);
-            this.grbQualification.TabIndex = 0;
-            this.grbQualification.TabStop = false;
-            this.grbQualification.Text = "Position Qualification";
-            // 
-            // dgvPositionQualification
-            // 
-            this.dgvPositionQualification.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvPositionQualification.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPositionQualification.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CheckPoint,
-            this.Result});
-            this.dgvPositionQualification.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPositionQualification.EnableHeadersVisualStyles = false;
-            this.dgvPositionQualification.Location = new System.Drawing.Point(3, 22);
-            this.dgvPositionQualification.Name = "dgvPositionQualification";
-            this.dgvPositionQualification.RowTemplate.Height = 28;
-            this.dgvPositionQualification.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPositionQualification.Size = new System.Drawing.Size(335, 220);
-            this.dgvPositionQualification.TabIndex = 0;
-            // 
-            // CheckPoint
-            // 
-            this.CheckPoint.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CheckPoint.HeaderText = "Check Point";
-            this.CheckPoint.Name = "CheckPoint";
-            this.CheckPoint.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Result
-            // 
-            this.Result.HeaderText = "Result";
-            this.Result.Name = "Result";
-            // 
             // pnlApplicationType
             // 
             this.pnlApplicationType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1112,6 +1110,16 @@
             this.Text = "LMIA Advisor & Processing";
             this.Load += new System.EventHandler(this.LMIAForm_Load);
             this.pnlBase.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.grbLabourMarketFactor.ResumeLayout(false);
+            this.grbLabourMarketFactor.PerformLayout();
+            this.grbPosition.ResumeLayout(false);
+            this.grbPosition.PerformLayout();
+            this.grbQualification.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPositionQualification)).EndInit();
             this.tbcADandMedia.ResumeLayout(false);
             this.tbAD.ResumeLayout(false);
             this.tbAD.PerformLayout();
@@ -1136,20 +1144,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedia)).EndInit();
             this.tbADPreview.ResumeLayout(false);
             this.tbADPreview.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.grbLabourMarketFactor.ResumeLayout(false);
-            this.grbLabourMarketFactor.PerformLayout();
-            this.grbPosition.ResumeLayout(false);
-            this.grbPosition.PerformLayout();
-            this.grbQualification.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPositionQualification)).EndInit();
             this.pnlApplicationType.ResumeLayout(false);
             this.grbApplicationType.ResumeLayout(false);
             this.grbApplicationType.PerformLayout();
-        //    ((System.ComponentModel.ISupportInitialize)(this.dgvEmployer)).EndInit();
             this.ResumeLayout(false);
 
         }

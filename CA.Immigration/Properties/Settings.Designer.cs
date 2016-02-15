@@ -33,5 +33,16 @@ namespace CA.Immigration.Properties {
                 return ((string)(this["CommonConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=JackyPC\\SQLExpress;Initial Catalog=LMIA;Persist Security Info=True;Us" +
+            "er ID=sa;Password=Zxy690211")]
+        public string LMIAConnectionString {
+            get {
+                return ((string)(this["LMIAConnectionString"]));
+            }
+        }
     }
 }
