@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CA.Immigration.Data;
 
 
 namespace CA.Immigration.LMIA
 {
-    public class BuildupDictionary
+    public partial class LMIADict
     {
         //public Dictionary<string, string> outputDict;
 
@@ -242,11 +240,11 @@ namespace CA.Immigration.LMIA
                 ////Foreign work Info
                 ["EMP5593_E[0].Page8[0].txtF_Surname[0]"] = employee.LastName,
                 ["EMP5593_E[0].Page8[0].txtF_GivenNames[0]"] = employee.FirstName,
-                ["EMP5593_E[0].Page8[0].rb_Question3_E[0]"] = employeePassport.Gender,
+                //["EMP5593_E[0].Page8[0].rb_Question3_E[0]"] = employeePassport.Gender, // ???
                 ["EMP5593_E[0].Page8[0].txtF_Date_E[0]"] = String.Format("{0:yyyy-MM-dd}",(DateTime)employeePassport.DOB),
                 ["EMP5593_E[0].Page8[0].txtF_City[0]"] = employeeMore.OutCanadaCity,
                 ["EMP5593_E[0].Page8[0].txtF_Country[0]"] = employeeMore.OutCanadaCountry,
-                ["EMP5593_E[0].Page8[0].txtF_Citizenships[0]"] = employeePassport.Nationality,
+                //["EMP5593_E[0].Page8[0].txtF_Citizenships[0]"] = employeePassport.Nationality,//???
                 ["EMP5593_E[0].Page8[0].txtF_City2[0]"] = employeeMore.CanadaCity,
                 ["EMP5593_E[0].Page8[0].txtF_Province[0]"] = employeeMore.CanadaProvince,
                 ["EMP5593_E[0].Page8[0].rb_Question8[0]"]=((int)employeeMore.Hired==1)?"Yes":"No",

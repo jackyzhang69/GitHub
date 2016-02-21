@@ -44,5 +44,15 @@ namespace CA.Immigration.Properties {
                 return ((string)(this["LMIAConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=jackypc\\sqlexpress;Initial Catalog=SP;User ID=sa;Password=Zxy690211")]
+        public string SPConnectionString {
+            get {
+                return ((string)(this["SPConnectionString"]));
+            }
+        }
     }
 }

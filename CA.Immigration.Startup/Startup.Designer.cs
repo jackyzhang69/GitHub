@@ -35,12 +35,13 @@
             this.eIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qIIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.getValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.MainStatus = new System.Windows.Forms.StatusStrip();
             this.stsSystem = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.getValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -64,7 +65,8 @@
             this.lMIAToolStripMenuItem1,
             this.bCPNPToolStripMenuItem,
             this.qIIPToolStripMenuItem,
-            this.getValueToolStripMenuItem});
+            this.getValueToolStripMenuItem,
+            this.toolStripMenuItem2});
             this.lMIAToolStripMenuItem.Name = "lMIAToolStripMenuItem";
             this.lMIAToolStripMenuItem.Size = new System.Drawing.Size(114, 29);
             this.lMIAToolStripMenuItem.Text = "Application";
@@ -103,6 +105,13 @@
             this.qIIPToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
             this.qIIPToolStripMenuItem.Text = "QIIP";
             this.qIIPToolStripMenuItem.Click += new System.EventHandler(this.qIIPToolStripMenuItem_Click);
+            // 
+            // getValueToolStripMenuItem
+            // 
+            this.getValueToolStripMenuItem.Name = "getValueToolStripMenuItem";
+            this.getValueToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.getValueToolStripMenuItem.Text = "GetValue";
+            this.getValueToolStripMenuItem.Click += new System.EventHandler(this.getValueToolStripMenuItem_Click);
             // 
             // tabControl1
             // 
@@ -153,12 +162,12 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // getValueToolStripMenuItem
+            // toolStripMenuItem2
             // 
-            this.getValueToolStripMenuItem.Name = "getValueToolStripMenuItem";
-            this.getValueToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
-            this.getValueToolStripMenuItem.Text = "GetValue";
-            this.getValueToolStripMenuItem.Click += new System.EventHandler(this.getValueToolStripMenuItem_Click);
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(211, 30);
+            this.toolStripMenuItem2.Text = "5476";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // Startup
             // 
@@ -197,6 +206,7 @@
         private System.Windows.Forms.ToolStripStatusLabel stsSystem;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ToolStripMenuItem getValueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     }
 }
 

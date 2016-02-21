@@ -29,16 +29,20 @@ namespace CA.Immigration.Startup
         private void qIIPToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int ApplicationId = 1;
-            //BuildupDictionary EMP5593 = new BuildupDictionary(ApplicationId);
-            FillForm.fillForm("EMP5593", BuildupDictionary.EMP5593(ApplicationId));
+            FillForm.fillForm("EMP5593", LMIADict.EMP5593(ApplicationId));
         }
 
         private void getValueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           PDFTools.getXFAValue(BuildupDictionary.EMP5593(1));
+           PDFTools.getXFAValue(LMIADict.EMP5593(1));
 
             // to get value from pdf
         
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FillForm.fillForm("IMM5476", RepDict.IMM5476(1));
         }
     }
 }

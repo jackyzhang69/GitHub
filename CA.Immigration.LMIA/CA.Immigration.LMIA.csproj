@@ -47,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuildupDictionary.cs" />
     <Compile Include="LMIADataContext.cs" />
     <Compile Include="LMIAForm.cs">
       <SubType>Form</SubType>

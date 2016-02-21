@@ -42,6 +42,9 @@ namespace CA.Immigration.Data
     partial void InserttblMedia(tblMedia instance);
     partial void UpdatetblMedia(tblMedia instance);
     partial void DeletetblMedia(tblMedia instance);
+    partial void InserttblApplication(tblApplication instance);
+    partial void UpdatetblApplication(tblApplication instance);
+    partial void DeletetblApplication(tblApplication instance);
     partial void InserttblPassport(tblPassport instance);
     partial void UpdatetblPassport(tblPassport instance);
     partial void DeletetblPassport(tblPassport instance);
@@ -106,6 +109,14 @@ namespace CA.Immigration.Data
 			get
 			{
 				return this.GetTable<tblMedia>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tblApplication> tblApplications
+		{
+			get
+			{
+				return this.GetTable<tblApplication>();
 			}
 		}
 		
@@ -1374,6 +1385,260 @@ namespace CA.Immigration.Data
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblApplication")]
+	public partial class tblApplication : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _ApplicantId;
+		
+		private System.Nullable<int> _RCICId;
+		
+		private System.Nullable<int> _ApplicationType;
+		
+		private System.Nullable<System.DateTime> _CreatedDate;
+		
+		private System.Nullable<System.DateTime> _SubmittedDate;
+		
+		private System.Nullable<System.DateTime> _ClosedDate;
+		
+		private string _ApplicationNumber;
+		
+		private System.Nullable<decimal> _ApplicationFee;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnApplicantIdChanging(System.Nullable<int> value);
+    partial void OnApplicantIdChanged();
+    partial void OnRCICIdChanging(System.Nullable<int> value);
+    partial void OnRCICIdChanged();
+    partial void OnApplicationTypeChanging(System.Nullable<int> value);
+    partial void OnApplicationTypeChanged();
+    partial void OnCreatedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedDateChanged();
+    partial void OnSubmittedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnSubmittedDateChanged();
+    partial void OnClosedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnClosedDateChanged();
+    partial void OnApplicationNumberChanging(string value);
+    partial void OnApplicationNumberChanged();
+    partial void OnApplicationFeeChanging(System.Nullable<decimal> value);
+    partial void OnApplicationFeeChanged();
+    #endregion
+		
+		public tblApplication()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplicantId", DbType="Int")]
+		public System.Nullable<int> ApplicantId
+		{
+			get
+			{
+				return this._ApplicantId;
+			}
+			set
+			{
+				if ((this._ApplicantId != value))
+				{
+					this.OnApplicantIdChanging(value);
+					this.SendPropertyChanging();
+					this._ApplicantId = value;
+					this.SendPropertyChanged("ApplicantId");
+					this.OnApplicantIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RCICId", DbType="Int")]
+		public System.Nullable<int> RCICId
+		{
+			get
+			{
+				return this._RCICId;
+			}
+			set
+			{
+				if ((this._RCICId != value))
+				{
+					this.OnRCICIdChanging(value);
+					this.SendPropertyChanging();
+					this._RCICId = value;
+					this.SendPropertyChanged("RCICId");
+					this.OnRCICIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplicationType", DbType="Int")]
+		public System.Nullable<int> ApplicationType
+		{
+			get
+			{
+				return this._ApplicationType;
+			}
+			set
+			{
+				if ((this._ApplicationType != value))
+				{
+					this.OnApplicationTypeChanging(value);
+					this.SendPropertyChanging();
+					this._ApplicationType = value;
+					this.SendPropertyChanged("ApplicationType");
+					this.OnApplicationTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="Date")]
+		public System.Nullable<System.DateTime> CreatedDate
+		{
+			get
+			{
+				return this._CreatedDate;
+			}
+			set
+			{
+				if ((this._CreatedDate != value))
+				{
+					this.OnCreatedDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedDate = value;
+					this.SendPropertyChanged("CreatedDate");
+					this.OnCreatedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SubmittedDate", DbType="Date")]
+		public System.Nullable<System.DateTime> SubmittedDate
+		{
+			get
+			{
+				return this._SubmittedDate;
+			}
+			set
+			{
+				if ((this._SubmittedDate != value))
+				{
+					this.OnSubmittedDateChanging(value);
+					this.SendPropertyChanging();
+					this._SubmittedDate = value;
+					this.SendPropertyChanged("SubmittedDate");
+					this.OnSubmittedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClosedDate", DbType="Date")]
+		public System.Nullable<System.DateTime> ClosedDate
+		{
+			get
+			{
+				return this._ClosedDate;
+			}
+			set
+			{
+				if ((this._ClosedDate != value))
+				{
+					this.OnClosedDateChanging(value);
+					this.SendPropertyChanging();
+					this._ClosedDate = value;
+					this.SendPropertyChanged("ClosedDate");
+					this.OnClosedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplicationNumber", DbType="NVarChar(20)")]
+		public string ApplicationNumber
+		{
+			get
+			{
+				return this._ApplicationNumber;
+			}
+			set
+			{
+				if ((this._ApplicationNumber != value))
+				{
+					this.OnApplicationNumberChanging(value);
+					this.SendPropertyChanging();
+					this._ApplicationNumber = value;
+					this.SendPropertyChanged("ApplicationNumber");
+					this.OnApplicationNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplicationFee", DbType="Money")]
+		public System.Nullable<decimal> ApplicationFee
+		{
+			get
+			{
+				return this._ApplicationFee;
+			}
+			set
+			{
+				if ((this._ApplicationFee != value))
+				{
+					this.OnApplicationFeeChanging(value);
+					this.SendPropertyChanging();
+					this._ApplicationFee = value;
+					this.SendPropertyChanged("ApplicationFee");
+					this.OnApplicationFeeChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblPassport")]
 	public partial class tblPassport : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1382,15 +1647,17 @@ namespace CA.Immigration.Data
 		
 		private int _Id;
 		
-		private int _PersonId;
+		private System.Nullable<int> _PersonId;
 		
 		private string _PassportNumber;
 		
 		private string _Name;
 		
-		private string _Gender;
+		private System.Nullable<int> _GenderId;
 		
-		private string _Nationality;
+		private System.Nullable<int> _BirthCountryId;
+		
+		private System.Nullable<int> _NationalityId;
 		
 		private System.Nullable<System.DateTime> _DOB;
 		
@@ -1410,16 +1677,18 @@ namespace CA.Immigration.Data
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnPersonIdChanging(int value);
+    partial void OnPersonIdChanging(System.Nullable<int> value);
     partial void OnPersonIdChanged();
     partial void OnPassportNumberChanging(string value);
     partial void OnPassportNumberChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
-    partial void OnGenderChanging(string value);
-    partial void OnGenderChanged();
-    partial void OnNationalityChanging(string value);
-    partial void OnNationalityChanged();
+    partial void OnGenderIdChanging(System.Nullable<int> value);
+    partial void OnGenderIdChanged();
+    partial void OnBirthCountryIdChanging(System.Nullable<int> value);
+    partial void OnBirthCountryIdChanged();
+    partial void OnNationalityIdChanging(System.Nullable<int> value);
+    partial void OnNationalityIdChanged();
     partial void OnDOBChanging(System.Nullable<System.DateTime> value);
     partial void OnDOBChanged();
     partial void OnBrithPlaceChanging(string value);
@@ -1459,8 +1728,8 @@ namespace CA.Immigration.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PersonId", DbType="Int NOT NULL")]
-		public int PersonId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PersonId", DbType="Int")]
+		public System.Nullable<int> PersonId
 		{
 			get
 			{
@@ -1479,7 +1748,7 @@ namespace CA.Immigration.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PassportNumber", DbType="NVarChar(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PassportNumber", DbType="VarChar(10)")]
 		public string PassportNumber
 		{
 			get
@@ -1519,42 +1788,62 @@ namespace CA.Immigration.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Gender", DbType="NVarChar(10)")]
-		public string Gender
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GenderId", DbType="Int")]
+		public System.Nullable<int> GenderId
 		{
 			get
 			{
-				return this._Gender;
+				return this._GenderId;
 			}
 			set
 			{
-				if ((this._Gender != value))
+				if ((this._GenderId != value))
 				{
-					this.OnGenderChanging(value);
+					this.OnGenderIdChanging(value);
 					this.SendPropertyChanging();
-					this._Gender = value;
-					this.SendPropertyChanged("Gender");
-					this.OnGenderChanged();
+					this._GenderId = value;
+					this.SendPropertyChanged("GenderId");
+					this.OnGenderIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nationality", DbType="NVarChar(30)")]
-		public string Nationality
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BirthCountryId", DbType="Int")]
+		public System.Nullable<int> BirthCountryId
 		{
 			get
 			{
-				return this._Nationality;
+				return this._BirthCountryId;
 			}
 			set
 			{
-				if ((this._Nationality != value))
+				if ((this._BirthCountryId != value))
 				{
-					this.OnNationalityChanging(value);
+					this.OnBirthCountryIdChanging(value);
 					this.SendPropertyChanging();
-					this._Nationality = value;
-					this.SendPropertyChanged("Nationality");
-					this.OnNationalityChanged();
+					this._BirthCountryId = value;
+					this.SendPropertyChanged("BirthCountryId");
+					this.OnBirthCountryIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NationalityId", DbType="Int")]
+		public System.Nullable<int> NationalityId
+		{
+			get
+			{
+				return this._NationalityId;
+			}
+			set
+			{
+				if ((this._NationalityId != value))
+				{
+					this.OnNationalityIdChanging(value);
+					this.SendPropertyChanging();
+					this._NationalityId = value;
+					this.SendPropertyChanged("NationalityId");
+					this.OnNationalityIdChanged();
 				}
 			}
 		}
@@ -1579,7 +1868,7 @@ namespace CA.Immigration.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BrithPlace", DbType="NVarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BrithPlace", DbType="VarChar(20)")]
 		public string BrithPlace
 		{
 			get
@@ -1619,7 +1908,7 @@ namespace CA.Immigration.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IssuePlace", DbType="NVarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IssuePlace", DbType="VarChar(20)")]
 		public string IssuePlace
 		{
 			get

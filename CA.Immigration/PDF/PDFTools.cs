@@ -147,40 +147,6 @@ namespace CA.Immigration.PDF
                 
                 writer.Write("EMP5593_E[0].Page8[0].rb_Question8[0]" + "\t" + doc1.Form.XFA["EMP5593_E[0].Page8[0].rb_Question8[0]"] + "\n");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             }
 
 

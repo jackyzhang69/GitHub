@@ -1,45 +1,9 @@
 
-use Common
--- RCIC Information table
-create table tblRCIC(
-Id int not null primary key identity(1,1),
-FirstName nvarchar(20),
-MiddleName nvarchar(20),
-LastName nvarchar(20),
-JobTitle nvarchar(50),
-Telephone nvarchar(15),
-FaxNumber nvarchar(15),
-Email nvarchar(50),
-MembershipID nvarchar(10),
-BusinessOperatingName nvarchar(50),
-CRABN nvarchar(15),
-BusinessLegalName nvarchar(50),
-ESDCThirdPartyID nvarchar(20),
-MailingAddress nvarchar(30),
-BusinessAddress nvarchar(30),
-City nvarchar(20),
-Province nvarchar(10),
-Country nvarchar(20),
-PostalCode nvarchar(10),
-MainBizActivities nvarchar(100)
-)
 
-create table tblCreditCard(
-Id int not null primary key identity(1,1),
-EmployerId int,
-PersonId int,
-CardType int , -- // 0 is visa, 1 is master 2 is american express
-CardHolderName nvarchar(50),
---Last4Number nvarchar(4) not null,  this could be calculated by code
-CardNumber nvarchar(16),
-SecurityCode nvarchar(10),
-ExpireMonth nvarchar(2),
-ExpireYear nvarchar(4)
-)
 
 --- lmia Database
 use LMIA
-
+go
 -- If a required document is not attached, please explain:  do it someday
 
 -- Recruitment Summary 

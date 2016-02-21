@@ -62,18 +62,32 @@
       <Column Name="Comments" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.tblApplication" Member="tblApplications">
+    <Type Name="tblApplication">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ApplicantId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RCICId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApplicationType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="SubmittedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ClosedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ApplicationNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ApplicationFee" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.tblPassport" Member="tblPassports">
     <Type Name="tblPassport">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="PersonId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PassportNumber" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="PersonId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PassportNumber" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="Gender" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="Nationality" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="GenderId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BirthCountryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NationalityId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DOB" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="BrithPlace" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="BrithPlace" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="IssueDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="IssuePlace" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="IssuePlace" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="ExpiryDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="IsValid" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>

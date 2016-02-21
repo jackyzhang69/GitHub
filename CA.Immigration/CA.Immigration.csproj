@@ -55,6 +55,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App\App.cs" />
+    <Compile Include="CICDict\LMIADict.cs" />
+    <Compile Include="CICDict\SPDict.cs" />
     <Compile Include="Data\Common.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -65,6 +67,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LMIADC.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Data\SP.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SP.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="CICDict\RepDict.cs" />
     <Compile Include="PDF\FillForm.cs" />
     <Compile Include="PDF\PDFTools.cs" />
     <Compile Include="PDF\PDFChinese.cs" />
@@ -77,7 +85,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="System\Drawing\Rectangle.cs" />
     <Compile Include="Utility\Common.cs" />
+    <Compile Include="Utility\DateDiff.cs" />
+    <Compile Include="Utility\StringOps.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Excel\" />
@@ -85,7 +96,11 @@
     <Folder Include="Word\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\SP.dbml.layout">
+      <DependentUpon>SP.dbml</DependentUpon>
+    </None>
     <None Include="app.config" />
+    <EmbeddedResource Include="Aspose.Pdf.lic" />
     <None Include="Data\Common.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Common.designer.cs</LastGenOutput>
@@ -94,6 +109,11 @@
     <None Include="Data\LMIADC.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>LMIADC.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data\SP.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>SP.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
@@ -105,7 +125,9 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\SQL\Common.sql" />
     <Content Include="Data\SQL\LMIA.sql" />
+    <Content Include="Data\SQL\SP.sql" />
     <Content Include="PDF\FillForms\IMMForm-Dictionary.txt" />
   </ItemGroup>
   <ItemGroup>
