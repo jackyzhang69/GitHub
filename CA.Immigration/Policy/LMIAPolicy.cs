@@ -10,7 +10,7 @@ namespace CA.Immigration.Policy
     public class LMIAPolicy
     {
         private int _JobAdAmount = 3;
-        private int _JobAdType = 3;
+       // private int _JobAdType = 3;
         public string Title { get; set; }
         public char[] NOC { get; set; }
         public float LocalNOCMedianWage { get; set; }

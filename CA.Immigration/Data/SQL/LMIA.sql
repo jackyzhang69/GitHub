@@ -56,17 +56,13 @@ Witness nvarchar(20)
 
 -- Application information
 create table tblLMIAApplication(
-Id int not null primary key identity(1,1),
-EmployerId int,
+LMIAId int not null primary key identity(1,1),
+ApplicationId int, -- refer to the mother application table
 EmployeeId int,
-RCICId int,
 LMIAType int, -- 1 Only for PR, 2 PR+WP 3 N/A  // this data can be stored in codes
-CreatedDate date,
-SubmittedDate date,
-ClosedDate date,
-ApplicationNumber nvarchar(20),
-AnotherEmployer int, -- 1 Skilled trader only with one employer, 2 there are other employer
 SecondEmployer nvarchar(30),
+NumberofPosition int,
+ApplicationFeePerPosition money,
 PayMethod int  -- Method of Payment:1 Certified cheque or money order (postal or bank) made payable to the Receiver General for Canada 2 Credit Card
 )
 

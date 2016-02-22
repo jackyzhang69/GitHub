@@ -22,7 +22,12 @@ City nvarchar(20),
 Province nvarchar(10),
 Country nvarchar(20),
 PostalCode nvarchar(10),
-MainBizActivities nvarchar(100)
+MainBizActivities nvarchar(100),
+Signature image,
+MailPO nvarchar(10),
+MailAptUnit nvarchar(20),
+MailStreetNo nvarchar(100),
+MailStreetName nvarchar(100)
 )
 
 -- how to add image to column
@@ -191,21 +196,22 @@ insert into tblMarriageStatusType values (8, 'Widowed')
 create table tblStatusType
 (
 Id int not null primary key Identity(1,1),
-TypeCode int not null,  -- Code matchs CIC Definition
-StatusType varchar(20) not null
+TypeCode char(2),  -- Code matchs CIC Definition
+StatusType varchar(20) 
 )
-insert into tblStatusType values (1, 'Citizen')
-insert into tblStatusType values (2, 'Permanent resident')
-insert into tblStatusType values (3, 'Visitor')
-insert into tblStatusType values (4, 'Worker')
-insert into tblStatusType values (5, 'Student')
-insert into tblStatusType values (6, 'Other')
-insert into tblStatusType values (7, 'Protected Person')
-insert into tblStatusType values (8, 'Refugee Claiment')
+insert into tblStatusType values ('01', 'Citizen')
+insert into tblStatusType values ('02', 'Permanent resident')
+insert into tblStatusType values ('03', 'Visitor')
+insert into tblStatusType values ('04', 'Worker')
+insert into tblStatusType values ('05', 'Student')
+insert into tblStatusType values ('06', 'Other')
+insert into tblStatusType values ('07', 'Protected Person')
+insert into tblStatusType values ('08', 'Refugee Claiment')
 --Create Residence Type PK table
-create table tblResidenceTypeId
+create table tblResidenceType
 (
 Id int not null primary key Identity(1,1),
+Type int, -- 1 Current 2 Previous 3 Country where applying
 ResidenceType varchar(25)
 )
 
@@ -306,11 +312,12 @@ POBox varchar(10),
 Unit varchar(20),
 StreetNo varchar(15),
 StreetName varchar(100),
+District varchar(50),
 City varchar(30),
-CountryId int , -- FK to reference the Country
+CountryCode char(3) , -- reference the Country code of cic
 CNDProvinceId int,
 PostalCode varchar(10),
-AddressTypeId int
+AddressTypeId varchar(30)
 )
 
 -- Create passport table
@@ -328,7 +335,8 @@ BrithPlace varchar(20),
 IssueDate date ,
 IssuePlace varchar(20) ,
 ExpiryDate date ,
-IsValid bit 
+IsValid bit,
+IssueCountryId char(3)
 )
 
 -- Create language table
@@ -336,34 +344,48 @@ create table tblLanguage
 (
 Id int not null primary key Identity(1,1),
 PersonId int ,  -- FK to reference the Person Id,
-NativeLanguageId int ,  --FK to reference the language Id who matchs CIC defenition
-English bit,
-French bit 
+NativeLanguageId char(3) ,  --FK to reference the language Id who matchs CIC defenition
+OtherMostlyUse char(2), --Other than native language, which one does you use mostly 01 English, 02 French 03 neither, 04 Both
+CommIn varchar(20)  -- English or french, Both,Neither
 )
 
--- Create marriage status table 
-create table tblMarriage
-(
+
+create table tblMarriageHistory(
 Id int not null primary key Identity(1,1),
 PersonId int ,  -- FK to reference the Person Id,
-MarriageStatusId int,  --FK to reference marriage status
 SpouseId int,   --FK to reference the Person Id
 BeginDate date,
-EndDate date
+EndDate date,
+relationship char(2)
 )
 
--- Create residence table
+-- Create marriage status type PK table
+create table tblMarriageStatusTypes
+(
+Id int not null primary key Identity(1,1),
+TypeCode char(2),   -- Type code matchs CIC defenition
+MarriageStatusType varchar(20) not null,
+)
 
+insert into tblMarriageStatusTypes values ('09', 'Annulled Marriage')
+insert into tblMarriageStatusTypes values ('03', 'Common-Law')
+insert into tblMarriageStatusTypes values ('04', 'Divorced')
+insert into tblMarriageStatusTypes values ('05', 'Legally Separated')
+insert into tblMarriageStatusTypes values ('01', 'Married')
+insert into tblMarriageStatusTypes values ('02', 'Single')
+insert into tblMarriageStatusTypes values ('00', 'Unknown')
+insert into tblMarriageStatusTypes values ('06', 'Widowed')
+-- Create residence table
 create table tblResidence
 (
 Id int not null primary key Identity(1,1),
-PersonId int,  -- FK to reference the Person Id,
-CountryId int , --Fk to reference the Country Id
-StatusID int ,  --Fk to reference the Status Id
-Other varchar(20),
-FromDate date,
-ToDate date ,
-ResidenceTypeId int   --FK to reference the type of residence
+ApplicationId int,  --FK  Reference to Application Id
+StartDate date,
+EndDate date,
+CountryId int,
+StatusId char(2),
+OtherStatus nvarchar(30),
+ResidenceType int
 )
 
 -- Create person table
@@ -377,7 +399,20 @@ LastName varchar(20),
 IsAliasName bit,
 AliasLastName varchar(20),
 AliasFirstName varchar(20),
-UCI int
+UCI int,
+MarriageStatusId char(2)
 )
 
-
+-- Create Phone table
+	create table tblPhone
+(
+Id int not null primary key Identity(1,1),
+PersonId int,  -- FK to reference the Person Id,
+USorCa varchar(2),
+Other varchar(2),
+PhoneType varchar(15),
+CountryCode varchar(6),
+PhoneNumber varchar(15),
+Extension varchar(10),
+PhoneorFax varchar(10),
+)

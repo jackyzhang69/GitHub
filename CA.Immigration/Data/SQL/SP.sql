@@ -17,7 +17,7 @@ insert into tblApplicaitonTypes values (1, 'Initial Study Permit')
 insert into tblApplicaitonTypes values (1, 'Study Permit Extention')
 insert into tblApplicaitonTypes values (2, 'Study Permit Restoration')
 insert into tblApplicaitonTypes values (3, 'Initial Temporary Resident Permit')
-insert into tblApplicaitonTypes values (3, 'Temporary Tesident Permit Extention')
+insert into tblApplicaitonTypes values (3, 'Temporary Resident Permit Extention')
 
 -- Create Event table 
 create table tblEvents
@@ -29,7 +29,7 @@ WhatHappend varchar(50)
 insert into tblEvents values ('Missed documents required')
 insert into tblEvents values ('Medical exam required')
 ----------------------------------------------------------------------------------
-create table tblStudyInfos
+create table tblStudyInfo
 (
 Id int not null primary key Identity(1,1),
 ApplicationId int,  -- Fk to reference Application
@@ -56,19 +56,16 @@ CAQExpriyDate date
 )
 
 -- Create Study Permit Application table
-create table tblSPApplications
+create table tblSPApplication
 (
 Id int not null primary key Identity(1,1),
-PersonId int,   -- FK to reference the Person Id
-ApplicationType int,  -- FK to reference the Application type
-FileOpenDate date,
-SubmissionDate date,
-ResultDate date,
-Notes varchar(1000)
+ApplicationId int,  -- FK to refer the mother application
+ApplicationType int,  -- FK to refer the Application type
+
 )
 
 -- Create follow up table
-create table tblFollowUPs
+create table tblFollowUP
 (
 Id int not null primary key Identity(1,1),
 ApplicationId int,  --FK  Reference to Application Id
@@ -77,6 +74,7 @@ WhatHappenedId int, --FK reference to Event Id
 ResponseDate date,
 Response varchar(100)
 )
+
 
 
 

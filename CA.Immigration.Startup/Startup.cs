@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CA.Immigration.LMIA;
+using CA.Immigration.SP;
 using CA.Immigration.PDF;
 
 
@@ -42,7 +43,7 @@ namespace CA.Immigration.Startup
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            FillForm.fillForm("IMM5476", RepDict.IMM5476(1));
+            FillForm.fillForm("IMM1294", SPDict.IMM1294(1));
         }
     }
 }

@@ -30,12 +30,6 @@ namespace CA.Immigration.Data
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InserttblApplicaitonType(tblApplicaitonType instance);
-    partial void UpdatetblApplicaitonType(tblApplicaitonType instance);
-    partial void DeletetblApplicaitonType(tblApplicaitonType instance);
-    partial void InserttblStudyInfo(tblStudyInfo instance);
-    partial void UpdatetblStudyInfo(tblStudyInfo instance);
-    partial void DeletetblStudyInfo(tblStudyInfo instance);
     partial void InserttblEvent(tblEvent instance);
     partial void UpdatetblEvent(tblEvent instance);
     partial void DeletetblEvent(tblEvent instance);
@@ -45,6 +39,9 @@ namespace CA.Immigration.Data
     partial void InserttblSPApplication(tblSPApplication instance);
     partial void UpdatetblSPApplication(tblSPApplication instance);
     partial void DeletetblSPApplication(tblSPApplication instance);
+    partial void InserttblStudyInfo(tblStudyInfo instance);
+    partial void UpdatetblStudyInfo(tblStudyInfo instance);
+    partial void DeletetblStudyInfo(tblStudyInfo instance);
     #endregion
 		
 		public SPDataContext() : 
@@ -77,22 +74,6 @@ namespace CA.Immigration.Data
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<tblApplicaitonType> tblApplicaitonTypes
-		{
-			get
-			{
-				return this.GetTable<tblApplicaitonType>();
-			}
-		}
-		
-		public System.Data.Linq.Table<tblStudyInfo> tblStudyInfos
-		{
-			get
-			{
-				return this.GetTable<tblStudyInfo>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tblEvent> tblEvents
 		{
 			get
@@ -116,680 +97,12 @@ namespace CA.Immigration.Data
 				return this.GetTable<tblSPApplication>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblApplicaitonTypes")]
-	public partial class tblApplicaitonType : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private int _TypeCode;
-		
-		private string _ApplicationType;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnTypeCodeChanging(int value);
-    partial void OnTypeCodeChanged();
-    partial void OnApplicationTypeChanging(string value);
-    partial void OnApplicationTypeChanged();
-    #endregion
-		
-		public tblApplicaitonType()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
+		public System.Data.Linq.Table<tblStudyInfo> tblStudyInfos
 		{
 			get
 			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TypeCode", DbType="Int NOT NULL")]
-		public int TypeCode
-		{
-			get
-			{
-				return this._TypeCode;
-			}
-			set
-			{
-				if ((this._TypeCode != value))
-				{
-					this.OnTypeCodeChanging(value);
-					this.SendPropertyChanging();
-					this._TypeCode = value;
-					this.SendPropertyChanged("TypeCode");
-					this.OnTypeCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplicationType", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string ApplicationType
-		{
-			get
-			{
-				return this._ApplicationType;
-			}
-			set
-			{
-				if ((this._ApplicationType != value))
-				{
-					this.OnApplicationTypeChanging(value);
-					this.SendPropertyChanging();
-					this._ApplicationType = value;
-					this.SendPropertyChanged("ApplicationType");
-					this.OnApplicationTypeChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblStudyInfos")]
-	public partial class tblStudyInfo : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private int _ApplicationId;
-		
-		private string _SchoolName;
-		
-		private int _LevelId;
-		
-		private int _FieldId;
-		
-		private int _ProvinceId;
-		
-		private int _CityId;
-		
-		private string _SchoolAddress;
-		
-		private string _DLINumber;
-		
-		private string _StudentId;
-		
-		private System.DateTime _FromDate;
-		
-		private System.DateTime _Todate;
-		
-		private int _Tuition;
-		
-		private System.Nullable<int> _RoomAndBoard;
-		
-		private System.Nullable<int> _Othercost;
-		
-		private int _FundsAvailable;
-		
-		private int _WhoPayId;
-		
-		private string _OtherPayer;
-		
-		private bool _ApplyWP;
-		
-		private string _TypeofWP;
-		
-		private string _CAQNumber;
-		
-		private System.Nullable<System.DateTime> _CAQExpriyDate;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnApplicationIdChanging(int value);
-    partial void OnApplicationIdChanged();
-    partial void OnSchoolNameChanging(string value);
-    partial void OnSchoolNameChanged();
-    partial void OnLevelIdChanging(int value);
-    partial void OnLevelIdChanged();
-    partial void OnFieldIdChanging(int value);
-    partial void OnFieldIdChanged();
-    partial void OnProvinceIdChanging(int value);
-    partial void OnProvinceIdChanged();
-    partial void OnCityIdChanging(int value);
-    partial void OnCityIdChanged();
-    partial void OnSchoolAddressChanging(string value);
-    partial void OnSchoolAddressChanged();
-    partial void OnDLINumberChanging(string value);
-    partial void OnDLINumberChanged();
-    partial void OnStudentIdChanging(string value);
-    partial void OnStudentIdChanged();
-    partial void OnFromDateChanging(System.DateTime value);
-    partial void OnFromDateChanged();
-    partial void OnTodateChanging(System.DateTime value);
-    partial void OnTodateChanged();
-    partial void OnTuitionChanging(int value);
-    partial void OnTuitionChanged();
-    partial void OnRoomAndBoardChanging(System.Nullable<int> value);
-    partial void OnRoomAndBoardChanged();
-    partial void OnOthercostChanging(System.Nullable<int> value);
-    partial void OnOthercostChanged();
-    partial void OnFundsAvailableChanging(int value);
-    partial void OnFundsAvailableChanged();
-    partial void OnWhoPayIdChanging(int value);
-    partial void OnWhoPayIdChanged();
-    partial void OnOtherPayerChanging(string value);
-    partial void OnOtherPayerChanged();
-    partial void OnApplyWPChanging(bool value);
-    partial void OnApplyWPChanged();
-    partial void OnTypeofWPChanging(string value);
-    partial void OnTypeofWPChanged();
-    partial void OnCAQNumberChanging(string value);
-    partial void OnCAQNumberChanged();
-    partial void OnCAQExpriyDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCAQExpriyDateChanged();
-    #endregion
-		
-		public tblStudyInfo()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplicationId", DbType="Int NOT NULL")]
-		public int ApplicationId
-		{
-			get
-			{
-				return this._ApplicationId;
-			}
-			set
-			{
-				if ((this._ApplicationId != value))
-				{
-					this.OnApplicationIdChanging(value);
-					this.SendPropertyChanging();
-					this._ApplicationId = value;
-					this.SendPropertyChanged("ApplicationId");
-					this.OnApplicationIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SchoolName", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string SchoolName
-		{
-			get
-			{
-				return this._SchoolName;
-			}
-			set
-			{
-				if ((this._SchoolName != value))
-				{
-					this.OnSchoolNameChanging(value);
-					this.SendPropertyChanging();
-					this._SchoolName = value;
-					this.SendPropertyChanged("SchoolName");
-					this.OnSchoolNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LevelId", DbType="Int NOT NULL")]
-		public int LevelId
-		{
-			get
-			{
-				return this._LevelId;
-			}
-			set
-			{
-				if ((this._LevelId != value))
-				{
-					this.OnLevelIdChanging(value);
-					this.SendPropertyChanging();
-					this._LevelId = value;
-					this.SendPropertyChanged("LevelId");
-					this.OnLevelIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FieldId", DbType="Int NOT NULL")]
-		public int FieldId
-		{
-			get
-			{
-				return this._FieldId;
-			}
-			set
-			{
-				if ((this._FieldId != value))
-				{
-					this.OnFieldIdChanging(value);
-					this.SendPropertyChanging();
-					this._FieldId = value;
-					this.SendPropertyChanged("FieldId");
-					this.OnFieldIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProvinceId", DbType="Int NOT NULL")]
-		public int ProvinceId
-		{
-			get
-			{
-				return this._ProvinceId;
-			}
-			set
-			{
-				if ((this._ProvinceId != value))
-				{
-					this.OnProvinceIdChanging(value);
-					this.SendPropertyChanging();
-					this._ProvinceId = value;
-					this.SendPropertyChanged("ProvinceId");
-					this.OnProvinceIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CityId", DbType="Int NOT NULL")]
-		public int CityId
-		{
-			get
-			{
-				return this._CityId;
-			}
-			set
-			{
-				if ((this._CityId != value))
-				{
-					this.OnCityIdChanging(value);
-					this.SendPropertyChanging();
-					this._CityId = value;
-					this.SendPropertyChanged("CityId");
-					this.OnCityIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SchoolAddress", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string SchoolAddress
-		{
-			get
-			{
-				return this._SchoolAddress;
-			}
-			set
-			{
-				if ((this._SchoolAddress != value))
-				{
-					this.OnSchoolAddressChanging(value);
-					this.SendPropertyChanging();
-					this._SchoolAddress = value;
-					this.SendPropertyChanged("SchoolAddress");
-					this.OnSchoolAddressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DLINumber", DbType="Char(12)")]
-		public string DLINumber
-		{
-			get
-			{
-				return this._DLINumber;
-			}
-			set
-			{
-				if ((this._DLINumber != value))
-				{
-					this.OnDLINumberChanging(value);
-					this.SendPropertyChanging();
-					this._DLINumber = value;
-					this.SendPropertyChanged("DLINumber");
-					this.OnDLINumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentId", DbType="VarChar(15)")]
-		public string StudentId
-		{
-			get
-			{
-				return this._StudentId;
-			}
-			set
-			{
-				if ((this._StudentId != value))
-				{
-					this.OnStudentIdChanging(value);
-					this.SendPropertyChanging();
-					this._StudentId = value;
-					this.SendPropertyChanged("StudentId");
-					this.OnStudentIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FromDate", DbType="Date NOT NULL")]
-		public System.DateTime FromDate
-		{
-			get
-			{
-				return this._FromDate;
-			}
-			set
-			{
-				if ((this._FromDate != value))
-				{
-					this.OnFromDateChanging(value);
-					this.SendPropertyChanging();
-					this._FromDate = value;
-					this.SendPropertyChanged("FromDate");
-					this.OnFromDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Todate", DbType="Date NOT NULL")]
-		public System.DateTime Todate
-		{
-			get
-			{
-				return this._Todate;
-			}
-			set
-			{
-				if ((this._Todate != value))
-				{
-					this.OnTodateChanging(value);
-					this.SendPropertyChanging();
-					this._Todate = value;
-					this.SendPropertyChanged("Todate");
-					this.OnTodateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tuition", DbType="Int NOT NULL")]
-		public int Tuition
-		{
-			get
-			{
-				return this._Tuition;
-			}
-			set
-			{
-				if ((this._Tuition != value))
-				{
-					this.OnTuitionChanging(value);
-					this.SendPropertyChanging();
-					this._Tuition = value;
-					this.SendPropertyChanged("Tuition");
-					this.OnTuitionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoomAndBoard", DbType="Int")]
-		public System.Nullable<int> RoomAndBoard
-		{
-			get
-			{
-				return this._RoomAndBoard;
-			}
-			set
-			{
-				if ((this._RoomAndBoard != value))
-				{
-					this.OnRoomAndBoardChanging(value);
-					this.SendPropertyChanging();
-					this._RoomAndBoard = value;
-					this.SendPropertyChanged("RoomAndBoard");
-					this.OnRoomAndBoardChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Othercost", DbType="Int")]
-		public System.Nullable<int> Othercost
-		{
-			get
-			{
-				return this._Othercost;
-			}
-			set
-			{
-				if ((this._Othercost != value))
-				{
-					this.OnOthercostChanging(value);
-					this.SendPropertyChanging();
-					this._Othercost = value;
-					this.SendPropertyChanged("Othercost");
-					this.OnOthercostChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundsAvailable", DbType="Int NOT NULL")]
-		public int FundsAvailable
-		{
-			get
-			{
-				return this._FundsAvailable;
-			}
-			set
-			{
-				if ((this._FundsAvailable != value))
-				{
-					this.OnFundsAvailableChanging(value);
-					this.SendPropertyChanging();
-					this._FundsAvailable = value;
-					this.SendPropertyChanged("FundsAvailable");
-					this.OnFundsAvailableChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WhoPayId", DbType="Int NOT NULL")]
-		public int WhoPayId
-		{
-			get
-			{
-				return this._WhoPayId;
-			}
-			set
-			{
-				if ((this._WhoPayId != value))
-				{
-					this.OnWhoPayIdChanging(value);
-					this.SendPropertyChanging();
-					this._WhoPayId = value;
-					this.SendPropertyChanged("WhoPayId");
-					this.OnWhoPayIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OtherPayer", DbType="VarChar(50)")]
-		public string OtherPayer
-		{
-			get
-			{
-				return this._OtherPayer;
-			}
-			set
-			{
-				if ((this._OtherPayer != value))
-				{
-					this.OnOtherPayerChanging(value);
-					this.SendPropertyChanging();
-					this._OtherPayer = value;
-					this.SendPropertyChanged("OtherPayer");
-					this.OnOtherPayerChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplyWP", DbType="Bit NOT NULL")]
-		public bool ApplyWP
-		{
-			get
-			{
-				return this._ApplyWP;
-			}
-			set
-			{
-				if ((this._ApplyWP != value))
-				{
-					this.OnApplyWPChanging(value);
-					this.SendPropertyChanging();
-					this._ApplyWP = value;
-					this.SendPropertyChanged("ApplyWP");
-					this.OnApplyWPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TypeofWP", DbType="VarChar(50)")]
-		public string TypeofWP
-		{
-			get
-			{
-				return this._TypeofWP;
-			}
-			set
-			{
-				if ((this._TypeofWP != value))
-				{
-					this.OnTypeofWPChanging(value);
-					this.SendPropertyChanging();
-					this._TypeofWP = value;
-					this.SendPropertyChanged("TypeofWP");
-					this.OnTypeofWPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CAQNumber", DbType="VarChar(50)")]
-		public string CAQNumber
-		{
-			get
-			{
-				return this._CAQNumber;
-			}
-			set
-			{
-				if ((this._CAQNumber != value))
-				{
-					this.OnCAQNumberChanging(value);
-					this.SendPropertyChanging();
-					this._CAQNumber = value;
-					this.SendPropertyChanged("CAQNumber");
-					this.OnCAQNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CAQExpriyDate", DbType="Date")]
-		public System.Nullable<System.DateTime> CAQExpriyDate
-		{
-			get
-			{
-				return this._CAQExpriyDate;
-			}
-			set
-			{
-				if ((this._CAQExpriyDate != value))
-				{
-					this.OnCAQExpriyDateChanging(value);
-					this.SendPropertyChanging();
-					this._CAQExpriyDate = value;
-					this.SendPropertyChanged("CAQExpriyDate");
-					this.OnCAQExpriyDateChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+				return this.GetTable<tblStudyInfo>();
 			}
 		}
 	}
@@ -1062,7 +375,7 @@ namespace CA.Immigration.Data
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblSPApplications")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblSPApplication")]
 	public partial class tblSPApplication : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -1070,17 +383,11 @@ namespace CA.Immigration.Data
 		
 		private int _Id;
 		
-		private int _PersonId;
+		private System.Nullable<int> _ApplicationId;
 		
-		private int _ApplicationType;
+		private System.Nullable<int> _ApplicationType;
 		
-		private System.DateTime _FileOpenDate;
-		
-		private System.Nullable<System.DateTime> _SubmissionDate;
-		
-		private System.Nullable<System.DateTime> _ResultDate;
-		
-		private string _Notes;
+		private System.Nullable<bool> _ApplyFromCurrentResidence;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1088,18 +395,12 @@ namespace CA.Immigration.Data
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnPersonIdChanging(int value);
-    partial void OnPersonIdChanged();
-    partial void OnApplicationTypeChanging(int value);
+    partial void OnApplicationIdChanging(System.Nullable<int> value);
+    partial void OnApplicationIdChanged();
+    partial void OnApplicationTypeChanging(System.Nullable<int> value);
     partial void OnApplicationTypeChanged();
-    partial void OnFileOpenDateChanging(System.DateTime value);
-    partial void OnFileOpenDateChanged();
-    partial void OnSubmissionDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnSubmissionDateChanged();
-    partial void OnResultDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnResultDateChanged();
-    partial void OnNotesChanging(string value);
-    partial void OnNotesChanged();
+    partial void OnApplyFromCurrentResidenceChanging(System.Nullable<bool> value);
+    partial void OnApplyFromCurrentResidenceChanged();
     #endregion
 		
 		public tblSPApplication()
@@ -1127,28 +428,28 @@ namespace CA.Immigration.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PersonId", DbType="Int NOT NULL")]
-		public int PersonId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplicationId", DbType="Int")]
+		public System.Nullable<int> ApplicationId
 		{
 			get
 			{
-				return this._PersonId;
+				return this._ApplicationId;
 			}
 			set
 			{
-				if ((this._PersonId != value))
+				if ((this._ApplicationId != value))
 				{
-					this.OnPersonIdChanging(value);
+					this.OnApplicationIdChanging(value);
 					this.SendPropertyChanging();
-					this._PersonId = value;
-					this.SendPropertyChanged("PersonId");
-					this.OnPersonIdChanged();
+					this._ApplicationId = value;
+					this.SendPropertyChanged("ApplicationId");
+					this.OnApplicationIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplicationType", DbType="Int NOT NULL")]
-		public int ApplicationType
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplicationType", DbType="Int")]
+		public System.Nullable<int> ApplicationType
 		{
 			get
 			{
@@ -1167,82 +468,588 @@ namespace CA.Immigration.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileOpenDate", DbType="Date NOT NULL")]
-		public System.DateTime FileOpenDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplyFromCurrentResidence", DbType="Bit")]
+		public System.Nullable<bool> ApplyFromCurrentResidence
 		{
 			get
 			{
-				return this._FileOpenDate;
+				return this._ApplyFromCurrentResidence;
 			}
 			set
 			{
-				if ((this._FileOpenDate != value))
+				if ((this._ApplyFromCurrentResidence != value))
 				{
-					this.OnFileOpenDateChanging(value);
+					this.OnApplyFromCurrentResidenceChanging(value);
 					this.SendPropertyChanging();
-					this._FileOpenDate = value;
-					this.SendPropertyChanged("FileOpenDate");
-					this.OnFileOpenDateChanged();
+					this._ApplyFromCurrentResidence = value;
+					this.SendPropertyChanged("ApplyFromCurrentResidence");
+					this.OnApplyFromCurrentResidenceChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SubmissionDate", DbType="Date")]
-		public System.Nullable<System.DateTime> SubmissionDate
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblStudyInfo")]
+	public partial class tblStudyInfo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<int> _ApplicationId;
+		
+		private string _SchoolName;
+		
+		private System.Nullable<int> _LevelId;
+		
+		private System.Nullable<int> _FieldId;
+		
+		private System.Nullable<int> _ProvinceId;
+		
+		private System.Nullable<int> _CityId;
+		
+		private string _SchoolAddress;
+		
+		private string _DLINumber;
+		
+		private string _StudentId;
+		
+		private System.Nullable<System.DateTime> _FromDate;
+		
+		private System.Nullable<System.DateTime> _Todate;
+		
+		private System.Nullable<int> _Tuition;
+		
+		private System.Nullable<decimal> _RoomAndBoard;
+		
+		private System.Nullable<decimal> _Othercost;
+		
+		private System.Nullable<decimal> _FundsAvailable;
+		
+		private string _WhoPayId;
+		
+		private string _OtherPayer;
+		
+		private System.Nullable<bool> _ApplyWP;
+		
+		private string _TypeofWP;
+		
+		private string _CAQNumber;
+		
+		private System.Nullable<System.DateTime> _CAQExpriyDate;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnApplicationIdChanging(System.Nullable<int> value);
+    partial void OnApplicationIdChanged();
+    partial void OnSchoolNameChanging(string value);
+    partial void OnSchoolNameChanged();
+    partial void OnLevelIdChanging(System.Nullable<int> value);
+    partial void OnLevelIdChanged();
+    partial void OnFieldIdChanging(System.Nullable<int> value);
+    partial void OnFieldIdChanged();
+    partial void OnProvinceIdChanging(System.Nullable<int> value);
+    partial void OnProvinceIdChanged();
+    partial void OnCityIdChanging(System.Nullable<int> value);
+    partial void OnCityIdChanged();
+    partial void OnSchoolAddressChanging(string value);
+    partial void OnSchoolAddressChanged();
+    partial void OnDLINumberChanging(string value);
+    partial void OnDLINumberChanged();
+    partial void OnStudentIdChanging(string value);
+    partial void OnStudentIdChanged();
+    partial void OnFromDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnFromDateChanged();
+    partial void OnTodateChanging(System.Nullable<System.DateTime> value);
+    partial void OnTodateChanged();
+    partial void OnTuitionChanging(System.Nullable<int> value);
+    partial void OnTuitionChanged();
+    partial void OnRoomAndBoardChanging(System.Nullable<decimal> value);
+    partial void OnRoomAndBoardChanged();
+    partial void OnOthercostChanging(System.Nullable<decimal> value);
+    partial void OnOthercostChanged();
+    partial void OnFundsAvailableChanging(System.Nullable<decimal> value);
+    partial void OnFundsAvailableChanged();
+    partial void OnWhoPayIdChanging(string value);
+    partial void OnWhoPayIdChanged();
+    partial void OnOtherPayerChanging(string value);
+    partial void OnOtherPayerChanged();
+    partial void OnApplyWPChanging(System.Nullable<bool> value);
+    partial void OnApplyWPChanged();
+    partial void OnTypeofWPChanging(string value);
+    partial void OnTypeofWPChanged();
+    partial void OnCAQNumberChanging(string value);
+    partial void OnCAQNumberChanged();
+    partial void OnCAQExpriyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCAQExpriyDateChanged();
+    #endregion
+		
+		public tblStudyInfo()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
 		{
 			get
 			{
-				return this._SubmissionDate;
+				return this._Id;
 			}
 			set
 			{
-				if ((this._SubmissionDate != value))
+				if ((this._Id != value))
 				{
-					this.OnSubmissionDateChanging(value);
+					this.OnIdChanging(value);
 					this.SendPropertyChanging();
-					this._SubmissionDate = value;
-					this.SendPropertyChanged("SubmissionDate");
-					this.OnSubmissionDateChanged();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ResultDate", DbType="Date")]
-		public System.Nullable<System.DateTime> ResultDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplicationId", DbType="Int")]
+		public System.Nullable<int> ApplicationId
 		{
 			get
 			{
-				return this._ResultDate;
+				return this._ApplicationId;
 			}
 			set
 			{
-				if ((this._ResultDate != value))
+				if ((this._ApplicationId != value))
 				{
-					this.OnResultDateChanging(value);
+					this.OnApplicationIdChanging(value);
 					this.SendPropertyChanging();
-					this._ResultDate = value;
-					this.SendPropertyChanged("ResultDate");
-					this.OnResultDateChanged();
+					this._ApplicationId = value;
+					this.SendPropertyChanged("ApplicationId");
+					this.OnApplicationIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="VarChar(1000)")]
-		public string Notes
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SchoolName", DbType="VarChar(100)")]
+		public string SchoolName
 		{
 			get
 			{
-				return this._Notes;
+				return this._SchoolName;
 			}
 			set
 			{
-				if ((this._Notes != value))
+				if ((this._SchoolName != value))
 				{
-					this.OnNotesChanging(value);
+					this.OnSchoolNameChanging(value);
 					this.SendPropertyChanging();
-					this._Notes = value;
-					this.SendPropertyChanged("Notes");
-					this.OnNotesChanged();
+					this._SchoolName = value;
+					this.SendPropertyChanged("SchoolName");
+					this.OnSchoolNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LevelId", DbType="Int")]
+		public System.Nullable<int> LevelId
+		{
+			get
+			{
+				return this._LevelId;
+			}
+			set
+			{
+				if ((this._LevelId != value))
+				{
+					this.OnLevelIdChanging(value);
+					this.SendPropertyChanging();
+					this._LevelId = value;
+					this.SendPropertyChanged("LevelId");
+					this.OnLevelIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FieldId", DbType="Int")]
+		public System.Nullable<int> FieldId
+		{
+			get
+			{
+				return this._FieldId;
+			}
+			set
+			{
+				if ((this._FieldId != value))
+				{
+					this.OnFieldIdChanging(value);
+					this.SendPropertyChanging();
+					this._FieldId = value;
+					this.SendPropertyChanged("FieldId");
+					this.OnFieldIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProvinceId", DbType="Int")]
+		public System.Nullable<int> ProvinceId
+		{
+			get
+			{
+				return this._ProvinceId;
+			}
+			set
+			{
+				if ((this._ProvinceId != value))
+				{
+					this.OnProvinceIdChanging(value);
+					this.SendPropertyChanging();
+					this._ProvinceId = value;
+					this.SendPropertyChanged("ProvinceId");
+					this.OnProvinceIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CityId", DbType="Int")]
+		public System.Nullable<int> CityId
+		{
+			get
+			{
+				return this._CityId;
+			}
+			set
+			{
+				if ((this._CityId != value))
+				{
+					this.OnCityIdChanging(value);
+					this.SendPropertyChanging();
+					this._CityId = value;
+					this.SendPropertyChanged("CityId");
+					this.OnCityIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SchoolAddress", DbType="VarChar(100)")]
+		public string SchoolAddress
+		{
+			get
+			{
+				return this._SchoolAddress;
+			}
+			set
+			{
+				if ((this._SchoolAddress != value))
+				{
+					this.OnSchoolAddressChanging(value);
+					this.SendPropertyChanging();
+					this._SchoolAddress = value;
+					this.SendPropertyChanged("SchoolAddress");
+					this.OnSchoolAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DLINumber", DbType="Char(12)")]
+		public string DLINumber
+		{
+			get
+			{
+				return this._DLINumber;
+			}
+			set
+			{
+				if ((this._DLINumber != value))
+				{
+					this.OnDLINumberChanging(value);
+					this.SendPropertyChanging();
+					this._DLINumber = value;
+					this.SendPropertyChanged("DLINumber");
+					this.OnDLINumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentId", DbType="VarChar(15)")]
+		public string StudentId
+		{
+			get
+			{
+				return this._StudentId;
+			}
+			set
+			{
+				if ((this._StudentId != value))
+				{
+					this.OnStudentIdChanging(value);
+					this.SendPropertyChanging();
+					this._StudentId = value;
+					this.SendPropertyChanged("StudentId");
+					this.OnStudentIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FromDate", DbType="Date")]
+		public System.Nullable<System.DateTime> FromDate
+		{
+			get
+			{
+				return this._FromDate;
+			}
+			set
+			{
+				if ((this._FromDate != value))
+				{
+					this.OnFromDateChanging(value);
+					this.SendPropertyChanging();
+					this._FromDate = value;
+					this.SendPropertyChanged("FromDate");
+					this.OnFromDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Todate", DbType="Date")]
+		public System.Nullable<System.DateTime> Todate
+		{
+			get
+			{
+				return this._Todate;
+			}
+			set
+			{
+				if ((this._Todate != value))
+				{
+					this.OnTodateChanging(value);
+					this.SendPropertyChanging();
+					this._Todate = value;
+					this.SendPropertyChanged("Todate");
+					this.OnTodateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tuition", DbType="Int")]
+		public System.Nullable<int> Tuition
+		{
+			get
+			{
+				return this._Tuition;
+			}
+			set
+			{
+				if ((this._Tuition != value))
+				{
+					this.OnTuitionChanging(value);
+					this.SendPropertyChanging();
+					this._Tuition = value;
+					this.SendPropertyChanged("Tuition");
+					this.OnTuitionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoomAndBoard", DbType="Money")]
+		public System.Nullable<decimal> RoomAndBoard
+		{
+			get
+			{
+				return this._RoomAndBoard;
+			}
+			set
+			{
+				if ((this._RoomAndBoard != value))
+				{
+					this.OnRoomAndBoardChanging(value);
+					this.SendPropertyChanging();
+					this._RoomAndBoard = value;
+					this.SendPropertyChanged("RoomAndBoard");
+					this.OnRoomAndBoardChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Othercost", DbType="Money")]
+		public System.Nullable<decimal> Othercost
+		{
+			get
+			{
+				return this._Othercost;
+			}
+			set
+			{
+				if ((this._Othercost != value))
+				{
+					this.OnOthercostChanging(value);
+					this.SendPropertyChanging();
+					this._Othercost = value;
+					this.SendPropertyChanged("Othercost");
+					this.OnOthercostChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundsAvailable", DbType="Money")]
+		public System.Nullable<decimal> FundsAvailable
+		{
+			get
+			{
+				return this._FundsAvailable;
+			}
+			set
+			{
+				if ((this._FundsAvailable != value))
+				{
+					this.OnFundsAvailableChanging(value);
+					this.SendPropertyChanging();
+					this._FundsAvailable = value;
+					this.SendPropertyChanged("FundsAvailable");
+					this.OnFundsAvailableChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WhoPayId", DbType="NVarChar(50)")]
+		public string WhoPayId
+		{
+			get
+			{
+				return this._WhoPayId;
+			}
+			set
+			{
+				if ((this._WhoPayId != value))
+				{
+					this.OnWhoPayIdChanging(value);
+					this.SendPropertyChanging();
+					this._WhoPayId = value;
+					this.SendPropertyChanged("WhoPayId");
+					this.OnWhoPayIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OtherPayer", DbType="VarChar(50)")]
+		public string OtherPayer
+		{
+			get
+			{
+				return this._OtherPayer;
+			}
+			set
+			{
+				if ((this._OtherPayer != value))
+				{
+					this.OnOtherPayerChanging(value);
+					this.SendPropertyChanging();
+					this._OtherPayer = value;
+					this.SendPropertyChanged("OtherPayer");
+					this.OnOtherPayerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplyWP", DbType="Bit")]
+		public System.Nullable<bool> ApplyWP
+		{
+			get
+			{
+				return this._ApplyWP;
+			}
+			set
+			{
+				if ((this._ApplyWP != value))
+				{
+					this.OnApplyWPChanging(value);
+					this.SendPropertyChanging();
+					this._ApplyWP = value;
+					this.SendPropertyChanged("ApplyWP");
+					this.OnApplyWPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TypeofWP", DbType="VarChar(50)")]
+		public string TypeofWP
+		{
+			get
+			{
+				return this._TypeofWP;
+			}
+			set
+			{
+				if ((this._TypeofWP != value))
+				{
+					this.OnTypeofWPChanging(value);
+					this.SendPropertyChanging();
+					this._TypeofWP = value;
+					this.SendPropertyChanged("TypeofWP");
+					this.OnTypeofWPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CAQNumber", DbType="VarChar(50)")]
+		public string CAQNumber
+		{
+			get
+			{
+				return this._CAQNumber;
+			}
+			set
+			{
+				if ((this._CAQNumber != value))
+				{
+					this.OnCAQNumberChanging(value);
+					this.SendPropertyChanging();
+					this._CAQNumber = value;
+					this.SendPropertyChanged("CAQNumber");
+					this.OnCAQNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CAQExpriyDate", DbType="Date")]
+		public System.Nullable<System.DateTime> CAQExpriyDate
+		{
+			get
+			{
+				return this._CAQExpriyDate;
+			}
+			set
+			{
+				if ((this._CAQExpriyDate != value))
+				{
+					this.OnCAQExpriyDateChanging(value);
+					this.SendPropertyChanging();
+					this._CAQExpriyDate = value;
+					this.SendPropertyChanged("CAQExpriyDate");
+					this.OnCAQExpriyDateChanged();
 				}
 			}
 		}

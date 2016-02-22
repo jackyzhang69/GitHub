@@ -1,38 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SP" Class="SPDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=jackypc\sqlexpress;Initial Catalog=SP;User ID=sa" SettingsObjectName="CA.Immigration.Properties.Settings" SettingsPropertyName="SPConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.tblApplicaitonTypes" Member="tblApplicaitonTypes">
-    <Type Name="tblApplicaitonType">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TypeCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ApplicationType" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tblStudyInfos" Member="tblStudyInfos">
-    <Type Name="tblStudyInfo">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ApplicationId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="SchoolName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="LevelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="FieldId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ProvinceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CityId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="SchoolAddress" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="DLINumber" Type="System.String" DbType="Char(12)" CanBeNull="true" />
-      <Column Name="StudentId" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
-      <Column Name="FromDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Todate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="Tuition" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RoomAndBoard" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Othercost" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FundsAvailable" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="WhoPayId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="OtherPayer" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ApplyWP" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="TypeofWP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="CAQNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="CAQExpriyDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.tblEvents" Member="tblEvents">
     <Type Name="tblEvent">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -49,15 +16,38 @@
       <Column Name="Response" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.tblSPApplications" Member="tblSPApplications">
+  <Table Name="dbo.tblSPApplication" Member="tblSPApplications">
     <Type Name="tblSPApplication">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="PersonId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ApplicationType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="FileOpenDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="SubmissionDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="ResultDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Notes" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="ApplicationId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApplicationType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApplyFromCurrentResidence" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblStudyInfo" Member="tblStudyInfos">
+    <Type Name="tblStudyInfo">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ApplicationId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SchoolName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="LevelId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FieldId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProvinceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SchoolAddress" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DLINumber" Type="System.String" DbType="Char(12)" CanBeNull="true" />
+      <Column Name="StudentId" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="FromDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Todate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Tuition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoomAndBoard" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Othercost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="FundsAvailable" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="WhoPayId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OtherPayer" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ApplyWP" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TypeofWP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CAQNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CAQExpriyDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

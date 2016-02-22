@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CA.Immigration.Data;
+using CA.Immigration.Utility;
 
 
 namespace CA.Immigration.LMIA
@@ -17,10 +18,16 @@ namespace CA.Immigration.LMIA
             LMIADCDataContext ld = new LMIADCDataContext();
             CommonDataContext cd = new CommonDataContext();
 
+            //var joinedApplication = from c in cd.tblApplications
+            //                        join l in ld.tblLMIAApplications
+            //                        on c.Id equals l.ApplicationId
+            //                        into cl
+            //                        select cl;
+
             // Get employer, employee Ids from Application Id
-            int? employerId = (int)ld.tblLMIAApplications.Where(x => x.Id == AppId).Select(x => x.EmployerId).FirstOrDefault();
-            int? employeeId = (int)ld.tblLMIAApplications.Where(x => x.Id == AppId).Select(x => x.EmployeeId).FirstOrDefault();
-            int? rcicId = (int)ld.tblLMIAApplications.Where(x => x.Id == AppId).Select(x => x.RCICId).FirstOrDefault();
+            int ? employerId = (int)cd.tblApplications.Where(x => x.Id == AppId).Select(x => x.ApplicantId).FirstOrDefault();
+            int? employeeId = (int)ld.tblLMIAApplications.Where(x => x.ApplicationId == AppId).Select(x => x.EmployeeId).FirstOrDefault();
+            int? rcicId = (int)cd.tblApplications.Where(x => x.Id == AppId).Select(x => x.RCICId).FirstOrDefault();
             int? bizDetailId = (int)ld.tblBusinessDetails.Where(x => x.ApplicationID == AppId).Select(x => x.Id).FirstOrDefault();
             int? joboffer1Id = (int)ld.tblJobOffer1s.Where(x => x.ApplicationID == AppId).Select(x => x.Id).FirstOrDefault();
             int? joboffer2Id = (int)ld.tblJobOffer2s.Where(x => x.ApplicationID == AppId).Select(x => x.Id).FirstOrDefault();
@@ -33,7 +40,7 @@ namespace CA.Immigration.LMIA
             var employeePassport = cd.tblPassports.Where(x => x.Id == employeeId).Select(x => x).FirstOrDefault();
             var employeeAddress = cd.tblAddresses.Where(x => x.Id == employeeId).Select(x => x).FirstOrDefault();
             var employeeMore = ld.tblEmployees.Where(x => x.Id == employeeId).Select(x => x).FirstOrDefault();
-            var app = ld.tblLMIAApplications.Where(x => x.Id == AppId).Select(x => x).FirstOrDefault();
+            var LMIAApp = ld.tblLMIAApplications.Where(x => x.ApplicationId == AppId).Select(x => x).FirstOrDefault();
             var bizdetail = ld.tblBusinessDetails.Where(x => x.Id == bizDetailId).Select(x => x).FirstOrDefault();
             var joboffer1 = ld.tblJobOffer1s.Where(x => x.Id == joboffer1Id).Select(x => x).FirstOrDefault();
             var joboffer2 = ld.tblJobOffer2s.Where(x => x.Id == joboffer2Id).Select(x => x).FirstOrDefault();
@@ -49,13 +56,13 @@ namespace CA.Immigration.LMIA
             }
             else { rcicName = string.Empty; }
 
-
-            Dictionary<string, string> dict = new Dictionary<string, string>()
+            
+            Dictionary <string, string> dict = new Dictionary<string, string>()
             {
 
-                ["EMP5593_E[0].Page1[0].rb_LMIA[0]"] = app.LMIAType.ToString(), // 0 is for PR Only 2 is for PR+WP
-                ["EMP5593_E[0].Page1[0].rb_skilled_trades[0]"] = app.AnotherEmployer.ToString(), //0 is No 2 is Yes
-                ["EMP5593_E[0].Page1[0].txtF_if_yes[0]"] = app.SecondEmployer, // second employer name
+                ["EMP5593_E[0].Page1[0].rb_LMIA[0]"] = LMIAApp.LMIAType.ToString(), // 0 is for PR Only 2 is for PR+WP
+                ["EMP5593_E[0].Page1[0].rb_skilled_trades[0]"] = (LMIAApp.SecondEmployer==null)?"0":"2", //0 is No 2 is Yes
+                ["EMP5593_E[0].Page1[0].txtF_if_yes[0]"] = LMIAApp.SecondEmployer, // second employer name
                 ["EMP5593_E[0].Page1[0].txtF_Emp_ID[0]"] = employer.ESDCId.ToString(),
                 ["EMP5593_E[0].Page1[0].txtF_Bus_Number1[0]"] = employer.CRA_BN,
                 ["EMP5593_E[0].Page1[0].txtF_Bus_Name[0]"] = employer.LegalName,
@@ -240,11 +247,11 @@ namespace CA.Immigration.LMIA
                 ////Foreign work Info
                 ["EMP5593_E[0].Page8[0].txtF_Surname[0]"] = employee.LastName,
                 ["EMP5593_E[0].Page8[0].txtF_GivenNames[0]"] = employee.FirstName,
-                //["EMP5593_E[0].Page8[0].rb_Question3_E[0]"] = employeePassport.Gender, // ???
+                ["EMP5593_E[0].Page8[0].rb_Question3_E[0]"] = (employeePassport.GenderId.HasValue)?employeePassport.GenderId.Value.genderToString():"", 
                 ["EMP5593_E[0].Page8[0].txtF_Date_E[0]"] = String.Format("{0:yyyy-MM-dd}",(DateTime)employeePassport.DOB),
                 ["EMP5593_E[0].Page8[0].txtF_City[0]"] = employeeMore.OutCanadaCity,
                 ["EMP5593_E[0].Page8[0].txtF_Country[0]"] = employeeMore.OutCanadaCountry,
-                //["EMP5593_E[0].Page8[0].txtF_Citizenships[0]"] = employeePassport.Nationality,//???
+                ["EMP5593_E[0].Page8[0].txtF_Citizenships[0]"] = (employeePassport.NationalityId.HasValue)? employeePassport.NationalityId.Value.countryToString():"",
                 ["EMP5593_E[0].Page8[0].txtF_City2[0]"] = employeeMore.CanadaCity,
                 ["EMP5593_E[0].Page8[0].txtF_Province[0]"] = employeeMore.CanadaProvince,
                 ["EMP5593_E[0].Page8[0].rb_Question8[0]"]=((int)employeeMore.Hired==1)?"Yes":"No",
@@ -307,21 +314,21 @@ namespace CA.Immigration.LMIA
 
                 // EMP5576(embeded in EMP5593)
                 ["EMP5593_E[0].Page11[0].rb_Card_Type[0]"] = creditcard.CardType.ToString(),  // 0 is visa, 1 is master 2 is american express
-                ["EMP5593_E[0].Page11[0].rb_Payment[0]"] = app.PayMethod.ToString(),  //1 is cheque 2 is credit card
+                ["EMP5593_E[0].Page11[0].rb_Payment[0]"] = LMIAApp.PayMethod.ToString(),  //1 is cheque 2 is credit card
                 ["EMP5593_E[0].Page11[0].txtF_Applicant_Name[0]"] = employer.ContactFirstName + " " + employer.ContactLastName,
                 ["EMP5593_E[0].Page11[0].txtF_Applicant_Name[1]"] = creditcard.CardNumber.Substring(creditcard.CardNumber.Length - 4),  //get last four chars from a string
                 ["EMP5593_E[0].Page11[0].txtF_CRA_Business_Number[0]"] = employer.CRA_BN,
                 ["EMP5593_E[0].Page11[0].txtF_Card_Number[0]"] = creditcard.CardNumber,
-                ["EMP5593_E[0].Page11[0].txtF_Charge[0]"] = (app.NumberofPosition * app.ApplicationFeePerPosition).ToString(),
+                ["EMP5593_E[0].Page11[0].txtF_Charge[0]"] = (LMIAApp.NumberofPosition * LMIAApp.ApplicationFeePerPosition).ToString(),
                 ["EMP5593_E[0].Page11[0].txtF_Day[0]"] = DateTime.Today.Year.ToString(),  //ESDC Form error, it refers this to a Year
                 ["EMP5593_E[0].Page11[0].txtF_EMployer_Name[0]"] =employer.LegalName,
                 ["EMP5593_E[0].Page11[0].txtF_Given_Names[0]"] =creditcard.CardHolderName,
                 ["EMP5593_E[0].Page11[0].txtF_Month[0]"] =DateTime.Today.Month.ToString(),
                 ["EMP5593_E[0].Page11[0].txtF_Month[1]"] =creditcard.ExpireMonth,
-                ["EMP5593_E[0].Page11[0].txtF_Number_Positions[0]"] =app.NumberofPosition.ToString(),
+                ["EMP5593_E[0].Page11[0].txtF_Number_Positions[0]"] =LMIAApp.NumberofPosition.ToString(),
                 ["EMP5593_E[0].Page11[0].txtF_Number_Positions[1]"] =creditcard.SecurityCode,
                 ["EMP5593_E[0].Page11[0].txtF_Off_use[0]"] ="off use",
-                ["EMP5593_E[0].Page11[0].txtF_Processing_Fee[0]"] = (app.NumberofPosition * app.ApplicationFeePerPosition).ToString(),
+                ["EMP5593_E[0].Page11[0].txtF_Processing_Fee[0]"] = (LMIAApp.NumberofPosition * LMIAApp.ApplicationFeePerPosition).ToString(),
                 //["EMP5593_E[0].Page11[0].txtF_Signature_E[0]"] ="sign",
                 ["EMP5593_E[0].Page11[0].txtF_Year[0]"] =DateTime.Today.Day.ToString(),  //ESDC Form error, it refers this to a Day
                 ["EMP5593_E[0].Page11[0].txtF_Year[1]"] =creditcard.ExpireYear

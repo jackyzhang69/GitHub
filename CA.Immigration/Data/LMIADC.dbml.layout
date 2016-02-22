@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.75, 17.125" name="LMIADC">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 16.25, 17.125" name="LMIADC">
   <DataContextMoniker Name="/LMIADCDataContext" />
   <nestedChildShapes>
     <classShape Id="abff1e2c-05a5-4070-ae21-a93fffa3e5f7" absoluteBounds="0.75, 0.75, 2, 5.0400211588541657">
@@ -44,12 +44,6 @@
         <elementListCompartment Id="6175ee12-680f-463b-ad04-d6a94216b2c3" absoluteBounds="6.765, 1.71, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="a01dfd26-e7b1-4606-bc61-8e3c82e20d5a" absoluteBounds="12.5, 1.625, 2, 3.5016097005208326">
-      <DataClassMoniker Name="/LMIADCDataContext/tblLMIAApplication" />
-      <nestedChildShapes>
-        <elementListCompartment Id="5aa47a29-c83e-4720-b646-0cd0e012c4bf" absoluteBounds="12.515, 2.085, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="ed02e0af-48aa-4a7b-a19c-11e99a2dde3c" absoluteBounds="6.375, 5.375, 2, 6.5784326171875">
       <DataClassMoniker Name="/LMIADCDataContext/tblEmployer" />
       <nestedChildShapes>
@@ -60,6 +54,12 @@
       <DataClassMoniker Name="/LMIADCDataContext/tblJobOffer2" />
       <nestedChildShapes>
         <elementListCompartment Id="1cbb5043-279b-4419-8f0a-c0195f34b3a1" absoluteBounds="3.3899999999999997, 9.46, 1.9700000000000002, 5.826131184895833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c9f56279-485c-458a-b02a-d74606dcab16" absoluteBounds="14, 2.875, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/LMIADCDataContext/tblLMIAApplication" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b2716f73-8ca1-4503-9c5e-400a33a775fa" absoluteBounds="14.015, 3.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

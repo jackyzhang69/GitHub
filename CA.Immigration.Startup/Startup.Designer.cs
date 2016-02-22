@@ -36,12 +36,12 @@
             this.sWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qIIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.getValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.MainStatus = new System.Windows.Forms.StatusStrip();
             this.stsSystem = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -113,6 +113,13 @@
             this.getValueToolStripMenuItem.Text = "GetValue";
             this.getValueToolStripMenuItem.Click += new System.EventHandler(this.getValueToolStripMenuItem_Click);
             // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(211, 30);
+            this.toolStripMenuItem2.Text = "1294";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -161,13 +168,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(211, 30);
-            this.toolStripMenuItem2.Text = "5476";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // Startup
             // 

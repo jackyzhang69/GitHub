@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CA.Immigration.Data;
 
 namespace CA.Immigration.Utility
 {
@@ -87,7 +88,69 @@ namespace CA.Immigration.Utility
       
     }
 
-    
+    public static class  ExtentionMethods
+    {
+
+        public static int countryToCode(this string value) {
+
+            using(CommonDataContext cd = new CommonDataContext())
+            {
+                return cd.tblCountries.Where(x => x.Country == value).Select(x => x.CountryCode).FirstOrDefault();
+
+
+            }
+
+        }
+        public static string countryToString(this int value) {
+            using(CommonDataContext cd = new CommonDataContext())
+            {
+                return cd.tblCountries.Where(x => x.CountryCode==value).Select(x => x.Country).FirstOrDefault();
+
+
+            }
+        }
+
+        public static string statusCodeToName(this string code) {
+            using(CommonDataContext cd = new CommonDataContext())
+            {
+                return cd.tblStatusTypes.Where(x => x.TypeCode == code).Select(x => x.StatusType).FirstOrDefault();
+            }
+        }
+        public static string statusNameToCode(this string name)
+        {
+            using(CommonDataContext cd = new CommonDataContext())
+            {
+                return cd.tblStatusTypes.Where(x => x.StatusType == name).Select(x => x.TypeCode).FirstOrDefault();
+            }
+        }
+        public static string genderToString(this int value) {
+           switch (value){
+                case 1:
+                    return "Male";
+                    
+                case 2:
+                    return "Female";
+                    
+                default:
+                    return "Unknown";
+            }
+
+        }
+        public static int genderToCode(this string value) {
+            switch(value)
+            {
+                case "Male":
+                    return 1;
+
+                case "Female":
+                    return 2;
+
+                default:
+                    return 3;
+            }
+        }
+    }
+
 
 
 

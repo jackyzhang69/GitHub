@@ -156,24 +156,6 @@
       <Column Name="Duration" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.tblLMIAApplication" Member="tblLMIAApplications">
-    <Type Name="tblLMIAApplication">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="EmployerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="EmployeeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LMIAType" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreatedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="SubmittedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="ClosedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="ApplicationNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="AnotherEmployer" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SecondEmployer" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="PayMethod" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="RCICId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NumberofPosition" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ApplicationFeePerPosition" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.tblEmployer" Member="tblEmployers">
     <Type Name="tblEmployer">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -239,6 +221,18 @@
       <Column Name="NoTraining" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ExplainNoTraining" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="DescriptionTrainingPlan" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblLMIAApplication" Member="tblLMIAApplications">
+    <Type Name="tblLMIAApplication">
+      <Column Name="LMIAId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ApplicationId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmployeeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LMIAType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SecondEmployer" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="NumberofPosition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PayMethod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApplicationFeePerPosition" Type="System.Decimal" DbType="Money" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
