@@ -1,6 +1,6 @@
 ﻿namespace CA.Immigration.LMIA
 {
-    partial class LMIAForm
+    partial class LMIAApplicationForm
     {
         /// <summary>
         /// Required designer variable.
@@ -66,6 +66,7 @@
             this.stsEmployee = new System.Windows.Forms.ToolStripStatusLabel();
             this.stsAppId = new System.Windows.Forms.ToolStripStatusLabel();
             this.grpSelectEmployer = new System.Windows.Forms.GroupBox();
+            this.dgvEmployer = new System.Windows.Forms.DataGridView();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.lblEmployer = new System.Windows.Forms.Label();
             this.chkEducation = new System.Windows.Forms.CheckedListBox();
@@ -122,8 +123,8 @@
             this.ckbOtherEmployer = new System.Windows.Forms.CheckBox();
             this.lblSubCategory = new System.Windows.Forms.Label();
             this.lblOtherEmployer = new System.Windows.Forms.Label();
-            this.cmbApplicationType = new System.Windows.Forms.ComboBox();
-            this.lblApplicationType = new System.Windows.Forms.Label();
+            this.lblProgram = new System.Windows.Forms.Label();
+            this.txtProgram = new System.Windows.Forms.TextBox();
             this.pnlBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -137,6 +138,7 @@
             this.tbAD.SuspendLayout();
             this.stsStatus.SuspendLayout();
             this.grpSelectEmployer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployer)).BeginInit();
             this.tbESDCMainDuties.SuspendLayout();
             this.tbMainDuties.SuspendLayout();
             this.tbESDCQualification.SuspendLayout();
@@ -402,7 +404,7 @@
             // 
             // txtJobTitle
             // 
-            this.txtJobTitle.Location = new System.Drawing.Point(92, 25);
+            this.txtJobTitle.Location = new System.Drawing.Point(92, 34);
             this.txtJobTitle.Name = "txtJobTitle";
             this.txtJobTitle.Size = new System.Drawing.Size(163, 26);
             this.txtJobTitle.TabIndex = 1;
@@ -540,6 +542,7 @@
             // 
             // grpSelectEmployer
             // 
+            this.grpSelectEmployer.Controls.Add(this.dgvEmployer);
             this.grpSelectEmployer.Controls.Add(this.textBox7);
             this.grpSelectEmployer.Controls.Add(this.lblEmployer);
             this.grpSelectEmployer.Location = new System.Drawing.Point(395, 155);
@@ -548,6 +551,17 @@
             this.grpSelectEmployer.TabIndex = 4;
             this.grpSelectEmployer.TabStop = false;
             this.grpSelectEmployer.Text = "Select Employer from Database";
+            // 
+            // dgvEmployer
+            // 
+            this.dgvEmployer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvEmployer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmployer.Location = new System.Drawing.Point(6, 79);
+            this.dgvEmployer.Name = "dgvEmployer";
+            this.dgvEmployer.RowTemplate.Height = 28;
+            this.dgvEmployer.Size = new System.Drawing.Size(1005, 360);
+            this.dgvEmployer.TabIndex = 4;
             // 
             // textBox7
             // 
@@ -1015,13 +1029,13 @@
             // 
             // grbApplicationType
             // 
+            this.grbApplicationType.Controls.Add(this.txtProgram);
             this.grbApplicationType.Controls.Add(this.txtAnotherEmployer);
             this.grbApplicationType.Controls.Add(this.cmbStream);
             this.grbApplicationType.Controls.Add(this.ckbOtherEmployer);
             this.grbApplicationType.Controls.Add(this.lblSubCategory);
             this.grbApplicationType.Controls.Add(this.lblOtherEmployer);
-            this.grbApplicationType.Controls.Add(this.cmbApplicationType);
-            this.grbApplicationType.Controls.Add(this.lblApplicationType);
+            this.grbApplicationType.Controls.Add(this.lblProgram);
             this.grbApplicationType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grbApplicationType.Location = new System.Drawing.Point(0, 0);
             this.grbApplicationType.Name = "grbApplicationType";
@@ -1080,33 +1094,32 @@
             this.lblOtherEmployer.TabIndex = 4;
             this.lblOtherEmployer.Text = "Other Employer Name";
             // 
-            // cmbApplicationType
+            // lblProgram
             // 
-            this.cmbApplicationType.FormattingEnabled = true;
-            this.cmbApplicationType.Location = new System.Drawing.Point(186, 46);
-            this.cmbApplicationType.Name = "cmbApplicationType";
-            this.cmbApplicationType.Size = new System.Drawing.Size(247, 28);
-            this.cmbApplicationType.TabIndex = 1;
-            // 
-            // lblApplicationType
-            // 
-            this.lblApplicationType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblProgram.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblApplicationType.AutoSize = true;
-            this.lblApplicationType.Location = new System.Drawing.Point(6, 49);
-            this.lblApplicationType.Name = "lblApplicationType";
-            this.lblApplicationType.Size = new System.Drawing.Size(174, 20);
-            this.lblApplicationType.TabIndex = 0;
-            this.lblApplicationType.Text = "Select Application Type";
+            this.lblProgram.AutoSize = true;
+            this.lblProgram.Location = new System.Drawing.Point(6, 49);
+            this.lblProgram.Name = "lblProgram";
+            this.lblProgram.Size = new System.Drawing.Size(151, 20);
+            this.lblProgram.TabIndex = 0;
+            this.lblProgram.Text = "Application Program";
             // 
-            // LMIAForm
+            // txtProgram
+            // 
+            this.txtProgram.Location = new System.Drawing.Point(222, 46);
+            this.txtProgram.Name = "txtProgram";
+            this.txtProgram.Size = new System.Drawing.Size(210, 26);
+            this.txtProgram.TabIndex = 7;
+            // 
+            // LMIAApplicationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1472, 1183);
             this.Controls.Add(this.pnlBase);
-            this.Name = "LMIAForm";
+            this.Name = "LMIAApplicationForm";
             this.Text = "LMIA Advisor & Processing";
             this.Load += new System.EventHandler(this.LMIAForm_Load);
             this.pnlBase.ResumeLayout(false);
@@ -1127,6 +1140,7 @@
             this.stsStatus.PerformLayout();
             this.grpSelectEmployer.ResumeLayout(false);
             this.grpSelectEmployer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployer)).EndInit();
             this.tbESDCMainDuties.ResumeLayout(false);
             this.tbESDCMainDuties.PerformLayout();
             this.tbMainDuties.ResumeLayout(false);
@@ -1161,8 +1175,7 @@
         private System.Windows.Forms.CheckBox ckbOtherEmployer;
         private System.Windows.Forms.Label lblSubCategory;
         private System.Windows.Forms.Label lblOtherEmployer;
-        private System.Windows.Forms.ComboBox cmbApplicationType;
-        private System.Windows.Forms.Label lblApplicationType;
+        private System.Windows.Forms.Label lblProgram;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox grbPosition;
         private System.Windows.Forms.TextBox txtLocalNOCMedian;
@@ -1249,6 +1262,8 @@
         private System.Windows.Forms.ToolStripStatusLabel stsEmployer;
         private System.Windows.Forms.ToolStripStatusLabel stsEmployee;
         private System.Windows.Forms.ToolStripStatusLabel stsAppId;
+        private System.Windows.Forms.DataGridView dgvEmployer;
+        private System.Windows.Forms.TextBox txtProgram;
     }
 }
 

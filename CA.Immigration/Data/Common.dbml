@@ -1,77 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Common" Class="CommonDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=JackyPc\SQLExpress;Initial Catalog=Common;Persist Security Info=True;User ID=sa" SettingsObjectName="CA.Immigration.Properties.Settings" SettingsPropertyName="CommonConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.tblMedia" Member="tblMedias">
-    <Type Name="tblMedia">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="MediaName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="Type" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="Scope" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="Cost" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="Duration" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Comments" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tblApplication" Member="tblApplications">
-    <Type Name="tblApplication">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ApplicantId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="RCICId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ApplicationType" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CreatedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="SubmittedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="ClosedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="ApplicationNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="ApplicationFee" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tblCountry" Member="tblCountries">
-    <Type Name="tblCountry">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="CountryCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Country" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tblStatusType" Member="tblStatusTypes">
-    <Type Name="tblStatusType">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TypeCode" Type="System.String" DbType="Char(2)" CanBeNull="true" />
-      <Column Name="StatusType" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tblResidence" Member="tblResidences">
-    <Type Name="tblResidence">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ApplicationId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="StartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="CountryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="StatusId" Type="System.String" DbType="Char(2)" CanBeNull="true" />
-      <Column Name="OtherStatus" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="ResidenceType" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tblPerson" Member="tblPersons">
-    <Type Name="tblPerson">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FirstName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="MiddleName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="LastName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="IsAliasName" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="AliasLastName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="AliasFirstName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="UCI" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DOB" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="MarriageStatusId" Type="System.String" DbType="Char(2)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tblMarriageHistory" Member="tblMarriageHistories">
-    <Type Name="tblMarriageHistory">
+  <Table Name="dbo.tblPhone" Member="tblPhones">
+    <Type Name="tblPhone">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="PersonId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SpouseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="BeginDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="relationship" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="USorCa" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="PhoneType" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="CountryCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="Extension" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="PhoneorFax" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Other" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.tblPassport" Member="tblPassports">
@@ -90,16 +29,6 @@
       <Column Name="ExpiryDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="IsValid" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="IssueCountryId" Type="System.String" DbType="Char(3)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tblLanguage" Member="tblLanguages">
-    <Type Name="tblLanguage">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="PersonId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NativeLanguageId" Type="System.String" DbType="Char(3)" CanBeNull="true" />
-      <Column Name="OtherMostlyUse" Type="System.String" DbType="Char(2)" CanBeNull="true" />
-      <Column Name="CommIn" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="LanguageTest" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.tblRCIC" Member="tblRCICs">
@@ -131,6 +60,64 @@
       <Column Name="MailStreetName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.tblApplication" Member="tblApplications">
+    <Type Name="tblApplication">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ApplicantId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RCICId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApplicationType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="SubmittedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ClosedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ApplicationNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ApplicationFee" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblCountry" Member="tblCountries">
+    <Type Name="tblCountry">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CountryCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Country" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblStatusType" Member="tblStatusTypes">
+    <Type Name="tblStatusType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TypeCode" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="StatusType" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblLanguage" Member="tblLanguages">
+    <Type Name="tblLanguage">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PersonId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NativeLanguageId" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="OtherMostlyUse" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="CommIn" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="LanguageTest" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblMedia" Member="tblMedias">
+    <Type Name="tblMedia">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MediaName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Scope" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Cost" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Duration" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblMarriageHistory" Member="tblMarriageHistories">
+    <Type Name="tblMarriageHistory">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PersonId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SpouseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BeginDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="relationship" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.tblAddress" Member="tblAddresses">
     <Type Name="tblAddress">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -147,17 +134,55 @@
       <Column Name="AddressTypeId" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.tblPhone" Member="tblPhones">
-    <Type Name="tblPhone">
+  <Table Name="dbo.tblResidence" Member="tblResidences">
+    <Type Name="tblResidence">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="PersonId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="USorCa" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
-      <Column Name="PhoneType" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
-      <Column Name="CountryCode" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
-      <Column Name="PhoneNumber" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
-      <Column Name="Extension" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="PhoneorFax" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="Other" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="ApplicationId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CountryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StatusId" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="OtherStatus" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="ResidenceType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblMarriageStatusTypes" Member="tblMarriageStatusTypes">
+    <Type Name="tblMarriageStatusType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TypeCode" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="MarriageStatusType" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblProgram" Member="tblPrograms">
+    <Type Name="tblProgram">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="CategoryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblCategory" Member="tblCategories">
+    <Type Name="tblCategory">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblPerson" Member="tblPersons">
+    <Type Name="tblPerson">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MiddleName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DOB" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Gender" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsAliasName" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AliasLastName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="AliasFirstName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="UCI" Type="System.String" DbType="Char(8)" CanBeNull="true" />
+      <Column Name="MarriageStatusId" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Photo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Signature" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
     </Type>
   </Table>
 </Database>

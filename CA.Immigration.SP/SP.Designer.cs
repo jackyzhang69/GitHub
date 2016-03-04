@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(1405, 836);
             this.Name = "SP";
             this.Text = "Study Permit Advisor & Processing";
+            this.Load += new System.EventHandler(this.SP_Load);
             this.ResumeLayout(false);
 
         }

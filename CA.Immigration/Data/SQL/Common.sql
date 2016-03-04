@@ -396,11 +396,17 @@ Id int not null primary key Identity(1,1),
 FirstName varchar(20),
 MiddleName varchar(20),
 LastName varchar(20),
+DOB Date,
+Gender int,  -- 1 Male 2 Female 3 Unknown
 IsAliasName bit,
 AliasLastName varchar(20),
 AliasFirstName varchar(20),
-UCI int,
-MarriageStatusId char(2)
+UCI char(8),
+MarriageStatusId char(2),
+Phone varchar(20),
+Email varchar(100),
+Photo Image,
+[Signature] Image
 )
 
 -- Create Phone table
@@ -415,4 +421,17 @@ CountryCode varchar(6),
 PhoneNumber varchar(15),
 Extension varchar(10),
 PhoneorFax varchar(10),
+)
+
+create table tblProgram
+(
+Id int not null primary key identity(1,1),
+Name varchar(150),
+CategoryId int
+)
+
+create table tblCategory
+(
+  Id int not null primary key identity(1,1),
+Name varchar(100),
 )

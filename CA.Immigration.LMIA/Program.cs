@@ -16,7 +16,7 @@ namespace CA.Immigration.LMIA
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LMIAForm());
+            Application.Run(new LMIAApplicationForm());
         }
     }
 }

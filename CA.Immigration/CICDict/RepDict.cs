@@ -28,7 +28,7 @@ namespace CA.Immigration
             tblRCIC rcic = cmdc.tblRCICs.Where(x => x.Id == rcicId).Select(x => x).FirstOrDefault();
             tblPassport passport = cmdc.tblPassports.Where(x => (x.PersonId == personId && x.IsValid == true)).Select(x => x).FirstOrDefault();
 
-            DateTime dob = DateTime.Parse(passport.DOB.ToString());
+            DateTime dob = (DateTime)person.DOB;
             
             int PAage = DateDiff.age(dob);
 
@@ -42,7 +42,7 @@ namespace CA.Immigration
                 ["IMM_5476[0].page1[0].#subform[0].dateBirth[0]"] = String.Format("{0:yyyy-MM-dd}", dob),
                 ["IMM_5476[0].page1[0].#subform[0].nameOffice[0]"] = "", // Visa office name
                 ["IMM_5476[0].page1[0].#subform[0].type[0]"] = "", // application type
-                ["IMM_5476[0].page1[0].#subform[0].clientId[0]"] = person.UCI.ToString(),
+                ["IMM_5476[0].page1[0].#subform[0].clientId[0]"] = (person.UCI!= null)?person.UCI.ToString():"",
                 ["IMM_5476[0].page1[0].Subform2[1].familyName[0]"] = rcic.LastName,
                 ["IMM_5476[0].page1[0].Subform2[1].givenName[0]"] = rcic.FirstName,
                 ["IMM_5476[0].page1[0].Subform2[1].isMember[0]"] = "1",  // Hard code to be ICCRC Member
@@ -56,7 +56,7 @@ namespace CA.Immigration
                 ["IMM_5476[0].page2[0].Subform2[0].Subform3[0].emailAddress[0]"] = rcic.Email,
                 ["IMM_5476[0].page2[0].Subform2[0].date[0]"] = String.Format("{0:yyyy-MM-dd}", DateTime.Today),
                 ["IMM_5476[0].page2[0].Subform2[2].date[0]"] = String.Format("{0:yyyy-MM-dd}", DateTime.Today),  //PA signing date
-                ["IMM_5476[0].page2[0].Subform2[2].date[1]"] = (PAage<19)? String.Format("{0:yyyy-MM-dd}", DateTime.Today):"" //if PA<19 years old, parents sign
+                ["IMM_5476[0].page2[0].Subform2[2].date[1]"] = (PAage < 19) ? String.Format("{0:yyyy-MM-dd}", DateTime.Today) : "" //if PA<19 years old, parents sign
 
             };
 

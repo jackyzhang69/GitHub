@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CA.Immigration.Startup.Properties {
+namespace CA.Immigration.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace CA.Immigration.Startup.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CA.Immigration.Startup.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CA.Immigration.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,16 +57,6 @@ namespace CA.Immigration.Startup.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Signature_Jacky {
-            get {
-                object obj = ResourceManager.GetObject("Signature_Jacky", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

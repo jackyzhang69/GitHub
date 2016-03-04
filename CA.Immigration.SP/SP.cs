@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CA.Immigration.Data;
 
 namespace CA.Immigration.SP
 {
@@ -15,6 +16,14 @@ namespace CA.Immigration.SP
         public SP()
         {
             InitializeComponent();
+        }
+
+        private void SP_Load(object sender, EventArgs e)
+        {
+            using(CommonDataContext cdc = new CommonDataContext()) {
+               
+            }
+
         }
     }
 }

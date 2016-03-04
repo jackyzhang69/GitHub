@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CA.Immigration.Policy;
 using CA.Immigration.Utility;
@@ -16,43 +13,70 @@ using CA.Immigration.PDF;
 
 namespace CA.Immigration.LMIA
 {
-    public partial class LMIAForm : Form
+    public partial class LMIAApplicationForm : Form
     {
         LMIAPolicy initApp = new LMIAPolicy();
-        CommonDataContext dc = new CommonDataContext();
+        private int _appId;
+        private int _employerId;
+        private int _personId;
 
-        public LMIAForm()
+
+        public LMIAApplicationForm()
         {
             InitializeComponent();
         }
+
+        public LMIAApplicationForm(int employerId)
+        {
+            InitializeComponent();
+            _employerId = employerId;
+        }
+        public LMIAApplicationForm(int employerId, int personId)
+        {
+            InitializeComponent();
+            _employerId = employerId;
+            _personId = personId;
+        }
+        public LMIAApplicationForm(int appId, int employerId, int personId)
+        {
+            InitializeComponent();
+            _appId = appId;
+            _employerId = employerId;
+            _personId = personId;
+        }
+
 
         private void LMIAForm_Load(object sender, EventArgs e)
         {
             
 
-            stsEmployer.Text = "Employer has not bee assigned\t";
-            stsEmployer.ForeColor = Color.Red;
-            stsEmployee.Text = "Employee has not bee assigned\t";
-            stsEmployee.ForeColor = Color.Red;
-            stsAppId.Text = "Application has not been created";
+            stsEmployer.Text = GlobalData.CurrentEmployerId==null?"Employer has not bee assigned\t":"Employer Id="+GlobalData.CurrentEmployerId.ToString();
+            stsEmployer.ForeColor = GlobalData.CurrentEmployerId == null ? Color.Red:Color.Green;
+            stsEmployee.Text = GlobalData.CurrentPersonId == null ? "Employee has not bee assigned\t" : "Employee Id=" + GlobalData.CurrentPersonId.ToString();
+            stsEmployee.ForeColor = GlobalData.CurrentPersonId==null?Color.Red:Color.Green;
+            stsAppId.Text = GlobalData.CurrentApplicationId == null ? "Application has not been created" : "Application Id=" + GlobalData.CurrentApplicationId.ToString();
             stsAppId.ForeColor = Color.Red;
             // Initialize Application Type
-            for(int i = 0; i < initApp.LMIAType.Length; i++)
+            using (CommonDataContext cdc = new CommonDataContext())
             {
-                cmbApplicationType.Items.Add(initApp.LMIAType[i]);
+                txtProgram.Text = cdc.tblPrograms.Where(x => x.Id == GlobalData.CurrentStreamId).Select(x => x.Name).Single();
+                txtProgram.ReadOnly = true;
+                dgvPositionQualification.DataSource = cdc.tblMedias;
             }
+            
             // Initialize Stream Type
             for(int i = 0; i < initApp.LMIAStream.Length; i++)
             {
                 cmbStream.Items.Add(initApp.LMIAStream[i]);
             }
-            // Defalut: the another employer is invisible, unless skill trade selected
+            // Default: the another employer is invisible, unless skill trade selected
             ckbOtherEmployer.Visible = false;
             lblOtherEmployer.Visible = false;
             txtAnotherEmployer.Visible = false;
 
 
-            dgvPositionQualification.DataSource = dc.tblMedias;
+
+            
 
             // Initialize Province 
             for(int i = 0; i < Address.CndProvince.Length / 2; i++)
@@ -61,6 +85,10 @@ namespace CA.Immigration.LMIA
             }
             cmbProvince.SelectedIndex = 1;  // Default is BC
 
+            using(LMIADCDataContext ld = new LMIADCDataContext()) {
+                dgvEmployer.DataSource = from emp in ld.tblEmployers
+                                         select new {emp.LegalName,emp.MailingAddress,emp.BizCity,emp.ContactPhone};
+            }
 
             ////  example of media 
             //Media md = new Media();
@@ -71,12 +99,11 @@ namespace CA.Immigration.LMIA
             //md.Duration = 30;
             //md.Comments = "Good";
             
-            DataGridViewCheckBoxColumn dcom = new DataGridViewCheckBoxColumn();
-            dcom.HeaderText = "Pick";
-            dgvMedia.Columns.Add(dcom);
+            //DataGridViewCheckBoxColumn dcom = new DataGridViewCheckBoxColumn();
+            //dcom.HeaderText = "Pick";
+            //dgvMedia.Columns.Add(dcom);
 
-            dgvMedia.DataSource = dc.tblMedias;
-
+            //dgvMedia.DataSource = dc.tblMedias;
 
         }
 

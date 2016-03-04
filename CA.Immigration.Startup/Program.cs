@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -18,7 +15,8 @@ namespace CA.Immigration.Startup
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
-            Application.Run(new Startup());
+            Application.Run(new StartupForm());
+            
         }
     }
 }
