@@ -53,6 +53,7 @@
     <Compile Include="EE.Designer.cs">
       <DependentUpon>EE.cs</DependentUpon>
     </Compile>
+    <Compile Include="EEFormOps.cs" />
     <Compile Include="EEPolicy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
