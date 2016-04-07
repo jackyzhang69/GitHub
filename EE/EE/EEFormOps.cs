@@ -7,51 +7,43 @@ using System.Windows.Forms;
 
 namespace EE
 {
-   public  class EEFormOps
+    public class EEFormOps
     {
         public static Person PA = new Person();
         public static Person SP = new Person();
 
         public static void getInput(EE ee)
         {
-            PA.education = new List<Education>();
-            PA.applicant = "PA";
+            PA.married = false;
             PA.age = getIntValue(ee.txtAge.Text);
-            if (ee.cmbHighestEdu.SelectedIndex != -1) PA.education.Add(new Education(getIntValue(ee.txtHighestYears.Text), ee.cmbHighestEdu.Text));
-            else {
-                MessageBox.Show("You must select topest education");
-                return;
-            }
-            if (ee.chkSecondEdu.Checked && ee.cmbSecondEdu.SelectedIndex != -1) PA.education.Add(new Education(getIntValue(ee.txtSecondEduYears.Text), ee.cmbSecondEdu.Text));
-            if (ee.cmbLanguageType1.Text == "IELTS") PA.ielts = new IELTS(getFloatValue(ee.txtR1.Text), getFloatValue(ee.txtW1.Text), getFloatValue(ee.txtL1.Text), getFloatValue(ee.txtS1.Text));
-            if (ee.chkSecondLanguage.Checked && ee.cmbLanguageType2.Text == "TEF") PA.tef = new TEF(getIntValue(ee.txtR2.Text), getIntValue(ee.txtW2.Text), getIntValue(ee.txtL2.Text), getIntValue(ee.txtS2.Text));
+            if(ee.cmbHighestEdu.SelectedIndex != -1) PA.education = new Education(ee.cmbHighestEdu.Text);
+            else return;
+            if(ee.cmbLanguageType1.Text == "IELTS") PA.ielts = new IELTS(getFloatValue(ee.txtL1.Text), getFloatValue(ee.txtS1.Text), getFloatValue(ee.txtR1.Text), getFloatValue(ee.txtW1.Text));
+            if(ee.chkSecondLanguage.Checked && ee.cmbLanguageType2.Text == "TEF")
+                PA.tef = new TEF(getIntValue(ee.txtL2.Text), getIntValue(ee.txtS2.Text), getIntValue(ee.txtR2.Text),
+                    getIntValue(ee.txtW2.Text));
+            else PA.tef = new TEF(0, 0, 0, 0);
             PA.canadianWorkExperience = getIntValue(ee.txtCnWe.Text);
             PA.foreignWorkExperience = getIntValue(ee.txtFnWe.Text);
-           
-            if (!ee.chkSingle.Checked)
+            if(ee.chkCofQ.Checked) PA.CofQ = true;
+            if(!ee.chkSingle.Checked)
             {
-                PA.married = false;
-            }
-            else {
                 SP.married = true;
                 SP.applicant = "SP";
-                SP.education = new List<Education>();
-                if (ee.cmbSPHighestEdu.SelectedIndex != -1) SP.education.Add(new Education(getIntValue(ee.txtSPHighestYears.Text), ee.cmbSPHighestEdu.Text));
-                else {
-                    MessageBox.Show("You must select topest education");
-                    return;
-                }
-                if (ee.cmbSPLanguageType.Text == "IELTS") SP.ielts = new IELTS(getFloatValue(ee.txtSPR.Text), getFloatValue(ee.txtSPW.Text), getFloatValue(ee.txtSPL.Text), getFloatValue(ee.txtSPS.Text));
+                if(ee.cmbSPHighestEdu.SelectedIndex != -1) SP.education = new Education(ee.cmbSPHighestEdu.Text);
+                else return;
+                if(ee.cmbSPLanguageType.Text == "IELTS") SP.ielts = new IELTS(getFloatValue(ee.txtSPR.Text), getFloatValue(ee.txtSPW.Text), getFloatValue(ee.txtSPL.Text), getFloatValue(ee.txtSPS.Text));
                 SP.canadianWorkExperience = getIntValue(ee.txtSPCaWe.Text);
-                SP.calculate();
+                SP.calculate(2);
             }
-            PA.calculate();
-            
+            if(ee.chkSingle.Checked) PA.calculate(0);
+            else PA.calculate(1);
+
 
         }
         public static void refreshScore(EE ee)
         {
-            if (ee.chkSingle.Checked)
+            if(ee.chkSingle.Checked)
             {
                 SP.educationPoints = 0;
                 SP.firstLanguagePoints = 0;
@@ -59,16 +51,19 @@ namespace EE
                 SP.totalPoints = 0;
             }
 
-            ee.txtAgeScore.Text =PA.agePoints.ToString();
-            ee.txtEduScore.Text = (PA.educationPoints+SP.educationPoints).ToString();
-            ee.txtLanguageScore.Text = (PA.firstLanguagePoints + PA.secondLanguagePoints+SP.firstLanguagePoints).ToString();
-            ee.txtCaExpScore.Text = (PA.canadianWorkExperiencePoints+ SP.canadianWorkExperiencePoints).ToString();
+            ee.txtAgeScore.Text = PA.agePoints.ToString();
+            ee.txtEduScore.Text = PA.educationPoints.ToString();
+            ee.txtSPEduScore.Text = SP.educationPoints.ToString();
+            ee.txtLanguageScore.Text = (PA.firstLanguagePoints + PA.secondLanguagePoints).ToString();
+            ee.txtSPLangScore.Text = SP.firstLanguagePoints.ToString();
+            ee.txtCaExpScore.Text = PA.canadianWorkExperiencePoints.ToString();
+            ee.txtSPCaExpScore.Text = SP.canadianWorkExperiencePoints.ToString();
             ee.txtEduLangScore.Text = PA.educationAndLanguagePoints.ToString();
             ee.txtEduCaWeScore.Text = PA.educationAndCanadaWorkExperiencePoints.ToString();
             ee.txtLangFnWeScore.Text = PA.languageAndForeignWorkExperiencePoints.ToString();
             ee.txtCaFnWeScore.Text = PA.canadaWorkExperienceAndForeignWorkExperiencePoints.ToString();
             ee.txtCofQScore.Text = PA.CofQAndLauangePoints.ToString();
-            ee.lblTotalScore.Text = (PA.totalPoints+SP.totalPoints).ToString();
+            ee.lblTotalScore.Text = (PA.totalPoints + SP.totalPoints).ToString();
 
         }
 
@@ -76,62 +71,59 @@ namespace EE
         {
             foreach(KeyValuePair<string, int> kvp in Education.singleEducationPoints)
             {
-                ee.cmbHighestEdu.Items.Add(kvp.Key); 
+                ee.cmbHighestEdu.Items.Add(kvp.Key);
             }
-            foreach (KeyValuePair<string, int> kvp in Education.singleEducationPoints)
-            {
-                ee.cmbSecondEdu.Items.Add(kvp.Key);
-            }
-            foreach (KeyValuePair<int, string> kvp in Language.languageType)
+
+            foreach(KeyValuePair<int, string> kvp in Language.languageType)
             {
                 ee.cmbLanguageType1.Items.Add(kvp.Value);
             }
-            foreach (KeyValuePair<int, string> kvp in Language.secondLanguageType)
+            foreach(KeyValuePair<int, string> kvp in Language.secondLanguageType)
             {
                 ee.cmbLanguageType2.Items.Add(kvp.Value);
             }
-            foreach (KeyValuePair<int, string> kvp in Language.languageType)
+            foreach(KeyValuePair<int, string> kvp in Language.languageType)
             {
                 ee.cmbSPLanguageType.Items.Add(kvp.Value);
             }
-            foreach (KeyValuePair<string, int> kvp in Education.singleEducationPoints)
+            foreach(KeyValuePair<string, int> kvp in Education.singleEducationPoints)
             {
                 ee.cmbSPHighestEdu.Items.Add(kvp.Key);
             }
 
-            if(!ee.chkSecondEdu.Checked) ee.grpSecondEdu.Visible=false;
-            if (!ee.chkSecondLanguage.Checked) ee.grpSecondLanguage.Visible = false;
-            if (ee.chkSingle.Checked) ee.grpSP.Visible = false;
-
+            if(!ee.chkSecondLanguage.Checked) ee.grpSecondLanguage.Visible = false;
+            ee.chkSingle.Checked = true;
+            ee.grpSP.Visible = false;
+            ee.grpSPFactors.Visible = false;
         }
 
         public static int getIntValue(string input)
         {
             int value = 0;
-            if (IsInt(input)) value = int.Parse(input);
-            if (input == string.Empty) value = 0;
+            if(IsInt(input)) value = int.Parse(input);
+            if(input == string.Empty) value = 0;
             return value;
         }
         public static float getFloatValue(string input)
         {
             float value = 0;
-            if (IsFloat(input)) value = float.Parse(input);
-            if (input == string.Empty) value = 0;
+            if(IsFloat(input)) value = float.Parse(input);
+            if(input == string.Empty) value = 0;
             return value;
         }
 
         public static decimal? getDecimalValue(string input)
         {
             decimal? value = null;
-            if (IsDecimal(input)) value = decimal.Parse(input);
-            if (input == string.Empty) value = null;
+            if(IsDecimal(input)) value = decimal.Parse(input);
+            if(input == string.Empty) value = null;
             return value;
         }
         public static double? getDoubleValue(string input)
         {
             double? value = null;
-            if (IsDouble(input)) value = double.Parse(input);
-            if (input == string.Empty) value = null;
+            if(IsDouble(input)) value = double.Parse(input);
+            if(input == string.Empty) value = null;
             return value;
         }
 
@@ -143,7 +135,7 @@ namespace EE
         public static bool IsIntInRange(string value, int low, int high)
         {
             int intValue;
-            if (Int32.TryParse(value, out intValue) && intValue >= low && intValue <= high) return true;
+            if(Int32.TryParse(value, out intValue) && intValue >= low && intValue <= high) return true;
             else return false;
 
         }
@@ -155,7 +147,7 @@ namespace EE
         public static bool IsFloatInRange(string value, float low, float high)
         {
             float floatValue;
-            if (float.TryParse(value, out floatValue) && floatValue >= low && floatValue <= high) return true;
+            if(float.TryParse(value, out floatValue) && floatValue >= low && floatValue <= high) return true;
             else return false;
         }
         public static bool IsDecimal(string value)

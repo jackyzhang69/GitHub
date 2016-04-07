@@ -51,18 +51,18 @@ namespace EE
 
         public static int getAgePoints(int age)
         {
-            if (age <= 17 || age >= 45) return 0;
-            if (age >= 21 && age <= 29) return 110;
+            if(age <= 17 || age >= 45) return 0;
+            if(age >= 21 && age <= 29) return 110;
             else return singleAgePoints[age];
         }
 
         public static int getPAAgePoints(int age)
         {
-            if (age <= 17 || age >= 45) return 0;
-            if (age >= 21 && age <= 29) return 110;
+            if(age <= 17 || age >= 45) return 0;
+            if(age >= 21 && age <= 29) return 100;
             else return PAAgePoints[age];
         }
-       
+
     }
     public class Education
     {
@@ -87,7 +87,7 @@ namespace EE
             {"two-year post-secondary credential",91},
             {"three-year+ post-secondary credential",112},
             {"2+ credentials & 1 being three years or more",119},
-            {"master’s level ",126},
+            {"master’s level",126},
             {"doctoral level",140}
         };
         static Dictionary<string, int> SPEducationPoints = new Dictionary<string, int>
@@ -103,37 +103,39 @@ namespace EE
 
         };
 
-        public int years { get; set; }
+        public bool oneEduMoreThanOneYear;
+        public bool oneEduMoreThanThreeYear;
+        public bool twoCredentialOneMoreThan3;
         public string edulevel { get; set; }
 
-        public Education(int year, string edu)
+        public Education(string edu)
         {
-            years = year;
             edulevel = edu;
+            oneOrMoreYears(edulevel);
         }
         public static int getEducationPoints(string edulevel)
         {
-            if (singleEducationPoints.ContainsKey(edulevel)) return singleEducationPoints[edulevel];
+            if(singleEducationPoints.ContainsKey(edulevel)) return singleEducationPoints[edulevel];
             else return 0;
         }
         public static int getPAEducationPoints(string edulevel)
         {
-            if (PAEducationPoints.ContainsKey(edulevel)) return PAEducationPoints[edulevel];
+            if(PAEducationPoints.ContainsKey(edulevel)) return PAEducationPoints[edulevel];
             else return 0;
         }
         public static int getSPEducationPoints(string edulevel)
         {
-            if (SPEducationPoints.ContainsKey(edulevel)) return SPEducationPoints[edulevel];
+            if(SPEducationPoints.ContainsKey(edulevel)) return SPEducationPoints[edulevel];
             else return 0;
         }
-        public static bool oneOrMoreYears(string edulevel)
+        public void oneOrMoreYears(string edulevel)
         {
-            bool yesorno = false;
-            for (int i = 0; i < singleEducationPoints.Count; i++)
+            for(int i = 0; i < singleEducationPoints.Count; i++)
             {
-                if (singleEducationPoints.ContainsKey(edulevel) && i >= 2) yesorno = true;
+                if(singleEducationPoints.ContainsKey(edulevel) && i >= 2) oneEduMoreThanOneYear = true;
+                if(singleEducationPoints.ContainsKey(edulevel) && i >= 4) oneEduMoreThanThreeYear = true;
+                if(singleEducationPoints.ContainsKey(edulevel) && i == 5) twoCredentialOneMoreThan3 = true;
             }
-            return yesorno;
         }
     }
     public class Language
@@ -198,23 +200,23 @@ namespace EE
 
         public static int getFirstLanguagePoints(int CLBlevel)
         {
-            if (singleFirstLanguagePoints.ContainsKey(CLBlevel)) return singleFirstLanguagePoints[CLBlevel];
+            if(singleFirstLanguagePoints.ContainsKey(CLBlevel)) return singleFirstLanguagePoints[CLBlevel];
             else return 0;
         }
         public static int getPAFirstLanguagePoints(int CLBlevel)
         {
-            if (singleFirstLanguagePoints.ContainsKey(CLBlevel)) return PAFirstLanguagePoints[CLBlevel];
+            if(singleFirstLanguagePoints.ContainsKey(CLBlevel)) return PAFirstLanguagePoints[CLBlevel];
             else return 0;
         }
         public static int getSPFirstLanguagePoints(int CLBlevel)
         {
-            if (singleFirstLanguagePoints.ContainsKey(CLBlevel)) return SPFirstLanguagePoints[CLBlevel];
+            if(singleFirstLanguagePoints.ContainsKey(CLBlevel)) return SPFirstLanguagePoints[CLBlevel];
             else return 0;
         }
 
         public static int getSecondLanguagePoints(int CLBlevel)
         {
-            if (singleSecondLanguagePoints.ContainsKey(CLBlevel)) return singleSecondLanguagePoints[CLBlevel];
+            if(singleSecondLanguagePoints.ContainsKey(CLBlevel)) return singleSecondLanguagePoints[CLBlevel];
             else return 0;
         }
     }
@@ -247,17 +249,20 @@ namespace EE
 
         public static int getCanadianWorkExperiencePoints(int years)
         {
-            if (canadianWorkExperiencePoints.ContainsKey(years)) return canadianWorkExperiencePoints[years];
+            if(canadianWorkExperiencePoints.ContainsKey(years)) return canadianWorkExperiencePoints[years];
+            else if(years > 5) return 80;
             else return 0;
         }
         public static int getPACanadianWorkExperiencePoints(int years)
         {
-            if (canadianWorkExperiencePoints.ContainsKey(years)) return PAcanadianWorkExperiencePoints[years];
+            if(canadianWorkExperiencePoints.ContainsKey(years)) return PAcanadianWorkExperiencePoints[years];
+            else if (years > 5) return 70;
             else return 0;
         }
         public static int getSPCanadianWorkExperiencePoints(int years)
         {
-            if (canadianWorkExperiencePoints.ContainsKey(years)) return PAcanadianWorkExperiencePoints[years];
+            if(canadianWorkExperiencePoints.ContainsKey(years)) return SPcanadianWorkExperiencePoints[years];
+            else if(years > 5) return 10;
             else return 0;
         }
 
@@ -326,11 +331,12 @@ namespace EE
             };
         public static int TEFtoCLB(int input, int index)  //input one of 4 points of TEF
         {
-            for (int i= 0; i < TEF.Length / 9; i++) {
-                if (input >= TEF[i, index * 2 - 1] && input <= TEF[i, index * 2]) return TEF[i, 0];
+            for(int i = 0; i < TEF.Length / 9; i++)
+            {
+                if(input >= TEF[i, index * 2 - 1] && input <= TEF[i, index * 2]) return TEF[i, 0];
             }
             return 0;
-        } 
+        }
         // four section sequence: Reading, Writing, Lisenting, Speaking
 
         //CLB <->CELPIP General, Version: After April 1, 2014
@@ -352,12 +358,12 @@ namespace EE
             int[] level = new int[4];
 
 
-            for (int i = 0; i < 4; i++) // search for 4 string 
+            for(int i = 0; i < 4; i++) // search for 4 string 
             {
-                foreach (KeyValuePair<string, int> kvp in CELPIPG13) // in the dictionary
+                foreach(KeyValuePair<string, int> kvp in CELPIPG13) // in the dictionary
                 {
 
-                    if (kvp.Key == scores[i]) level[i] = kvp.Value;  // find the match and assign the level to array;
+                    if(kvp.Key == scores[i]) level[i] = kvp.Value;  // find the match and assign the level to array;
                 }
 
             }
@@ -368,9 +374,9 @@ namespace EE
         {
 
             string feedback = "";
-            foreach (KeyValuePair<string, int> kvp in CELPIPG13)
+            foreach(KeyValuePair<string, int> kvp in CELPIPG13)
             {
-                if (kvp.Value == clb) feedback = kvp.Key;
+                if(kvp.Value == clb) feedback = kvp.Key;
             }
 
             return feedback;
@@ -379,9 +385,9 @@ namespace EE
         public static int IELTSGtoCLB(float reading, float writing, float listening, float speaking)
         {
             int[] clb = new int[IELTSG.Length / 5];
-            for (int i = 0; i < IELTSG.Length / 5; i++)
+            for(int i = 0; i < IELTSG.Length / 5; i++)
             {
-                if (reading >= IELTSG[i, 1] && writing >= IELTSG[i, 2] && listening >= IELTSG[i, 3] && speaking >= IELTSG[i, 4]) clb[i] = (int)IELTSG[i, 0];
+                if(reading >= IELTSG[i, 1] && writing >= IELTSG[i, 2] && listening >= IELTSG[i, 3] && speaking >= IELTSG[i, 4]) clb[i] = (int)IELTSG[i, 0];
 
             }
             return clb.Max();
@@ -399,9 +405,9 @@ namespace EE
         {
             int clb = 0;
             //Reading is in index 0
-            for (int i = 0; i < IELTSG.Length / 5; i++)
+            for(int i = 0; i < IELTSG.Length / 5; i++)
             {
-                if (input >= IELTSG[i, factor]) return clb = (int)IELTSG[i, 0];
+                if(input >= IELTSG[i, factor]) return clb = (int)IELTSG[i, 0];
 
             }
             return clb;
@@ -412,33 +418,33 @@ namespace EE
             int[] clb = new int[IELTSG.Length / 5];
             bool result = false;
             //check Reading
-            for (int i = 0; i < IELTSG.Length / 5; i++)
+            for(int i = 0; i < IELTSG.Length / 5; i++)
             {
-                if (reading >= IELTSG[i, 1]) clb[i] = (int)IELTSG[i, 0];
+                if(reading >= IELTSG[i, 1]) clb[i] = (int)IELTSG[i, 0];
 
             }
-            if (clb.Max() >= n) result = true; ;
+            if(clb.Max() >= n) result = true; ;
             //check writing
-            for (int i = 0; i < IELTSG.Length / 5; i++)
+            for(int i = 0; i < IELTSG.Length / 5; i++)
             {
-                if (writing >= IELTSG[i, 2]) clb[i] = (int)IELTSG[i, 0];
+                if(writing >= IELTSG[i, 2]) clb[i] = (int)IELTSG[i, 0];
 
             }
-            if (clb.Max() >= n) result = true;
+            if(clb.Max() >= n) result = true;
             //check listening
-            for (int i = 0; i < IELTSG.Length / 5; i++)
+            for(int i = 0; i < IELTSG.Length / 5; i++)
             {
-                if (listening >= IELTSG[i, 3]) clb[i] = (int)IELTSG[i, 0];
+                if(listening >= IELTSG[i, 3]) clb[i] = (int)IELTSG[i, 0];
 
             }
-            if (clb.Max() >= n) result = true;
+            if(clb.Max() >= n) result = true;
             //check speaking
-            for (int i = 0; i < IELTSG.Length / 5; i++)
+            for(int i = 0; i < IELTSG.Length / 5; i++)
             {
-                if (speaking >= IELTSG[i, 4]) clb[i] = (int)IELTSG[i, 0];
+                if(speaking >= IELTSG[i, 4]) clb[i] = (int)IELTSG[i, 0];
 
             }
-            if (clb.Max() >= n) result = true;
+            if(clb.Max() >= n) result = true;
             return result;
 
         }
@@ -448,12 +454,12 @@ namespace EE
         {
 
             List<float> feedback = new List<float>();
-            if (clb > 10) clb = 10;
-            if (clb >= 4)
+            if(clb > 10) clb = 10;
+            if(clb >= 4)
             {
-                for (int i = 0; i < IELTSG.Length / 5; i++)
+                for(int i = 0; i < IELTSG.Length / 5; i++)
                 {
-                    if ((int)IELTSG[i, 0] == clb)
+                    if((int)IELTSG[i, 0] == clb)
                     {
                         return new List<float> { IELTSG[i, 1], IELTSG[i, 2], IELTSG[i, 3], IELTSG[i, 4] };
                     }
@@ -469,7 +475,7 @@ namespace EE
         public bool married { get; set; }
         public string applicant { get; set; }
         public int age { get; set; }
-        public List<Education> education { get; set; }
+        public Education education { get; set; }
         public IELTS ielts { get; set; }
         public TEF tef { get; set; }
         public int firstLanguageOverAll { get; set; }
@@ -484,8 +490,6 @@ namespace EE
         public bool isOneOverCLB9 { get; set; }
         public int canadianWorkExperience { get; set; }
         public int foreignWorkExperience { get; set; }
-        public bool oneEduMoreThanOneYear { get; set; }
-        public bool oneEduMoreThanThreeYear { get; set; }
         public int numOfCredential { get; set; }
         public bool CofQ { get; set; }
 
@@ -504,81 +508,90 @@ namespace EE
         public int totalPoints { get; set; }
 
 
-        public void calculate()
+        public void calculate(int who) // 0 is single 1 is PA 2 is SP
         {
-            int CFWEP=0;
-            int EduLangCaWE=0;
+            int CFWEP = 0;
+            int EduLangCaWE = 0;
 
-            if (!married)
+            if(who == 0)  //single
             {
                 //1. Age
                 agePoints = Age.getAgePoints(age);
                 //2. Education
-                educationPoints = Education.getEducationPoints(education[0].edulevel); // First and the highest 
-                                                                                       //3. Language
-                                                                                       //3.1 First language
-                firstLanguageOverAll = CLB.IELTSGtoCLB(ielts.Reading, ielts.Writing, ielts.Listening, ielts.Speaking);
-                firstLanguageReadingPoints = Language.getFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Reading, 1));
-                firstLanguageWritingPoints = Language.getFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Writing, 2));
-                firstLanguageListeningPoints = Language.getFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Listening, 3));
-                firstLanguageSpeakingPoints = Language.getFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Speaking, 4));
-                firstLanguagePoints = firstLanguageReadingPoints + firstLanguageWritingPoints + firstLanguageListeningPoints + firstLanguageSpeakingPoints;
-                isOneOverCLB9 = CLB.isOneIELTSGThanCLBN(ielts.Reading, ielts.Writing, ielts.Listening, ielts.Speaking, 9);
+                educationPoints = Education.getEducationPoints(education.edulevel);
+                //3. Language
+                //3.1 First language                                                                                 if
+                if(ielts != null)
+                {
+                    firstLanguageOverAll = CLB.IELTSGtoCLB(ielts.Reading, ielts.Writing, ielts.Listening, ielts.Speaking);
+                    firstLanguageReadingPoints = Language.getFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Reading, 1));
+                    firstLanguageWritingPoints = Language.getFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Writing, 2));
+                    firstLanguageListeningPoints = Language.getFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Listening, 3));
+                    firstLanguageSpeakingPoints = Language.getFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Speaking, 4));
+                    firstLanguagePoints = firstLanguageReadingPoints + firstLanguageWritingPoints + firstLanguageListeningPoints + firstLanguageSpeakingPoints;
+                    isOneOverCLB9 = CLB.isOneIELTSGThanCLBN(ielts.Reading, ielts.Writing, ielts.Listening, ielts.Speaking, 9);
+                }
+
                 canadianWorkExperiencePoints = CanadianWorkExperience.getCanadianWorkExperiencePoints(canadianWorkExperience);
             }
-            else {
-                switch (applicant)
+            else if(who == 1)
+            {
+                agePoints = Age.getPAAgePoints(age);
+                //2. Education
+                educationPoints = Education.getPAEducationPoints(education.edulevel); // First and the highest 
+                //3. Language
+                //3.1 First language
+                if(ielts != null)
                 {
-                    case "PA":
-                        agePoints = Age.getPAAgePoints(age);
-                        //2. Education
-                        educationPoints = Education.getPAEducationPoints(education[0].edulevel); // First and the highest 
-                                                                                                 //3. Language
-                                                                                                 //3.1 First language
-                        firstLanguageOverAll = CLB.IELTSGtoCLB(ielts.Reading, ielts.Writing, ielts.Listening, ielts.Speaking);
-                        firstLanguageReadingPoints = Language.getPAFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Reading, 1));
-                        firstLanguageWritingPoints = Language.getPAFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Writing, 2));
-                        firstLanguageListeningPoints = Language.getPAFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Listening, 3));
-                        firstLanguageSpeakingPoints = Language.getPAFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Speaking, 4));
-                        firstLanguagePoints = firstLanguageReadingPoints + firstLanguageWritingPoints + firstLanguageListeningPoints + firstLanguageSpeakingPoints;
-                        isOneOverCLB9 = CLB.isOneIELTSGThanCLBN(ielts.Reading, ielts.Writing, ielts.Listening, ielts.Speaking, 9);
-
-                        //3.2 Second Language
-                        secondLanguageReadingPoints = Language.getSecondLanguagePoints(CLB.TEFtoCLB(tef.Reading, 1));
-                        secondLanguageWritingPoints = Language.getSecondLanguagePoints(CLB.TEFtoCLB(tef.Writing, 2));
-                        secondLanguageListeningPoints = Language.getSecondLanguagePoints(CLB.TEFtoCLB(tef.Listening, 3));
-                        secondLanguageSpeakingPoints = Language.getSecondLanguagePoints(CLB.TEFtoCLB(tef.Speaking, 4));
-                        secondLanguagePoints = secondLanguageReadingPoints + secondLanguageWritingPoints + secondLanguageListeningPoints + secondLanguageSpeakingPoints;
-                        secondLanguagePoints = secondLanguagePoints >= 22 ? 22 : secondLanguagePoints; //Max is 22
-                        canadianWorkExperiencePoints = CanadianWorkExperience.getPACanadianWorkExperiencePoints(canadianWorkExperience);
-                        break;
-                    case "SP":
-                        educationPoints = Education.getSPEducationPoints(education[0].edulevel); // First and the highest 
-                                                                                                 //3. Language
-                                                                                                 //3.1 First language
-                        firstLanguageOverAll = CLB.IELTSGtoCLB(ielts.Reading, ielts.Writing, ielts.Listening, ielts.Speaking);
-                        firstLanguageReadingPoints = Language.getSPFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Reading, 1));
-                        firstLanguageWritingPoints = Language.getSPFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Writing, 2));
-                        firstLanguageListeningPoints = Language.getSPFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Listening, 3));
-                        firstLanguageSpeakingPoints = Language.getSPFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Speaking, 4));
-                        firstLanguagePoints = firstLanguageReadingPoints + firstLanguageWritingPoints + firstLanguageListeningPoints + firstLanguageSpeakingPoints;
-                        canadianWorkExperiencePoints = CanadianWorkExperience.getSPCanadianWorkExperiencePoints(canadianWorkExperience);
-                        break;
+                    firstLanguageOverAll = CLB.IELTSGtoCLB(ielts.Reading, ielts.Writing, ielts.Listening, ielts.Speaking);
+                    firstLanguageReadingPoints = Language.getPAFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Reading, 1));
+                    firstLanguageWritingPoints = Language.getPAFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Writing, 2));
+                    firstLanguageListeningPoints = Language.getPAFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Listening, 3));
+                    firstLanguageSpeakingPoints = Language.getPAFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Speaking, 4));
+                    firstLanguagePoints = firstLanguageReadingPoints + firstLanguageWritingPoints +
+                                          firstLanguageListeningPoints + firstLanguageSpeakingPoints;
+                    isOneOverCLB9 = CLB.isOneIELTSGThanCLBN(ielts.Reading, ielts.Writing, ielts.Listening, ielts.Speaking, 9);
                 }
 
+
+                //3.2 Second Language
+                if(tef != null)
+                {
+                    secondLanguageReadingPoints = Language.getSecondLanguagePoints(CLB.TEFtoCLB(tef.Reading, 1));
+                    secondLanguageWritingPoints = Language.getSecondLanguagePoints(CLB.TEFtoCLB(tef.Writing, 2));
+                    secondLanguageListeningPoints = Language.getSecondLanguagePoints(CLB.TEFtoCLB(tef.Listening, 3));
+                    secondLanguageSpeakingPoints = Language.getSecondLanguagePoints(CLB.TEFtoCLB(tef.Speaking, 4));
+                    secondLanguagePoints = secondLanguageReadingPoints + secondLanguageWritingPoints +
+                                           secondLanguageListeningPoints + secondLanguageSpeakingPoints;
+                    secondLanguagePoints = secondLanguagePoints >= 22 ? 22 : secondLanguagePoints; //Max is 22 
+                }
+
+                // Canada work experience points
+                canadianWorkExperiencePoints =
+                    CanadianWorkExperience.getPACanadianWorkExperiencePoints(canadianWorkExperience);
+            }
+            else if(who == 2)
+            {
+                educationPoints = Education.getSPEducationPoints(education.edulevel); // First and the highest 
+                                                                                      //3. Language
+                if(ielts != null)
+                {
+                    firstLanguageOverAll = CLB.IELTSGtoCLB(ielts.Reading, ielts.Writing, ielts.Listening, ielts.Speaking);
+                    firstLanguageReadingPoints = Language.getSPFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Reading, 1));
+                    firstLanguageWritingPoints = Language.getSPFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Writing, 2));
+                    firstLanguageListeningPoints = Language.getSPFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Listening, 3));
+                    firstLanguageSpeakingPoints = Language.getSPFirstLanguagePoints(CLB.IELTSGto4CLB(ielts.Speaking, 4));
+                    firstLanguagePoints = firstLanguageReadingPoints + firstLanguageWritingPoints + firstLanguageListeningPoints + firstLanguageSpeakingPoints;
+                }                                                                         //3.1 First language
+
+                canadianWorkExperiencePoints = CanadianWorkExperience.getSPCanadianWorkExperiencePoints(canadianWorkExperience);
             }
 
-            if (applicant != "SP")
+            if(who != 2)
             {
                 // transferability points
-                oneEduMoreThanOneYear = false;
-                oneEduMoreThanThreeYear = false;
-                numOfCredential = education.Count;
-                for (int i = 0; i < education.Count; i++)
-                {
-                    if (education[i].years >= 1) oneEduMoreThanOneYear = true;
-                    if (education[i].years >= 3) oneEduMoreThanThreeYear = true;
-                }
+                //if(education.years >= 1) oneEduMoreThanOneYear = true;
+                //if(education.years >= 3) oneEduMoreThanThreeYear = true;
                 //1. education and language
                 educationAndLanguagePoints = getEduLang();
                 //2. Edu and Canada work experience
@@ -600,10 +613,10 @@ namespace EE
         private int getEduLang()
         {
             int score = 0;
-            if (oneEduMoreThanOneYear && firstLanguageOverAll >= 7 && isOneOverCLB9) score = 13;
-            if (oneEduMoreThanOneYear && firstLanguageOverAll >= 9) score = 25;
-            if (numOfCredential >= 2 && oneEduMoreThanThreeYear && firstLanguageOverAll >= 7 && isOneOverCLB9) score = 25;
-            if (numOfCredential >= 2 && oneEduMoreThanThreeYear && firstLanguageOverAll >= 9) score = 50;
+            if(education.oneEduMoreThanOneYear && firstLanguageOverAll >= 7 && isOneOverCLB9) score = 13;
+            if(education.oneEduMoreThanOneYear && firstLanguageOverAll >= 9) score = 25;
+            if(education.twoCredentialOneMoreThan3 && firstLanguageOverAll >= 7 && isOneOverCLB9) score = 25;
+            if(education.twoCredentialOneMoreThan3 && firstLanguageOverAll >= 9) score = 50;
 
             return score;
 
@@ -611,37 +624,38 @@ namespace EE
         private int getEduCanadaWE()
         {
             int score = 0;
-            if (oneEduMoreThanOneYear && canadianWorkExperience >= 1) score = 13;
-            if (oneEduMoreThanOneYear && canadianWorkExperience >= 2) score = 25;
-            if (numOfCredential >= 2 && oneEduMoreThanThreeYear && canadianWorkExperience >= 1) score = 25;
-            if (numOfCredential >= 2 && oneEduMoreThanThreeYear && canadianWorkExperience >= 2) score = 50;
+            if(education.oneEduMoreThanOneYear && canadianWorkExperience >= 1) score = 13;
+            if(education.oneEduMoreThanOneYear && canadianWorkExperience >= 2) score = 25;
+            if(education.twoCredentialOneMoreThan3 && canadianWorkExperience >= 1) score = 25;
+            if(education.twoCredentialOneMoreThan3 && canadianWorkExperience >= 2) score = 50;
 
             return score;
         }
         private int getLangFWE()
         {
             int score = 0;
-            if (foreignWorkExperience >= 1 && foreignWorkExperience <= 2 && firstLanguageOverAll >= 7) score = 13;
-            if (foreignWorkExperience >= 1 && foreignWorkExperience <= 2 && firstLanguageOverAll >= 9) score = 25;
-            if (foreignWorkExperience >= 3 && firstLanguageOverAll >= 7 && isOneOverCLB9) score = 25;
-            if (foreignWorkExperience >= 3 && firstLanguageOverAll >= 9) score = 50;
+            if(foreignWorkExperience >= 1 && foreignWorkExperience <= 2 && firstLanguageOverAll >= 7) score = 13;
+            if(foreignWorkExperience >= 1 && foreignWorkExperience <= 2 && firstLanguageOverAll >= 9) score = 25;
+            if(foreignWorkExperience >= 3 && firstLanguageOverAll >= 7 && isOneOverCLB9) score = 25;
+            if(foreignWorkExperience >= 3 && firstLanguageOverAll >= 9) score = 50;
             return score;
         }
         private int getCFWE()
         {
             int score = 0;
-            if (foreignWorkExperience >= 1 && foreignWorkExperience <= 2 && canadianWorkExperience >= 1) score = 13;
-            if (foreignWorkExperience >= 1 && foreignWorkExperience <= 2 && canadianWorkExperience >= 2) score = 25;
-            if (foreignWorkExperience >= 3 && canadianWorkExperience >= 1) score = 25;
-            if (foreignWorkExperience >= 3 && canadianWorkExperience >= 2) score = 50;
+            if(foreignWorkExperience >= 1 && foreignWorkExperience <= 2 && canadianWorkExperience >= 1) score = 13;
+            if(foreignWorkExperience >= 1 && foreignWorkExperience <= 2 && canadianWorkExperience >= 2) score = 25;
+            if(foreignWorkExperience >= 3 && canadianWorkExperience >= 1) score = 25;
+            if(foreignWorkExperience >= 3 && canadianWorkExperience >= 2) score = 50;
             return score;
         }
         private int getCofQPoints()
         {
             int score = 0;
-            if (CofQ && firstLanguageOverAll >= 5) score = 25;
-            if (CofQ && firstLanguageOverAll >= 7) score = 50;
+            if(CofQ && firstLanguageOverAll >= 5) score = 25;
+            if(CofQ && firstLanguageOverAll >= 7) score = 50;
             return score;
-        } }
+        }
+    }
 
 }
