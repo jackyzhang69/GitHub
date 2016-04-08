@@ -33,17 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="iTextAsian">
-      <HintPath>..\..\..\References\iTextAsian.dll</HintPath>
-    </Reference>
     <Reference Include="itextsharp">
-      <HintPath>..\..\..\References\itextsharp.dll</HintPath>
+      <HintPath>..\..\..\..\References\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp.pdfa">
-      <HintPath>..\..\..\References\itextsharp.pdfa.dll</HintPath>
+      <HintPath>..\..\..\..\References\itextsharp.pdfa.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp.xtra">
-      <HintPath>..\..\..\References\itextsharp.xtra.dll</HintPath>
+      <HintPath>..\..\..\..\References\itextsharp.xtra.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

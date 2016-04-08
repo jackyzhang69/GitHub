@@ -38,6 +38,7 @@ namespace EE
             if(!ee.chkSingle.Checked)
             {
                 SP.married = true;
+                PA.married = true;
                 SP.applicant = "SP";
                 if(ee.cmbSPHighestEdu.SelectedIndex != -1) SP.education = new Education(ee.cmbSPHighestEdu.Text);
                 else return;

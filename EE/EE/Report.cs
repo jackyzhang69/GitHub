@@ -25,7 +25,7 @@ namespace EE
                 {"Canada and Foeign Work Experience",pa.canadianWorkExperience+" year(s) in Canada"+pa.foreignWorkExperience+" year(s) outside of Canada", pa.canadaWorkExperienceAndForeignWorkExperiencePoints.ToString()},
                 {"Certificate of Qualification",pa.CofQ.ToString(),pa.CofQAndLauangePoints.ToString() },
                 {"Spouse Education Score",pa.married?sp.education.edulevel:"N/A",sp.educationPoints.ToString()},
-                {"Spouse Language",pa.married?sp.firstLanguageOverAll.ToString():"N/a",sp.firstLanguagePoints.ToString() },
+                {"Spouse Language",pa.married?sp.firstLanguageOverAll.ToString():"N/A",sp.firstLanguagePoints.ToString() },
                 {"Spouse Canada Work Experience",pa.married?sp.canadianWorkExperience.ToString():"N/A",sp.canadianWorkExperiencePoints.ToString() }
             };
 
@@ -104,17 +104,11 @@ namespace EE
             //float x = doc.Left + sign.GetWidthPoint();
             //MessageBox.Show(x.ToString());
 
-            Chunk contact1 = new Chunk("\nContact Information\nGuangson Headquarter:\n#1017 4500 Kingsway, Burnaby V5H 2A9\nEmail:info@guangson.com\tTel:+ 1 604 - 282 - 1536");
-            //contact1.Font = fontBody;
+            //Chunk contact1 = new Chunk("\nContact Information\nGuangson Headquarter:\n#1017 4500 Kingsway, Burnaby V5H 2A9\nEmail:info@guangson.com\tTel:+ 1 604 - 282 - 1536");
+            //Chunk contact2 = new Chunk("Guangson Immigration:\n#2319 4500 Kingsway, Burnaby V5H 2A9\nEmail:immigration@guangson.com\t+ 1 604-558-1536");
+            Chunk contact1 = new Chunk("\n\n\nContact Information\nJacky Zhang\nRCIC:R511623\n1411 Garibaldi Pl, Coquitlam, BC V3E 2S6\nEmail:Noah.Consultant@outlook.com\tTel:+ 1 778-321-5110");
             doc.Add(contact1);
-
-            
-
-            Chunk contact2 = new Chunk("Guangson Immigration:\n#2319 4500 Kingsway, Burnaby V5H 2A9\nEmail:immigration@guangson.com\t+ 1 604-558-1536");
-            //contact2.Font = cxfontLevel1;
-            doc.Add(contact2);
-           
-
+            //doc.Add(contact2);
             doc.Close();
 
             // Open the new created pdf
@@ -140,42 +134,5 @@ namespace EE
 
     }
 
-    public class SWInfo
-    {
-
-        public string Client { get; set; }
-        public int TotalPoints { get; set; }
-
-        public string NOC { get; set; }
-        public char SkillLevel { get; set; }
-        public bool Intop100 { get; set; }
-        public bool CurrentWorkInBCPosition { get; set; }
-        public float Wage { get; set; }
-        public string Region { get; set; }
-        public float DirectWorkExperience { get; set; }
-        public bool OneYearDirectExperienceInCanada { get; set; }
-        public string Education { get; set; }
-        public string EducationBonus { get; set; }
-        public int CLB { get; set; }
-        public float[] WageDetail { get; set; }  // Working hours per week, hourly rate, monthly rate and annual salary
-        public float[] IELTS { get; set; }       // IETLS: listening, reading, writing and speaking
-        public int[] CLEPIPG14 { get; set; }     // CELPIP 2014:listening, reading, writing and speaking
-        public string[] CELPIPG13 { get; set; }  // CELPIP 2013:listening, reading, writing and speaking
-
-        public int NocBonusPoints { get; set; }
-        public int JobLevelPoints { get; set; }
-        public int CurrentWorkPoints { get; set; }
-        public int WagePoints { get; set; }
-        public int RegionPoints { get; set; }
-        public int OccupationBonus { get; set; }
-        public int SkillLevelPoints { get; set; }
-        public int Top100Bonus { get; set; }
-        public int DirectWorkExperiencePoints { get; set; }
-        public int OneYearDirectExperienceInCanadaPoints { get; set; }
-        public int EducationPoints { get; set; }
-        public int EducationBonusPoints { get; set; }
-        public int CLBPoints { get; set; }
-
-
-    }
+  
 }
