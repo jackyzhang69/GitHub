@@ -15,17 +15,26 @@ namespace EE
         public static void getInput(EE ee)
         {
             PA.married = false;
+            PA.name = ee.txtClientName.Text;
             PA.age = getIntValue(ee.txtAge.Text);
             if(ee.cmbHighestEdu.SelectedIndex != -1) PA.education = new Education(ee.cmbHighestEdu.Text);
             else return;
             if(ee.cmbLanguageType1.Text == "IELTS") PA.ielts = new IELTS(getFloatValue(ee.txtL1.Text), getFloatValue(ee.txtS1.Text), getFloatValue(ee.txtR1.Text), getFloatValue(ee.txtW1.Text));
-            if(ee.chkSecondLanguage.Checked && ee.cmbLanguageType2.Text == "TEF")
+            if (ee.chkSecondLanguage.Checked && ee.cmbLanguageType2.Text == "TEF")
+            {
                 PA.tef = new TEF(getIntValue(ee.txtL2.Text), getIntValue(ee.txtS2.Text), getIntValue(ee.txtR2.Text),
                     getIntValue(ee.txtW2.Text));
-            else PA.tef = new TEF(0, 0, 0, 0);
+                PA.isSecondLanguage = true;
+            }
+
+            else
+            {
+                PA.tef = new TEF(0, 0, 0, 0);
+                PA.isSecondLanguage = false;
+            }
             PA.canadianWorkExperience = getIntValue(ee.txtCnWe.Text);
             PA.foreignWorkExperience = getIntValue(ee.txtFnWe.Text);
-            if(ee.chkCofQ.Checked) PA.CofQ = true;
+            PA.CofQ = ee.chkCofQ.Checked?true:false;
             if(!ee.chkSingle.Checked)
             {
                 SP.married = true;
@@ -50,6 +59,7 @@ namespace EE
                 SP.canadianWorkExperiencePoints = 0;
                 SP.totalPoints = 0;
             }
+            if (!PA.isSecondLanguage) PA.secondLanguagePoints = 0;
 
             ee.txtAgeScore.Text = PA.agePoints.ToString();
             ee.txtEduScore.Text = PA.educationPoints.ToString();
@@ -66,6 +76,8 @@ namespace EE
             ee.lblTotalScore.Text = (PA.totalPoints + SP.totalPoints).ToString();
 
         }
+        public static void getReport() { Report.generateReport(PA, SP); }
+   
 
         public static void Construct(EE ee)
         {
@@ -73,25 +85,31 @@ namespace EE
             {
                 ee.cmbHighestEdu.Items.Add(kvp.Key);
             }
+            ee.cmbHighestEdu.SelectedIndex = 4;  //defalut is 3 years+ college or university
 
             foreach(KeyValuePair<int, string> kvp in Language.languageType)
             {
                 ee.cmbLanguageType1.Items.Add(kvp.Value);
             }
-            foreach(KeyValuePair<int, string> kvp in Language.secondLanguageType)
+            ee.cmbLanguageType1.SelectedIndex = 0; //default is IELTS
+
+            foreach (KeyValuePair<int, string> kvp in Language.secondLanguageType)
             {
                 ee.cmbLanguageType2.Items.Add(kvp.Value);
             }
-            foreach(KeyValuePair<int, string> kvp in Language.languageType)
+            ee.cmbLanguageType2.SelectedIndex = 0;//default is TEF
+            foreach (KeyValuePair<int, string> kvp in Language.languageType)
             {
                 ee.cmbSPLanguageType.Items.Add(kvp.Value);
             }
+            ee.cmbSPLanguageType.SelectedIndex = 0; //default is IELTS
             foreach(KeyValuePair<string, int> kvp in Education.singleEducationPoints)
             {
                 ee.cmbSPHighestEdu.Items.Add(kvp.Key);
             }
+            ee.cmbSPHighestEdu.SelectedIndex = 4; //defalut is 3 years+ college or university
 
-            if(!ee.chkSecondLanguage.Checked) ee.grpSecondLanguage.Visible = false;
+            if (!ee.chkSecondLanguage.Checked) ee.grpSecondLanguage.Visible = false;
             ee.chkSingle.Checked = true;
             ee.grpSP.Visible = false;
             ee.grpSPFactors.Visible = false;

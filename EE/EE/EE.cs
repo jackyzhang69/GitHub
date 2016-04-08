@@ -48,6 +48,47 @@ namespace EE
         private void chkSecondLanguage_CheckedChanged(object sender, EventArgs e)
         {
             grpSecondLanguage.Visible = chkSecondLanguage.Checked ? true : false;
+            EEFormOps.getInput(this);
+            EEFormOps.refreshScore(this);
+        }
+
+        private void txtAge_Leave(object sender, EventArgs e)
+        {
+            EEFormOps.getInput(this);
+            EEFormOps.refreshScore(this);
+        }
+
+        private void cmbHighestEdu_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            EEFormOps.getInput(this);
+            EEFormOps.refreshScore(this);
+        }
+
+        private void text_Leave(object sender, EventArgs e)
+        {
+            EEFormOps.getInput(this);
+            EEFormOps.refreshScore(this);
+        }
+
+        private void chkCofQ_CheckedChanged(object sender, EventArgs e)
+        {
+            EEFormOps.getInput(this);
+            EEFormOps.refreshScore(this);
+        }
+
+        private void txt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals('\r'))
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void btnEEGenerateReport_Click(object sender, EventArgs e)
+        {
+            EEFormOps.getInput(this);
+            EEFormOps.refreshScore(this);
+            EEFormOps.getReport();
         }
     }
 }
