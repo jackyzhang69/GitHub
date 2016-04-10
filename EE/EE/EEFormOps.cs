@@ -9,14 +9,14 @@ namespace EE
 {
     public class EEFormOps
     {
-        public static Person PA = new Person();
-        public static Person SP = new Person();
+        public static Calculation PA = new Calculation();
+        public static Calculation SP = new Calculation();
 
         public static void getInput(EE ee)
         {
             PA.married = false;
-            PA.name = ee.txtClientName.Text;
-            PA.age = getIntValue(ee.txtAge.Text);
+            PA.applicantName = ee.txtClientName.Text;
+            PA.age = new Age(getIntValue(ee.txtAge.Text));
             if(ee.cmbHighestEdu.SelectedIndex != -1) PA.education = new Education(ee.cmbHighestEdu.Text);
             else return;
             if(ee.cmbLanguageType1.Text == "IELTS") PA.ielts = new IELTS(getFloatValue(ee.txtL1.Text), getFloatValue(ee.txtS1.Text), getFloatValue(ee.txtR1.Text), getFloatValue(ee.txtW1.Text));
@@ -32,7 +32,7 @@ namespace EE
                 PA.tef = new TEF(0, 0, 0, 0);
                 PA.isSecondLanguage = false;
             }
-            PA.canadianWorkExperience = getIntValue(ee.txtCnWe.Text);
+            PA.canadaWorkExperience = getIntValue(ee.txtCnWe.Text);
             PA.foreignWorkExperience = getIntValue(ee.txtFnWe.Text);
             PA.CofQ = ee.chkCofQ.Checked?true:false;
             if(!ee.chkSingle.Checked)
@@ -43,7 +43,7 @@ namespace EE
                 if(ee.cmbSPHighestEdu.SelectedIndex != -1) SP.education = new Education(ee.cmbSPHighestEdu.Text);
                 else return;
                 if(ee.cmbSPLanguageType.Text == "IELTS") SP.ielts = new IELTS(getFloatValue(ee.txtSPR.Text), getFloatValue(ee.txtSPW.Text), getFloatValue(ee.txtSPL.Text), getFloatValue(ee.txtSPS.Text));
-                SP.canadianWorkExperience = getIntValue(ee.txtSPCaWe.Text);
+                SP.canadaWorkExperience = getIntValue(ee.txtSPCaWe.Text);
                 SP.calculate(2);
             }
             if(ee.chkSingle.Checked) PA.calculate(0);
@@ -82,29 +82,29 @@ namespace EE
 
         public static void Construct(EE ee)
         {
-            foreach(KeyValuePair<string, int> kvp in Education.singleEducationPoints)
+            foreach(KeyValuePair<string, int> kvp in PolicyData.singleEducationPoints)
             {
                 ee.cmbHighestEdu.Items.Add(kvp.Key);
             }
             ee.cmbHighestEdu.SelectedIndex = 4;  //defalut is 3 years+ college or university
 
-            foreach(KeyValuePair<int, string> kvp in Language.languageType)
+            foreach(KeyValuePair<int, string> kvp in PolicyData.languageType)
             {
                 ee.cmbLanguageType1.Items.Add(kvp.Value);
             }
             ee.cmbLanguageType1.SelectedIndex = 0; //default is IELTS
 
-            foreach (KeyValuePair<int, string> kvp in Language.secondLanguageType)
+            foreach (KeyValuePair<int, string> kvp in PolicyData.secondLanguageType)
             {
                 ee.cmbLanguageType2.Items.Add(kvp.Value);
             }
             ee.cmbLanguageType2.SelectedIndex = 0;//default is TEF
-            foreach (KeyValuePair<int, string> kvp in Language.languageType)
+            foreach (KeyValuePair<int, string> kvp in PolicyData.languageType)
             {
                 ee.cmbSPLanguageType.Items.Add(kvp.Value);
             }
             ee.cmbSPLanguageType.SelectedIndex = 0; //default is IELTS
-            foreach(KeyValuePair<string, int> kvp in Education.singleEducationPoints)
+            foreach(KeyValuePair<string, int> kvp in PolicyData.singleEducationPoints)
             {
                 ee.cmbSPHighestEdu.Items.Add(kvp.Key);
             }

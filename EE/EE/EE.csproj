@@ -55,7 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Definition.cs" />
+    <Compile Include="Language.cs" />
     <Compile Include="EE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,8 +63,9 @@
       <DependentUpon>EE.cs</DependentUpon>
     </Compile>
     <Compile Include="EEFormOps.cs" />
-    <Compile Include="EEPolicy.cs" />
+    <Compile Include="Calculation.cs" />
     <Compile Include="PDFItems.cs" />
+    <Compile Include="PolicyData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report.cs" />

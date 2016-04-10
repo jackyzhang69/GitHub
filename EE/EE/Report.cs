@@ -10,7 +10,7 @@ namespace EE
     public class Report
     {
 
-        public static void generateReport(Person pa, Person sp)
+        public static void generateReport(Calculation pa, Calculation sp)
         {
             string[,] info = new string[,] {
                 {"Factors","Your Condition","Your Points" },
@@ -18,15 +18,15 @@ namespace EE
                 {"Education",pa.education.edulevel.ToString(),pa.educationPoints.ToString()},
                 {"First Language",pa.firstLanguageOverAll.ToString(),pa.firstLanguagePoints.ToString()},
                 {"Second Language",pa.secondLanguageOverAll.ToString(),pa.secondLanguagePoints.ToString()},
-                {"Canada Experience",pa.canadianWorkExperience.ToString(), pa.canadianWorkExperiencePoints.ToString()},
+                {"Canada Experience",pa.canadaWorkExperience.ToString(), pa.canadianWorkExperiencePoints.ToString()},
                 {"Education Language", "Combination score of education and language",pa.educationAndLanguagePoints.ToString()},
-                {"Education Canada Work Experience","Education & "+pa.canadianWorkExperience+" year(s) Canada Work Experience combination score",pa.educationAndCanadaWorkExperiencePoints.ToString()},
+                {"Education Canada Work Experience","Education & "+pa.canadaWorkExperience+" year(s) Canada Work Experience combination score",pa.educationAndCanadaWorkExperiencePoints.ToString()},
                 {"Language Foreign Work Experience","Language & "+pa.foreignWorkExperience+" year(s) Foreign work experience combination score", pa.languageAndForeignWorkExperiencePoints.ToString()},
-                {"Canada and Foeign Work Experience",pa.canadianWorkExperience+" year(s) in Canada"+pa.foreignWorkExperience+" year(s) outside of Canada", pa.canadaWorkExperienceAndForeignWorkExperiencePoints.ToString()},
+                {"Canada and Foeign Work Experience",pa.canadaWorkExperience+" year(s) in Canada"+pa.foreignWorkExperience+" year(s) outside of Canada", pa.canadaWorkExperienceAndForeignWorkExperiencePoints.ToString()},
                 {"Certificate of Qualification",pa.CofQ.ToString(),pa.CofQAndLauangePoints.ToString() },
                 {"Spouse Education Score",pa.married?sp.education.edulevel:"N/A",sp.educationPoints.ToString()},
                 {"Spouse Language",pa.married?sp.firstLanguageOverAll.ToString():"N/A",sp.firstLanguagePoints.ToString() },
-                {"Spouse Canada Work Experience",pa.married?sp.canadianWorkExperience.ToString():"N/A",sp.canadianWorkExperiencePoints.ToString() }
+                {"Spouse Canada Work Experience",pa.married?sp.canadaWorkExperience.ToString():"N/A",sp.canadianWorkExperiencePoints.ToString() }
             };
 
 
@@ -34,7 +34,7 @@ namespace EE
             Document doc = new Document(PageSize.LETTER, 72, 72, 72, 72);
             
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string fn = path + @"\EE Points-" + pa.name + DateTime.Now.ToString("yyMMdd") + "-" + String.Format("{0:hh}", DateTime.Now) + String.Format("{0:mm}", DateTime.Now) + String.Format("{0:ss}", DateTime.Now) + ".pdf";
+            string fn = path + @"\EE Points-" + pa.applicantName + DateTime.Now.ToString("yyMMdd") + "-" + String.Format("{0:hh}", DateTime.Now) + String.Format("{0:mm}", DateTime.Now) + String.Format("{0:ss}", DateTime.Now) + ".pdf";
             PdfWriter.GetInstance(doc, new FileStream(fn, FileMode.Create));
 
             doc.Open();
@@ -54,7 +54,7 @@ namespace EE
 
             Paragraph Title = (new Paragraph(18.5f, " Express Entry Scoring Anlaysis", font.fontLevel3) { SpacingAfter = 15 });
             if (!pa.married) sp.totalPoints = 0;
-            Paragraph paraforClient = (new Paragraph(18.5f, "For: " + pa.name + "   Date: " + DateTime.Today.ToString("MMM-dd,yyyy") + "     Total Points: " + (pa.totalPoints+sp.totalPoints).ToString(), font.fontLevel6) { SpacingAfter = 10 });
+            Paragraph paraforClient = (new Paragraph(18.5f, "For: " + pa.applicantName + "   Date: " + DateTime.Today.ToString("MMM-dd,yyyy") + "     Total Points: " + (pa.totalPoints+sp.totalPoints).ToString(), font.fontLevel6) { SpacingAfter = 10 });
             Title.Alignment = Element.ALIGN_CENTER;
             paraforClient.Alignment = Element.ALIGN_CENTER;
             ////para.IndentationRight = 10;
@@ -74,7 +74,7 @@ namespace EE
             // float[] width = new float[3] { toUnit(2.17f),toUnit(2.17f),toUnit(2.17f)};
             table.WidthPercentage = 100;
             table.GetFittingRows(18f, 0);
-            PdfPCell cell = new PdfPCell(new Phrase((pa.name + " Scores in detail\n"), font.fontLevel5));
+            PdfPCell cell = new PdfPCell(new Phrase((pa.applicantName + " Scores in detail\n"), font.fontLevel5));
             cell.Colspan = 3;
 
             cell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
@@ -104,11 +104,11 @@ namespace EE
             //float x = doc.Left + sign.GetWidthPoint();
             //MessageBox.Show(x.ToString());
 
-            //Chunk contact1 = new Chunk("\nContact Information\nGuangson Headquarter:\n#1017 4500 Kingsway, Burnaby V5H 2A9\nEmail:info@guangson.com\tTel:+ 1 604 - 282 - 1536");
-            //Chunk contact2 = new Chunk("Guangson Immigration:\n#2319 4500 Kingsway, Burnaby V5H 2A9\nEmail:immigration@guangson.com\t+ 1 604-558-1536");
-            Chunk contact1 = new Chunk("\n\n\nContact Information\nJacky Zhang\nRCIC:R511623\n1411 Garibaldi Pl, Coquitlam, BC V3E 2S6\nEmail:Noah.Consultant@outlook.com\tTel:+ 1 778-321-5110");
+            Chunk contact1 = new Chunk("\nContact Information\nGuangson Headquarter:\n#1017 4500 Kingsway, Burnaby V5H 2A9\nEmail:info@guangson.com\tTel:+ 1 604 - 282 - 1536");
+            Chunk contact2 = new Chunk("Guangson Immigration:\n#2319 4500 Kingsway, Burnaby V5H 2A9\nEmail:immigration@guangson.com\t+ 1 604-558-1536");
+            //Chunk contact1 = new Chunk("\n\n\nContact Information\nJacky Zhang\nRCIC:R511623\n1411 Garibaldi Pl, Coquitlam, BC V3E 2S6\nEmail:Noah.Consultant@outlook.com\tTel:+ 1 778-321-5110");
             doc.Add(contact1);
-            //doc.Add(contact2);
+            doc.Add(contact2);
             doc.Close();
 
             // Open the new created pdf
