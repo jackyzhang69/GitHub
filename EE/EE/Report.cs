@@ -10,26 +10,24 @@ namespace EE
     public class Report
     {
 
-        public static void generateReport(Calculation pa, Calculation sp)
+        public static void generateReport(Person pa, Person sp)
         {
             string[,] info = new string[,] {
                 {"Factors","Your Condition","Your Points" },
-                {"Age",pa.age.ToString(),pa.agePoints.ToString()},
+                {"Age",pa.age._age.ToString(),pa.agePoints.ToString()},
                 {"Education",pa.education.edulevel.ToString(),pa.educationPoints.ToString()},
                 {"First Language",pa.firstLanguageOverAll.ToString(),pa.firstLanguagePoints.ToString()},
                 {"Second Language",pa.secondLanguageOverAll.ToString(),pa.secondLanguagePoints.ToString()},
-                {"Canada Experience",pa.canadaWorkExperience.ToString(), pa.canadianWorkExperiencePoints.ToString()},
+                {"Canada Experience",pa.caWE._years.ToString(), pa.canadianWorkExperiencePoints.ToString()},
                 {"Education Language", "Combination score of education and language",pa.educationAndLanguagePoints.ToString()},
-                {"Education Canada Work Experience","Education & "+pa.canadaWorkExperience+" year(s) Canada Work Experience combination score",pa.educationAndCanadaWorkExperiencePoints.ToString()},
+                {"Education Canada Work Experience","Education & "+pa.caWE._years+" year(s) Canada Work Experience combination score",pa.educationAndCanadaWorkExperiencePoints.ToString()},
                 {"Language Foreign Work Experience","Language & "+pa.foreignWorkExperience+" year(s) Foreign work experience combination score", pa.languageAndForeignWorkExperiencePoints.ToString()},
-                {"Canada and Foeign Work Experience",pa.canadaWorkExperience+" year(s) in Canada"+pa.foreignWorkExperience+" year(s) outside of Canada", pa.canadaWorkExperienceAndForeignWorkExperiencePoints.ToString()},
+                {"Canada and Foeign Work Experience",pa.caWE._years+" year(s) in Canada"+pa.foreignWorkExperience+" year(s) outside of Canada", pa.canadaWorkExperienceAndForeignWorkExperiencePoints.ToString()},
                 {"Certificate of Qualification",pa.CofQ.ToString(),pa.CofQAndLauangePoints.ToString() },
-                {"Spouse Education Score",pa.married?sp.education.edulevel:"N/A",sp.educationPoints.ToString()},
-                {"Spouse Language",pa.married?sp.firstLanguageOverAll.ToString():"N/A",sp.firstLanguagePoints.ToString() },
-                {"Spouse Canada Work Experience",pa.married?sp.canadaWorkExperience.ToString():"N/A",sp.canadianWorkExperiencePoints.ToString() }
+                {"Spouse Education Score",!pa.single?sp.education.edulevel:"N/A",sp.educationPoints.ToString()},
+                {"Spouse Language",!pa.single?sp.firstLanguageOverAll.ToString():"N/A",sp.firstLanguagePoints.ToString() },
+                {"Spouse Canada Work Experience",!pa.single?sp.caWE._years.ToString():"N/A",sp.canadianWorkExperiencePoints.ToString() }
             };
-
-
 
             Document doc = new Document(PageSize.LETTER, 72, 72, 72, 72);
             
@@ -53,7 +51,7 @@ namespace EE
             PDFItems font = new PDFItems();
 
             Paragraph Title = (new Paragraph(18.5f, " Express Entry Scoring Anlaysis", font.fontLevel3) { SpacingAfter = 15 });
-            if (!pa.married) sp.totalPoints = 0;
+            if (pa.single) sp.totalPoints = 0;
             Paragraph paraforClient = (new Paragraph(18.5f, "For: " + pa.applicantName + "   Date: " + DateTime.Today.ToString("MMM-dd,yyyy") + "     Total Points: " + (pa.totalPoints+sp.totalPoints).ToString(), font.fontLevel6) { SpacingAfter = 10 });
             Title.Alignment = Element.ALIGN_CENTER;
             paraforClient.Alignment = Element.ALIGN_CENTER;

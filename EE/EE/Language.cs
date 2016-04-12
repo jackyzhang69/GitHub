@@ -192,7 +192,7 @@ namespace EE
         public int ToCLB() //return general CLB level
         {
             List<int> clb = new List<int>();
-            for (int i = 0; i < 4; i++) clb.Add(ToCLB(i));
+            for (int i = 1; i <= 4; i++) clb.Add(ToCLB(i));
             return clb.Min();
         }
     }

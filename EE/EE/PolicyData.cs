@@ -83,7 +83,7 @@ namespace EE
             {"two-year post-secondary credential",7},
             {"three-year+ post-secondary credential",8},
             {"2+ credentials & 1 being three years or more",9},
-            {"master’s level ",9},
+            {"master’s level",9},
             {"doctoral level",10}
         };
 
@@ -135,7 +135,7 @@ namespace EE
             {12,5}
 
         };
-        public static Dictionary<int, int> singleSecondLanguagePoints = new Dictionary<int, int>
+        public static Dictionary<int, int> SecondLanguagePoints = new Dictionary<int, int>
         {
             {5,1},
             {6,1},

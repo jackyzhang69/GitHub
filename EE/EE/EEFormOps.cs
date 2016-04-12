@@ -9,46 +9,45 @@ namespace EE
 {
     public class EEFormOps
     {
-        public static Calculation PA = new Calculation();
-        public static Calculation SP = new Calculation();
+        public static Person PA = new Person();
+        public static Person SP = new Person();
 
         public static void getInput(EE ee)
         {
-            PA.married = false;
-            PA.applicantName = ee.txtClientName.Text;
             PA.age = new Age(getIntValue(ee.txtAge.Text));
-            if(ee.cmbHighestEdu.SelectedIndex != -1) PA.education = new Education(ee.cmbHighestEdu.Text);
+            PA.applicantName = ee.txtClientName.Text;
+            if (ee.cmbHighestEdu.SelectedIndex != -1) PA.education = new Education(ee.cmbHighestEdu.Text);
             else return;
-            if(ee.cmbLanguageType1.Text == "IELTS") PA.ielts = new IELTS(getFloatValue(ee.txtL1.Text), getFloatValue(ee.txtS1.Text), getFloatValue(ee.txtR1.Text), getFloatValue(ee.txtW1.Text));
+            if (ee.cmbLanguageType1.Text == "IELTS") PA.ielts = new IELTS(getFloatValue(ee.txtR1.Text),getFloatValue(ee.txtW1.Text),getFloatValue(ee.txtL1.Text), getFloatValue(ee.txtS1.Text));
             if (ee.chkSecondLanguage.Checked && ee.cmbLanguageType2.Text == "TEF")
             {
-                PA.tef = new TEF(getIntValue(ee.txtL2.Text), getIntValue(ee.txtS2.Text), getIntValue(ee.txtR2.Text),
-                    getIntValue(ee.txtW2.Text));
+                PA.tef = new TEF(getIntValue(ee.txtR2.Text),getIntValue(ee.txtW2.Text),getIntValue(ee.txtL2.Text), getIntValue(ee.txtS2.Text));
                 PA.isSecondLanguage = true;
             }
-
             else
             {
                 PA.tef = new TEF(0, 0, 0, 0);
                 PA.isSecondLanguage = false;
             }
-            PA.canadaWorkExperience = getIntValue(ee.txtCnWe.Text);
+            PA.caWE = new CanadaWorkExperience(getIntValue(ee.txtCnWe.Text));
             PA.foreignWorkExperience = getIntValue(ee.txtFnWe.Text);
-            PA.CofQ = ee.chkCofQ.Checked?true:false;
-            if(!ee.chkSingle.Checked)
+            PA.CofQ = ee.chkCofQ.Checked ? true : false;
+            // check if PA is single
+            if (ee.chkSingle.Checked)
             {
-                SP.married = true;
-                PA.married = true;
-                SP.applicant = "SP";
-                if(ee.cmbSPHighestEdu.SelectedIndex != -1) SP.education = new Education(ee.cmbSPHighestEdu.Text);
-                else return;
-                if(ee.cmbSPLanguageType.Text == "IELTS") SP.ielts = new IELTS(getFloatValue(ee.txtSPR.Text), getFloatValue(ee.txtSPW.Text), getFloatValue(ee.txtSPL.Text), getFloatValue(ee.txtSPS.Text));
-                SP.canadaWorkExperience = getIntValue(ee.txtSPCaWe.Text);
-                SP.calculate(2);
+                PA.single = true;
+                Calculation.calculate(PA);
             }
-            if(ee.chkSingle.Checked) PA.calculate(0);
-            else PA.calculate(1);
+            else {
+                PA.single = false;
+                SP.single = false;
 
+                if (ee.cmbSPHighestEdu.SelectedIndex != -1) SP.education = new Education(ee.cmbSPHighestEdu.Text);
+                else return;
+                if (ee.cmbSPLanguageType.Text == "IELTS") SP.ielts = new IELTS(getFloatValue(ee.txtSPR.Text), getFloatValue(ee.txtSPW.Text), getFloatValue(ee.txtSPL.Text), getFloatValue(ee.txtSPS.Text));
+                SP.caWE = new CanadaWorkExperience(getIntValue(ee.txtSPCaWe.Text));
+                Calculation.calculate(PA, SP);
+            }
 
         }
         public static void refreshScore(EE ee)

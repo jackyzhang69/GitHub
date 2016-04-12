@@ -8,7 +8,7 @@ namespace EE
 {
     public class Age
     {
-        private int _age;
+        public int _age;
         public Age(int age)
         {
             _age = age;
@@ -93,13 +93,13 @@ namespace EE
 
         public int getSecondLanguagePoints()
         {
-            if (PolicyData.singleSecondLanguagePoints.ContainsKey(_CLBlevel)) return PolicyData.singleSecondLanguagePoints[_CLBlevel];
+            if (PolicyData.SecondLanguagePoints.ContainsKey(_CLBlevel)) return PolicyData.SecondLanguagePoints[_CLBlevel];
             else return 0;
         }
     }
     public class CanadaWorkExperience
     {
-        private int _years;
+        public int _years;
         public CanadaWorkExperience(int years)
         {
             _years = years;
@@ -124,40 +124,47 @@ namespace EE
         }
 
     }
-   
-   
-    public class Calculation
+
+    public class Person
     {
+        //Factors
         public string applicantName { get; set; }
-        public bool married { get; set; }
-        public string applicant { get; set; }
+        public bool single { get; set; }
         public Age age { get; set; }
         public Education education { get; set; }
+        public CELPIP celpip { get; set; }
         public IELTS ielts { get; set; }
+        public bool isOneOverCLB9 { get; set; }
+        public bool isSecondLanguage { get; set; }
         public TEF tef { get; set; }
-        public int firstLanguageOverAll { get; set; }
+        public CanadaWorkExperience caWE { get; set; }
+        public int foreignWorkExperience { get; set; }
+        public bool CofQ { get; set; }
+
+        // Points 
+        public int agePoints { get; set; }
+        public int educationPoints { get; set; }
+        //First laguage points
+        public int firstLanguageOverAll { get; set; } // General first language CLB level
+        public int firstLanguagePoints { get; set; }
         public int firstLanguageReadingPoints { get; set; }
         public int firstLanguageWritingPoints { get; set; }
         public int firstLanguageListeningPoints { get; set; }
         public int firstLanguageSpeakingPoints { get; set; }
-        public bool isSecondLanguage { get; set; }
-        public int secondLanguageOverAll { get; set; }
+
+        //Second language points
+        public int secondLanguageOverAll { get; set; } // General second language CLB level
+        public int secondLanguagePoints { get; set; }
         public int secondLanguageReadingPoints { get; set; }
         public int secondLanguageWritingPoints { get; set; }
         public int secondLanguageListeningPoints { get; set; }
         public int secondLanguageSpeakingPoints { get; set; }
-        public bool isOneOverCLB9 { get; set; }
-        public int canadaWorkExperience { get; set; }
-        public int foreignWorkExperience { get; set; }
-        public int numOfCredential { get; set; }
-        public bool CofQ { get; set; }
 
-        public int agePoints { get; set; }
-        public int educationPoints { get; set; }
-        public int firstLanguagePoints { get; set; }
-        public int secondLanguagePoints { get; set; }
+        // Canadian work experience points
         public int canadianWorkExperiencePoints { get; set; }
+        //public int numOfCredential { get; set; }
 
+        // Transferability combination points
         public int educationAndLanguagePoints { get; set; }
         public int educationAndCanadaWorkExperiencePoints { get; set; }
         public int languageAndForeignWorkExperiencePoints { get; set; }
@@ -167,157 +174,180 @@ namespace EE
         public int totalPoints { get; set; }
 
 
-        public void calculate(int who) // 0 is single 1 is PA 2 is SP
+
+    }
+    public class Calculation
+    {
+        public static void calculate(Person person)
         {
             int CFWEP = 0;
             int EduLangCaWE = 0;
 
-            if (who == 0)  //single
+            //1. Age
+            person.agePoints = person.age.getAgePoints();
+            //2. Education
+            person.educationPoints = person.education.getEducationPoints();
+            //3. Language
+            //3.1 First language                                                                                
+            if (person.ielts != null)
             {
-                //1. Age
-                agePoints = age.getAgePoints();
-                //2. Education
-                educationPoints = education.getEducationPoints();
-                //3. Language
-                //3.1 First language                                                                                
-                if (ielts != null)
-                {
-                    firstLanguageOverAll = ielts.ToCLB();
-                    firstLanguageReadingPoints = new Language(ielts.ToCLB(1)).getFirstLanguagePoints();
-                    firstLanguageWritingPoints = new Language(ielts.ToCLB(2)).getFirstLanguagePoints();
-                    firstLanguageListeningPoints = new Language(ielts.ToCLB(3)).getFirstLanguagePoints();
-                    firstLanguageSpeakingPoints = new Language(ielts.ToCLB(4)).getFirstLanguagePoints();
-                    firstLanguagePoints = firstLanguageReadingPoints + firstLanguageWritingPoints + firstLanguageListeningPoints + firstLanguageSpeakingPoints;
-                    isOneOverCLB9 = ielts.isOneIELTSGThanCLBN(9);
-                }
-
-                canadianWorkExperiencePoints = new CanadaWorkExperience(canadaWorkExperience).getCanadaWorkExperiencePoints();
-            }
-            else if (who == 1)
-            {
-                agePoints = age.getPAAgePoints();
-                //2. Education
-                educationPoints = education.getPAEducationPoints(); // First and the highest 
-                //3. Language
-                //3.1 First language
-                if (ielts != null)
-                {
-                    firstLanguageOverAll = ielts.ToCLB();
-                    firstLanguageReadingPoints = new Language(ielts.ToCLB(1)).getPAFirstLanguagePoints();
-                    firstLanguageWritingPoints = new Language(ielts.ToCLB(2)).getPAFirstLanguagePoints();
-                    firstLanguageListeningPoints = new Language(ielts.ToCLB(3)).getPAFirstLanguagePoints();
-                    firstLanguageSpeakingPoints = new Language(ielts.ToCLB(4)).getPAFirstLanguagePoints();
-                    firstLanguagePoints = firstLanguageReadingPoints + firstLanguageWritingPoints +
-                                          firstLanguageListeningPoints + firstLanguageSpeakingPoints;
-                    isOneOverCLB9 = ielts.isOneIELTSGThanCLBN(9);
-                }
-
-
-
-
-                // Canada work experience points
-                canadianWorkExperiencePoints =
-                    new CanadaWorkExperience(canadaWorkExperience).getPACanadaWorkExperiencePoints();
-            }
-            else if (who == 2)
-            {
-                educationPoints = education.getSPEducationPoints(); // First and the highest 
-                                                                    //3. Language
-                if (ielts != null)
-                {
-                    firstLanguageOverAll = ielts.ToCLB();
-                    firstLanguageReadingPoints = new Language(ielts.ToCLB(1)).getSPFirstLanguagePoints();
-                    firstLanguageWritingPoints = new Language(ielts.ToCLB(2)).getSPFirstLanguagePoints();
-                    firstLanguageListeningPoints = new Language(ielts.ToCLB(3)).getSPFirstLanguagePoints();
-                    firstLanguageSpeakingPoints = new Language(ielts.ToCLB(4)).getSPFirstLanguagePoints();
-                    firstLanguagePoints = firstLanguageReadingPoints + firstLanguageWritingPoints + firstLanguageListeningPoints + firstLanguageSpeakingPoints;
-                }                                                                         //3.1 First language
-
-                canadianWorkExperiencePoints = new CanadaWorkExperience(canadaWorkExperience).getSPCanadaWorkExperiencePoints();
+                person.firstLanguageOverAll = person.ielts.ToCLB();
+                person.firstLanguageReadingPoints = new Language(person.ielts.ToCLB(1)).getFirstLanguagePoints();
+                person.firstLanguageWritingPoints = new Language(person.ielts.ToCLB(2)).getFirstLanguagePoints();
+                person.firstLanguageListeningPoints = new Language(person.ielts.ToCLB(3)).getFirstLanguagePoints();
+                person.firstLanguageSpeakingPoints = new Language(person.ielts.ToCLB(4)).getFirstLanguagePoints();
+                person.firstLanguagePoints = person.firstLanguageReadingPoints + person.firstLanguageWritingPoints + person.firstLanguageListeningPoints + person.firstLanguageSpeakingPoints;
+                person.isOneOverCLB9 = person.ielts.isOneIELTSGThanCLBN(9);
             }
 
-            if (who != 2)
-            {
-                //3.2 Second Language
-                if (isSecondLanguage)
-                {
-                    secondLanguageReadingPoints = new Language(tef.ToCLB(1)).getSecondLanguagePoints();
-                    secondLanguageWritingPoints = new Language(tef.ToCLB(2)).getSecondLanguagePoints();
-                    secondLanguageListeningPoints = new Language(tef.ToCLB(3)).getSecondLanguagePoints();
-                    secondLanguageSpeakingPoints = new Language(tef.ToCLB(4)).getSecondLanguagePoints();
-                    secondLanguagePoints = secondLanguageReadingPoints + secondLanguageWritingPoints +
-                                           secondLanguageListeningPoints + secondLanguageSpeakingPoints;
-                    secondLanguagePoints = secondLanguagePoints >= 22 ? 22 : secondLanguagePoints; //Max is 22 
-                    secondLanguageOverAll = tef.ToCLB();
-                }
-                // transferability points
-                //if(education.years >= 1) oneEduMoreThanOneYear = true;
-                //if(education.years >= 3) oneEduMoreThanThreeYear = true;
-                //1. education and language
-                educationAndLanguagePoints = getEduLang();
-                //2. Edu and Canada work experience
-                educationAndCanadaWorkExperiencePoints = getEduCanadaWE();
-                //1+2 maxium is 50
-                EduLangCaWE = (educationAndLanguagePoints + educationAndCanadaWorkExperiencePoints) >= 50 ? 50 : educationAndLanguagePoints + educationAndCanadaWorkExperiencePoints;
+            person.canadianWorkExperiencePoints = person.caWE.getCanadaWorkExperiencePoints();
 
-                //3. Language and foreign work experience
-                languageAndForeignWorkExperiencePoints = getLangFWE();
-                //4. Canada work experience and foreign work experience
-                canadaWorkExperienceAndForeignWorkExperiencePoints = getCFWE();
-                CFWEP = (languageAndForeignWorkExperiencePoints + canadaWorkExperienceAndForeignWorkExperiencePoints) >= 50 ? 50 : languageAndForeignWorkExperiencePoints + canadaWorkExperienceAndForeignWorkExperiencePoints;
-                //5. Get CofQ Language points
-                CofQAndLauangePoints = getCofQPoints();
+            //3.2 Second Language
+            if (person.isSecondLanguage)
+            {
+                person.secondLanguageReadingPoints = new Language(person.tef.ToCLB(1)).getSecondLanguagePoints();
+                person.secondLanguageWritingPoints = new Language(person.tef.ToCLB(2)).getSecondLanguagePoints();
+                person.secondLanguageListeningPoints = new Language(person.tef.ToCLB(3)).getSecondLanguagePoints();
+                person.secondLanguageSpeakingPoints = new Language(person.tef.ToCLB(4)).getSecondLanguagePoints();
+                person.secondLanguagePoints = person.secondLanguageReadingPoints + person.secondLanguageWritingPoints +
+                                       person.secondLanguageListeningPoints + person.secondLanguageSpeakingPoints;
+                person.secondLanguagePoints = person.secondLanguagePoints >= 22 ? 22 : person.secondLanguagePoints; //Max is 22 
+                person.secondLanguageOverAll = person.tef.ToCLB();
             }
+            // transferability points
+            //if(education.years >= 1) oneEduMoreThanOneYear = true;
+            //if(education.years >= 3) oneEduMoreThanThreeYear = true;
+            //1. education and language
+            person.educationAndLanguagePoints = getEduLang(person);
+            //2. Edu and Canada work experience
+            person.educationAndCanadaWorkExperiencePoints = getEduCanadaWE(person);
+            //1+2 maxium is 50
+            EduLangCaWE = (person.educationAndLanguagePoints + person.educationAndCanadaWorkExperiencePoints) >= 50 ? 50 : person.educationAndLanguagePoints + person.educationAndCanadaWorkExperiencePoints;
+
+            //3. Language and foreign work experience
+            person.languageAndForeignWorkExperiencePoints = getLangFWE(person);
+            //4. Canada work experience and foreign work experience
+            person.canadaWorkExperienceAndForeignWorkExperiencePoints = getCFWE(person);
+            CFWEP = (person.languageAndForeignWorkExperiencePoints + person.canadaWorkExperienceAndForeignWorkExperiencePoints) >= 50 ? 50 : person.languageAndForeignWorkExperiencePoints + person.canadaWorkExperienceAndForeignWorkExperiencePoints;
+            //5. Get CofQ Language points
+            person.CofQAndLauangePoints = getCofQPoints(person);
             //Total points
-            if (!isSecondLanguage) secondLanguagePoints = 0;
-            totalPoints = agePoints + educationPoints + firstLanguagePoints + secondLanguagePoints + canadianWorkExperiencePoints + EduLangCaWE + CFWEP + CofQAndLauangePoints;
+            if (!person.isSecondLanguage) person.secondLanguagePoints = 0;
+            person.totalPoints = person.agePoints + person.educationPoints + person.firstLanguagePoints + person.secondLanguagePoints + person.canadianWorkExperiencePoints + EduLangCaWE + CFWEP + person.CofQAndLauangePoints;
         }
-        private int getEduLang()
+        public static void calculate(Person pa, Person sp)
+        {
+            int CFWEP = 0;
+            int EduLangCaWE = 0;
+            pa.agePoints = pa.age.getPAAgePoints();
+            pa.educationPoints = pa.education.getPAEducationPoints();
+            if (pa.ielts != null)
+            {
+                pa.firstLanguageOverAll = pa.ielts.ToCLB();
+                pa.firstLanguageReadingPoints = new Language(pa.ielts.ToCLB(1)).getPAFirstLanguagePoints();
+                pa.firstLanguageWritingPoints = new Language(pa.ielts.ToCLB(2)).getPAFirstLanguagePoints();
+                pa.firstLanguageListeningPoints = new Language(pa.ielts.ToCLB(3)).getPAFirstLanguagePoints();
+                pa.firstLanguageSpeakingPoints = new Language(pa.ielts.ToCLB(4)).getPAFirstLanguagePoints();
+                pa.firstLanguagePoints = pa.firstLanguageReadingPoints + pa.firstLanguageWritingPoints +
+                                          pa.firstLanguageListeningPoints + pa.firstLanguageSpeakingPoints;
+                pa.isOneOverCLB9 = pa.ielts.isOneIELTSGThanCLBN(9);
+            }
+
+            // Canada work experience points
+            pa.canadianWorkExperiencePoints = pa.caWE.getPACanadaWorkExperiencePoints();
+
+            // Spouse attribution
+            sp.educationPoints = sp.education.getSPEducationPoints(); // First and the highest 
+            if (sp.ielts != null)
+            {
+                sp.firstLanguageOverAll = sp.ielts.ToCLB();
+                sp.firstLanguageReadingPoints = new Language(sp.ielts.ToCLB(1)).getSPFirstLanguagePoints();
+                sp.firstLanguageWritingPoints = new Language(sp.ielts.ToCLB(2)).getSPFirstLanguagePoints();
+                sp.firstLanguageListeningPoints = new Language(sp.ielts.ToCLB(3)).getSPFirstLanguagePoints();
+                sp.firstLanguageSpeakingPoints = new Language(sp.ielts.ToCLB(4)).getSPFirstLanguagePoints();
+                sp.firstLanguagePoints = sp.firstLanguageReadingPoints + sp.firstLanguageWritingPoints + sp.firstLanguageListeningPoints + sp.firstLanguageSpeakingPoints;
+            }                                                                         //3.1 First language
+
+            sp.canadianWorkExperiencePoints = sp.caWE.getSPCanadaWorkExperiencePoints();
+
+                //3.2 Second Language
+                if (pa.isSecondLanguage)
+                {
+                pa.secondLanguageReadingPoints = new Language(pa.tef.ToCLB(1)).getSecondLanguagePoints();
+                pa.secondLanguageWritingPoints = new Language(pa.tef.ToCLB(2)).getSecondLanguagePoints();
+                pa.secondLanguageListeningPoints = new Language(pa.tef.ToCLB(3)).getSecondLanguagePoints();
+                pa.secondLanguageSpeakingPoints = new Language(pa.tef.ToCLB(4)).getSecondLanguagePoints();
+                pa.secondLanguagePoints = pa.secondLanguageReadingPoints + pa.secondLanguageWritingPoints +
+                                           pa.secondLanguageListeningPoints + pa.secondLanguageSpeakingPoints;
+                pa.secondLanguagePoints = pa.secondLanguagePoints >= 22 ? 22 : pa.secondLanguagePoints; //Max is 22 
+                pa.secondLanguageOverAll = pa.tef.ToCLB();
+                }
+            // transferability points
+   
+            //1. education and language
+            pa.educationAndLanguagePoints = getEduLang(pa);
+            //2. Edu and Canada work experience
+            pa.educationAndCanadaWorkExperiencePoints = getEduCanadaWE(pa);
+            //1+2 maxium is 50
+            EduLangCaWE = (pa.educationAndLanguagePoints + pa.educationAndCanadaWorkExperiencePoints) >= 50 ? 50 : pa.educationAndLanguagePoints + pa.educationAndCanadaWorkExperiencePoints;
+
+            //3. Language and foreign work experience
+            pa.languageAndForeignWorkExperiencePoints = getLangFWE(pa);
+            //4. Canada work experience and foreign work experience
+            pa.canadaWorkExperienceAndForeignWorkExperiencePoints = getCFWE(pa);
+            CFWEP = (pa.languageAndForeignWorkExperiencePoints + pa.canadaWorkExperienceAndForeignWorkExperiencePoints) >= 50 ? 50 : pa.languageAndForeignWorkExperiencePoints + pa.canadaWorkExperienceAndForeignWorkExperiencePoints;
+            //5. Get CofQ Language points
+            pa.CofQAndLauangePoints = getCofQPoints(pa);
+                //Total points
+            if (!pa.isSecondLanguage) pa.secondLanguagePoints = 0;
+            pa.totalPoints = pa.agePoints + pa.educationPoints + pa.firstLanguagePoints + pa.secondLanguagePoints + pa.canadianWorkExperiencePoints + EduLangCaWE + CFWEP + pa.CofQAndLauangePoints;
+            sp.totalPoints =sp.educationPoints + sp.firstLanguagePoints + sp.canadianWorkExperiencePoints;
+        }
+        private static  int getEduLang(Person pa)
         {
             int score = 0;
-            if (education.oneEduMoreThanOneYear && firstLanguageOverAll >= 7 && isOneOverCLB9) score = 13;
-            if (education.oneEduMoreThanOneYear && firstLanguageOverAll >= 9) score = 25;
-            if (education.twoCredentialOneMoreThan3 && firstLanguageOverAll >= 7 && isOneOverCLB9) score = 25;
-            if (education.twoCredentialOneMoreThan3 && firstLanguageOverAll >= 9) score = 50;
+            if (pa.education.oneEduMoreThanOneYear && pa.firstLanguageOverAll >= 7 && pa.isOneOverCLB9) score = 13;
+            if (pa.education.oneEduMoreThanOneYear && pa.firstLanguageOverAll >= 9) score = 25;
+            if (pa.education.twoCredentialOneMoreThan3 && pa.firstLanguageOverAll >= 7 && pa.isOneOverCLB9) score = 25;
+            if (pa.education.twoCredentialOneMoreThan3 && pa.firstLanguageOverAll >= 9) score = 50;
 
             return score;
 
         }
-        private int getEduCanadaWE()
+        private static int getEduCanadaWE(Person pa)
         {
             int score = 0;
-            if (education.oneEduMoreThanOneYear && canadaWorkExperience >= 1) score = 13;
-            if (education.oneEduMoreThanOneYear && canadaWorkExperience >= 2) score = 25;
-            if (education.twoCredentialOneMoreThan3 && canadaWorkExperience >= 1) score = 25;
-            if (education.twoCredentialOneMoreThan3 && canadaWorkExperience >= 2) score = 50;
+            if (pa.education.oneEduMoreThanOneYear && pa.caWE._years >= 1) score = 13;
+            if (pa.education.oneEduMoreThanOneYear && pa.caWE._years >= 2) score = 25;
+            if (pa.education.twoCredentialOneMoreThan3 && pa.caWE._years >= 1) score = 25;
+            if (pa.education.twoCredentialOneMoreThan3 && pa.caWE._years >= 2) score = 50;
 
             return score;
         }
-        private int getLangFWE()
+        private static int getLangFWE(Person pa)
         {
             int score = 0;
-            if (foreignWorkExperience >= 1 && foreignWorkExperience <= 2 && firstLanguageOverAll >= 7 && isOneOverCLB9) score = 13;
-            if (foreignWorkExperience >= 1 && foreignWorkExperience <= 2 && firstLanguageOverAll >= 9) score = 25;
-            if (foreignWorkExperience >= 3 && firstLanguageOverAll >= 7 && isOneOverCLB9) score = 25;
-            if (foreignWorkExperience >= 3 && firstLanguageOverAll >= 9) score = 50;
+            if (pa.foreignWorkExperience >= 1 && pa.foreignWorkExperience <= 2 && pa.firstLanguageOverAll >= 7 && pa.isOneOverCLB9) score = 13;
+            if (pa.foreignWorkExperience >= 1 && pa.foreignWorkExperience <= 2 && pa.firstLanguageOverAll >= 9) score = 25;
+            if (pa.foreignWorkExperience >= 3 && pa.firstLanguageOverAll >= 7 && pa.isOneOverCLB9) score = 25;
+            if (pa.foreignWorkExperience >= 3 && pa.firstLanguageOverAll >= 9) score = 50;
             return score;
         }
-        private int getCFWE()
+        private static int getCFWE(Person pa)
         {
             int score = 0;
-            if (foreignWorkExperience >= 1 && foreignWorkExperience <= 2 && canadaWorkExperience >= 1) score = 13;
-            if (foreignWorkExperience >= 1 && foreignWorkExperience <= 2 && canadaWorkExperience >= 2) score = 25;
-            if (foreignWorkExperience >= 3 && canadaWorkExperience >= 1) score = 25;
-            if (foreignWorkExperience >= 3 && canadaWorkExperience >= 2) score = 50;
+            if (pa.foreignWorkExperience >= 1 && pa.foreignWorkExperience <= 2 && pa.caWE._years >= 1) score = 13;
+            if (pa.foreignWorkExperience >= 1 && pa.foreignWorkExperience <= 2 && pa.caWE._years >= 2) score = 25;
+            if (pa.foreignWorkExperience >= 3 && pa.caWE._years >= 1) score = 25;
+            if (pa.foreignWorkExperience >= 3 && pa.caWE._years >= 2) score = 50;
             return score;
         }
-        private int getCofQPoints()
+        private static int getCofQPoints(Person pa)
         {
             int score = 0;
-            if (CofQ && firstLanguageOverAll >= 5) score = 25;
-            if (CofQ && firstLanguageOverAll >= 7) score = 50;
+            if (pa.CofQ && pa.firstLanguageOverAll >= 5) score = 25;
+            if (pa.CofQ && pa.firstLanguageOverAll >= 7) score = 50;
             return score;
         }
     }
-
 }
