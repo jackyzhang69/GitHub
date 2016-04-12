@@ -90,7 +90,8 @@ namespace EE
         // Language definition
         public static Dictionary<int, string> languageType = new Dictionary<int, string>
         {
-            {1,"IELTS"}
+            {1,"IELTS"},
+            {2,"CELPIP"}
         };
         public static Dictionary<int, string> secondLanguageType = new Dictionary<int, string>
         {

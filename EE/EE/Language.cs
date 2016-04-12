@@ -127,11 +127,11 @@ namespace EE
     }
     public class CELPIP
     {
-        private int _Listening { get; set; }
-        private int _Speaking { get; set; }
-        private int _Reading { get; set; }
-        private int _Writing { get; set; }
-        public CELPIP(int l, int s, int r, int w)
+        public  int _Listening { get; set; }
+        public int _Speaking { get; set; }
+        public int _Reading { get; set; }
+        public int _Writing { get; set; }
+        public CELPIP(int r, int w, int l, int s)
         {
             _Listening = l;
             _Speaking = s;
@@ -144,12 +144,16 @@ namespace EE
             clb.Add(_Listening);
             clb.Add(_Speaking);
             clb.Add(_Reading);
-            clb.Add(-_Writing);
+            clb.Add(_Writing);
             return clb.Min();
         }
         public int ToCLB(int factor)
         {
             return factor;
+        }
+        public bool isOneIELTSGThanCLBN(int n)
+        {
+            return _Listening >= n || _Reading >= n || _Writing >= n || _Speaking >= n;
         }
     }
     public class TEF
@@ -171,17 +175,17 @@ namespace EE
             {
                 switch (factorIndex)
                 {
-                    case 0:
-                        if (_Listening >= LanguageData.TEF[i, factorIndex * 2 - 1] && _Listening <= LanguageData.TEF[i, factorIndex * 2]) return LanguageData.TEF[i, 0];
-                        break;
                     case 1:
-                        if (_Speaking >= LanguageData.TEF[i, factorIndex * 2 - 1] && _Speaking <= LanguageData.TEF[i, factorIndex * 2]) return LanguageData.TEF[i, 0];
-                        break;
-                    case 2:
                         if (_Reading >= LanguageData.TEF[i, factorIndex * 2 - 1] && _Reading <= LanguageData.TEF[i, factorIndex * 2]) return LanguageData.TEF[i, 0];
                         break;
-                    case 3:
+                    case 2:
                         if (_Writing >= LanguageData.TEF[i, factorIndex * 2 - 1] && _Writing <= LanguageData.TEF[i, factorIndex * 2]) return LanguageData.TEF[i, 0];
+                        break;
+                    case 3:
+                        if (_Listening >= LanguageData.TEF[i, factorIndex * 2 - 1] && _Listening <= LanguageData.TEF[i, factorIndex * 2]) return LanguageData.TEF[i, 0];
+                        break;
+                    case 4:
+                        if (_Speaking >= LanguageData.TEF[i, factorIndex * 2 - 1] && _Speaking <= LanguageData.TEF[i, factorIndex * 2]) return LanguageData.TEF[i, 0];
                         break;
                 }
 

@@ -90,5 +90,11 @@ namespace EE
             EEFormOps.refreshScore(this);
             EEFormOps.getReport();
         }
+
+        private void cmbSPLanguageType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            EEFormOps.getInput(this);
+            EEFormOps.refreshScore(this);
+        }
     }
 }

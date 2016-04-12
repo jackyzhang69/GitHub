@@ -87,8 +87,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.txtEduScore = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.txtLanguageScore = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label22 = new System.Windows.Forms.Label();
             this.txtCofQScore = new System.Windows.Forms.TextBox();
@@ -113,6 +111,10 @@
             this.label28 = new System.Windows.Forms.Label();
             this.chkSingle = new System.Windows.Forms.CheckBox();
             this.btnEEGenerateReport = new System.Windows.Forms.Button();
+            this.txtEEFirstLanguagePoints = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.txtEESecondLanguagePoints = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
             this.grpPA.SuspendLayout();
             this.grpPAWorkRelated.SuspendLayout();
             this.grpSecondLanguage.SuspendLayout();
@@ -485,6 +487,7 @@
             this.cmbLanguageType1.Name = "cmbLanguageType1";
             this.cmbLanguageType1.Size = new System.Drawing.Size(163, 21);
             this.cmbLanguageType1.TabIndex = 0;
+            this.cmbLanguageType1.SelectedIndexChanged += new System.EventHandler(this.cmbSPLanguageType_SelectedIndexChanged);
             // 
             // cmbHighestEdu
             // 
@@ -694,6 +697,7 @@
             this.cmbSPLanguageType.Name = "cmbSPLanguageType";
             this.cmbSPLanguageType.Size = new System.Drawing.Size(163, 21);
             this.cmbSPLanguageType.TabIndex = 0;
+            this.cmbSPLanguageType.SelectedIndexChanged += new System.EventHandler(this.cmbSPLanguageType_SelectedIndexChanged);
             // 
             // grpScores
             // 
@@ -715,8 +719,10 @@
             this.groupBox4.Controls.Add(this.label18);
             this.groupBox4.Controls.Add(this.txtEduScore);
             this.groupBox4.Controls.Add(this.label21);
-            this.groupBox4.Controls.Add(this.label20);
-            this.groupBox4.Controls.Add(this.txtLanguageScore);
+            this.groupBox4.Controls.Add(this.label31);
+            this.groupBox4.Controls.Add(this.txtEEFirstLanguagePoints);
+            this.groupBox4.Controls.Add(this.label32);
+            this.groupBox4.Controls.Add(this.txtEESecondLanguagePoints);
             this.groupBox4.Location = new System.Drawing.Point(5, 20);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
@@ -739,7 +745,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(5, 55);
+            this.label19.Location = new System.Drawing.Point(5, 46);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(86, 13);
             this.label19.TabIndex = 27;
@@ -767,7 +773,7 @@
             // txtEduScore
             // 
             this.txtEduScore.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.txtEduScore.Location = new System.Drawing.Point(105, 53);
+            this.txtEduScore.Location = new System.Drawing.Point(105, 44);
             this.txtEduScore.Name = "txtEduScore";
             this.txtEduScore.ReadOnly = true;
             this.txtEduScore.Size = new System.Drawing.Size(51, 20);
@@ -782,25 +788,6 @@
             this.label21.Size = new System.Drawing.Size(73, 13);
             this.label21.TabIndex = 31;
             this.label21.Text = "CA Exp Score";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(5, 96);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(86, 13);
-            this.label20.TabIndex = 29;
-            this.label20.Text = "Language Score";
-            // 
-            // txtLanguageScore
-            // 
-            this.txtLanguageScore.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.txtLanguageScore.Location = new System.Drawing.Point(105, 92);
-            this.txtLanguageScore.Name = "txtLanguageScore";
-            this.txtLanguageScore.ReadOnly = true;
-            this.txtLanguageScore.Size = new System.Drawing.Size(51, 20);
-            this.txtLanguageScore.TabIndex = 30;
-            this.txtLanguageScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox3
             // 
@@ -1053,6 +1040,44 @@
             this.btnEEGenerateReport.UseVisualStyleBackColor = true;
             this.btnEEGenerateReport.Click += new System.EventHandler(this.btnEEGenerateReport_Click);
             // 
+            // txtEEFirstLanguagePoints
+            // 
+            this.txtEEFirstLanguagePoints.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtEEFirstLanguagePoints.Location = new System.Drawing.Point(105, 76);
+            this.txtEEFirstLanguagePoints.Name = "txtEEFirstLanguagePoints";
+            this.txtEEFirstLanguagePoints.ReadOnly = true;
+            this.txtEEFirstLanguagePoints.Size = new System.Drawing.Size(51, 20);
+            this.txtEEFirstLanguagePoints.TabIndex = 30;
+            this.txtEEFirstLanguagePoints.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(4, 79);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(73, 13);
+            this.label31.TabIndex = 29;
+            this.label31.Text = "First language";
+            // 
+            // txtEESecondLanguagePoints
+            // 
+            this.txtEESecondLanguagePoints.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtEESecondLanguagePoints.Location = new System.Drawing.Point(106, 105);
+            this.txtEESecondLanguagePoints.Name = "txtEESecondLanguagePoints";
+            this.txtEESecondLanguagePoints.ReadOnly = true;
+            this.txtEESecondLanguagePoints.Size = new System.Drawing.Size(51, 20);
+            this.txtEESecondLanguagePoints.TabIndex = 30;
+            this.txtEESecondLanguagePoints.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(3, 109);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(95, 13);
+            this.label32.TabIndex = 29;
+            this.label32.Text = "Second Language";
+            // 
             // EE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1119,7 +1144,6 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label26;
@@ -1133,7 +1157,6 @@
         public System.Windows.Forms.TextBox txtCofQScore;
         public System.Windows.Forms.TextBox txtAgeScore;
         public System.Windows.Forms.TextBox txtEduScore;
-        public System.Windows.Forms.TextBox txtLanguageScore;
         public System.Windows.Forms.TextBox txtCaExpScore;
         public System.Windows.Forms.TextBox txtEduLangScore;
         public System.Windows.Forms.TextBox txtEduCaWeScore;
@@ -1183,6 +1206,10 @@
         public System.Windows.Forms.GroupBox grpSPFactors;
         public System.Windows.Forms.GroupBox grpPAWorkRelated;
         private System.Windows.Forms.Button btnEEGenerateReport;
+        private System.Windows.Forms.Label label31;
+        public System.Windows.Forms.TextBox txtEEFirstLanguagePoints;
+        private System.Windows.Forms.Label label32;
+        public System.Windows.Forms.TextBox txtEESecondLanguagePoints;
     }
 }
 

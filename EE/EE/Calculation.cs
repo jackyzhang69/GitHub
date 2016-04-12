@@ -196,10 +196,18 @@ namespace EE
                 person.firstLanguageWritingPoints = new Language(person.ielts.ToCLB(2)).getFirstLanguagePoints();
                 person.firstLanguageListeningPoints = new Language(person.ielts.ToCLB(3)).getFirstLanguagePoints();
                 person.firstLanguageSpeakingPoints = new Language(person.ielts.ToCLB(4)).getFirstLanguagePoints();
-                person.firstLanguagePoints = person.firstLanguageReadingPoints + person.firstLanguageWritingPoints + person.firstLanguageListeningPoints + person.firstLanguageSpeakingPoints;
                 person.isOneOverCLB9 = person.ielts.isOneIELTSGThanCLBN(9);
             }
-
+            if (person.celpip != null)
+            {
+                person.firstLanguageOverAll = person.celpip.ToCLB();
+                person.firstLanguageReadingPoints = new Language(person.celpip.ToCLB(person.celpip._Reading)).getFirstLanguagePoints();
+                person.firstLanguageWritingPoints = new Language(person.celpip.ToCLB(person.celpip._Writing)).getFirstLanguagePoints();
+                person.firstLanguageListeningPoints = new Language(person.celpip.ToCLB(person.celpip._Listening)).getFirstLanguagePoints();
+                person.firstLanguageSpeakingPoints = new Language(person.celpip.ToCLB(person.celpip._Speaking)).getFirstLanguagePoints();
+                person.isOneOverCLB9 = person.celpip.isOneIELTSGThanCLBN(9);
+            }
+            person.firstLanguagePoints = person.firstLanguageReadingPoints + person.firstLanguageWritingPoints + person.firstLanguageListeningPoints + person.firstLanguageSpeakingPoints;
             person.canadianWorkExperiencePoints = person.caWE.getCanadaWorkExperiencePoints();
 
             //3.2 Second Language
@@ -211,7 +219,6 @@ namespace EE
                 person.secondLanguageSpeakingPoints = new Language(person.tef.ToCLB(4)).getSecondLanguagePoints();
                 person.secondLanguagePoints = person.secondLanguageReadingPoints + person.secondLanguageWritingPoints +
                                        person.secondLanguageListeningPoints + person.secondLanguageSpeakingPoints;
-                person.secondLanguagePoints = person.secondLanguagePoints >= 22 ? 22 : person.secondLanguagePoints; //Max is 22 
                 person.secondLanguageOverAll = person.tef.ToCLB();
             }
             // transferability points
@@ -248,11 +255,19 @@ namespace EE
                 pa.firstLanguageWritingPoints = new Language(pa.ielts.ToCLB(2)).getPAFirstLanguagePoints();
                 pa.firstLanguageListeningPoints = new Language(pa.ielts.ToCLB(3)).getPAFirstLanguagePoints();
                 pa.firstLanguageSpeakingPoints = new Language(pa.ielts.ToCLB(4)).getPAFirstLanguagePoints();
-                pa.firstLanguagePoints = pa.firstLanguageReadingPoints + pa.firstLanguageWritingPoints +
-                                          pa.firstLanguageListeningPoints + pa.firstLanguageSpeakingPoints;
                 pa.isOneOverCLB9 = pa.ielts.isOneIELTSGThanCLBN(9);
             }
-
+            if (pa.celpip != null)
+            {
+                pa.firstLanguageOverAll = pa.celpip.ToCLB();
+                pa.firstLanguageReadingPoints = new Language(pa.celpip.ToCLB(pa.celpip._Reading)).getFirstLanguagePoints();
+                pa.firstLanguageWritingPoints = new Language(pa.celpip.ToCLB(pa.celpip._Writing)).getFirstLanguagePoints();
+                pa.firstLanguageListeningPoints = new Language(pa.celpip.ToCLB(pa.celpip._Listening)).getFirstLanguagePoints();
+                pa.firstLanguageSpeakingPoints = new Language(pa.celpip.ToCLB(pa.celpip._Speaking)).getFirstLanguagePoints();
+                pa.isOneOverCLB9 = pa.celpip.isOneIELTSGThanCLBN(9);
+            }
+            pa.firstLanguagePoints = pa.firstLanguageReadingPoints + pa.firstLanguageWritingPoints +
+                                          pa.firstLanguageListeningPoints + pa.firstLanguageSpeakingPoints;
             // Canada work experience points
             pa.canadianWorkExperiencePoints = pa.caWE.getPACanadaWorkExperiencePoints();
 
@@ -265,8 +280,18 @@ namespace EE
                 sp.firstLanguageWritingPoints = new Language(sp.ielts.ToCLB(2)).getSPFirstLanguagePoints();
                 sp.firstLanguageListeningPoints = new Language(sp.ielts.ToCLB(3)).getSPFirstLanguagePoints();
                 sp.firstLanguageSpeakingPoints = new Language(sp.ielts.ToCLB(4)).getSPFirstLanguagePoints();
+                
+            }
+            if (sp.celpip != null)
+            {
+                sp.firstLanguageOverAll = sp.celpip.ToCLB();
+                sp.firstLanguageReadingPoints = new Language(sp.celpip.ToCLB(sp.celpip._Reading)).getSPFirstLanguagePoints();
+                sp.firstLanguageWritingPoints = new Language(sp.celpip.ToCLB(sp.celpip._Writing)).getSPFirstLanguagePoints();
+                sp.firstLanguageListeningPoints = new Language(sp.celpip.ToCLB(sp.celpip._Listening)).getSPFirstLanguagePoints();
+                sp.firstLanguageSpeakingPoints = new Language(sp.celpip.ToCLB(sp.celpip._Speaking)).getSPFirstLanguagePoints();
+            }
                 sp.firstLanguagePoints = sp.firstLanguageReadingPoints + sp.firstLanguageWritingPoints + sp.firstLanguageListeningPoints + sp.firstLanguageSpeakingPoints;
-            }                                                                         //3.1 First language
+            //3.1 First language
 
             sp.canadianWorkExperiencePoints = sp.caWE.getSPCanadaWorkExperiencePoints();
 
@@ -306,9 +331,9 @@ namespace EE
         private static  int getEduLang(Person pa)
         {
             int score = 0;
-            if (pa.education.oneEduMoreThanOneYear && pa.firstLanguageOverAll >= 7 && pa.isOneOverCLB9) score = 13;
+            if (pa.education.oneEduMoreThanOneYear && pa.firstLanguageOverAll >= 7 ) score = 13;
             if (pa.education.oneEduMoreThanOneYear && pa.firstLanguageOverAll >= 9) score = 25;
-            if (pa.education.twoCredentialOneMoreThan3 && pa.firstLanguageOverAll >= 7 && pa.isOneOverCLB9) score = 25;
+            if (pa.education.twoCredentialOneMoreThan3 && pa.firstLanguageOverAll >= 7) score = 25;
             if (pa.education.twoCredentialOneMoreThan3 && pa.firstLanguageOverAll >= 9) score = 50;
 
             return score;
@@ -327,9 +352,9 @@ namespace EE
         private static int getLangFWE(Person pa)
         {
             int score = 0;
-            if (pa.foreignWorkExperience >= 1 && pa.foreignWorkExperience <= 2 && pa.firstLanguageOverAll >= 7 && pa.isOneOverCLB9) score = 13;
+            if (pa.foreignWorkExperience >= 1 && pa.foreignWorkExperience <= 2 && pa.firstLanguageOverAll >= 7) score = 13;
             if (pa.foreignWorkExperience >= 1 && pa.foreignWorkExperience <= 2 && pa.firstLanguageOverAll >= 9) score = 25;
-            if (pa.foreignWorkExperience >= 3 && pa.firstLanguageOverAll >= 7 && pa.isOneOverCLB9) score = 25;
+            if (pa.foreignWorkExperience >= 3 && pa.firstLanguageOverAll >= 7 ) score = 25;
             if (pa.foreignWorkExperience >= 3 && pa.firstLanguageOverAll >= 9) score = 50;
             return score;
         }

@@ -18,7 +18,16 @@ namespace EE
             PA.applicantName = ee.txtClientName.Text;
             if (ee.cmbHighestEdu.SelectedIndex != -1) PA.education = new Education(ee.cmbHighestEdu.Text);
             else return;
-            if (ee.cmbLanguageType1.Text == "IELTS") PA.ielts = new IELTS(getFloatValue(ee.txtR1.Text),getFloatValue(ee.txtW1.Text),getFloatValue(ee.txtL1.Text), getFloatValue(ee.txtS1.Text));
+            if (ee.cmbLanguageType1.Text == "IELTS")
+            {
+                PA.ielts = new IELTS(getFloatValue(ee.txtR1.Text), getFloatValue(ee.txtW1.Text), getFloatValue(ee.txtL1.Text), getFloatValue(ee.txtS1.Text));
+                PA.celpip = null;
+            }
+            if (ee.cmbLanguageType1.Text == "CELPIP")
+            {
+                PA.celpip = new CELPIP(getIntValue(ee.txtR1.Text), getIntValue(ee.txtW1.Text), getIntValue(ee.txtL1.Text), getIntValue(ee.txtS1.Text));
+                PA.ielts = null;
+            }
             if (ee.chkSecondLanguage.Checked && ee.cmbLanguageType2.Text == "TEF")
             {
                 PA.tef = new TEF(getIntValue(ee.txtR2.Text),getIntValue(ee.txtW2.Text),getIntValue(ee.txtL2.Text), getIntValue(ee.txtS2.Text));
@@ -44,7 +53,16 @@ namespace EE
 
                 if (ee.cmbSPHighestEdu.SelectedIndex != -1) SP.education = new Education(ee.cmbSPHighestEdu.Text);
                 else return;
-                if (ee.cmbSPLanguageType.Text == "IELTS") SP.ielts = new IELTS(getFloatValue(ee.txtSPR.Text), getFloatValue(ee.txtSPW.Text), getFloatValue(ee.txtSPL.Text), getFloatValue(ee.txtSPS.Text));
+                if (ee.cmbSPLanguageType.Text == "IELTS")
+                {
+                    SP.ielts = new IELTS(getFloatValue(ee.txtSPR.Text), getFloatValue(ee.txtSPW.Text), getFloatValue(ee.txtSPL.Text), getFloatValue(ee.txtSPS.Text));
+                    SP.celpip = null;
+                }
+                if (ee.cmbSPLanguageType.Text == "CELPIP")
+                {
+                    SP.celpip = new CELPIP(getIntValue(ee.txtSPR.Text), getIntValue(ee.txtSPW.Text), getIntValue(ee.txtSPL.Text), getIntValue(ee.txtSPS.Text));
+                    SP.ielts = null;
+                }
                 SP.caWE = new CanadaWorkExperience(getIntValue(ee.txtSPCaWe.Text));
                 Calculation.calculate(PA, SP);
             }
@@ -64,7 +82,8 @@ namespace EE
             ee.txtAgeScore.Text = PA.agePoints.ToString();
             ee.txtEduScore.Text = PA.educationPoints.ToString();
             ee.txtSPEduScore.Text = SP.educationPoints.ToString();
-            ee.txtLanguageScore.Text = (PA.firstLanguagePoints + PA.secondLanguagePoints).ToString();
+            ee.txtEEFirstLanguagePoints.Text = PA.firstLanguagePoints.ToString();
+            ee.txtEESecondLanguagePoints.Text = PA.secondLanguagePoints.ToString();
             ee.txtSPLangScore.Text = SP.firstLanguagePoints.ToString();
             ee.txtCaExpScore.Text = PA.canadianWorkExperiencePoints.ToString();
             ee.txtSPCaExpScore.Text = SP.canadianWorkExperiencePoints.ToString();
