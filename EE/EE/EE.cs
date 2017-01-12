@@ -96,5 +96,11 @@ namespace EE
             EEFormOps.getInput(this);
             EEFormOps.refreshScore(this);
         }
+
+        private void ckbEduInCa_CheckedChanged(object sender, EventArgs e)
+        {
+                EEFormOps.getInput(this);
+                EEFormOps.refreshScore(this);
+        }
     }
 }

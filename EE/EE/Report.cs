@@ -16,6 +16,7 @@ namespace EE
                 {"Factors","Your Condition","Your Points" },
                 {"Age",pa.age._age.ToString(),pa.agePoints.ToString()},
                 {"Education",pa.education.edulevel.ToString(),pa.educationPoints.ToString()},
+                {"Bonus of Education in Canada",pa.education.EduInCa.ToString(),pa.eduInCaBns.ToString()},
                 {"First Language",pa.firstLanguageOverAll.ToString(),pa.firstLanguagePoints.ToString()},
                 {"Second Language",pa.secondLanguageOverAll.ToString(),pa.secondLanguagePoints.ToString()},
                 {"Canada Experience",pa.caWE._years.ToString(), pa.canadianWorkExperiencePoints.ToString()},

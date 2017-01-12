@@ -34,6 +34,7 @@ namespace EE
         public bool oneEduMoreThanThreeYear = false;
         public bool twoCredentialOneMoreThan3 = false;
         public string edulevel { get; set; }
+        public bool EduInCa { get; set; }
 
         public Education(string edu)
         {
@@ -65,6 +66,20 @@ namespace EE
                 if (temp[i] == edulevel && i >= 4) oneEduMoreThanThreeYear = true;
                 if (temp[i] == edulevel && i >= 5) twoCredentialOneMoreThan3 = true;
             }
+        }
+
+        public int getEduInCaBns()
+        {
+            if (EduInCa == true)
+            {
+                if (oneEduMoreThanThreeYear == true || twoCredentialOneMoreThan3 == true) return 30;
+                else if (oneEduMoreThanOneYear == true) return 15;
+                else return 0;
+            }
+            else return 0;
+            
+          
+            
         }
     }
     public class Language
@@ -140,10 +155,12 @@ namespace EE
         public CanadaWorkExperience caWE { get; set; }
         public int foreignWorkExperience { get; set; }
         public bool CofQ { get; set; }
+       
 
         // Points 
         public int agePoints { get; set; }
         public int educationPoints { get; set; }
+        public int eduInCaBns { get; set; }
         //First laguage points
         public int firstLanguageOverAll { get; set; } // General first language CLB level
         public int firstLanguagePoints { get; set; }
@@ -187,6 +204,7 @@ namespace EE
             person.agePoints = person.age.getAgePoints();
             //2. Education
             person.educationPoints = person.education.getEducationPoints();
+            person.eduInCaBns = person.education.getEduInCaBns();
             //3. Language
             //3.1 First language                                                                                
             if (person.ielts != null)
@@ -240,7 +258,7 @@ namespace EE
             person.CofQAndLauangePoints = getCofQPoints(person);
             //Total points
             if (!person.isSecondLanguage) person.secondLanguagePoints = 0;
-            person.totalPoints = person.agePoints + person.educationPoints + person.firstLanguagePoints + person.secondLanguagePoints + person.canadianWorkExperiencePoints + EduLangCaWE + CFWEP + person.CofQAndLauangePoints;
+            person.totalPoints = person.agePoints + person.educationPoints+person.eduInCaBns + person.firstLanguagePoints + person.secondLanguagePoints + person.canadianWorkExperiencePoints + EduLangCaWE + CFWEP + person.CofQAndLauangePoints;
         }
         public static void calculate(Person pa, Person sp)
         {
@@ -248,6 +266,7 @@ namespace EE
             int EduLangCaWE = 0;
             pa.agePoints = pa.age.getPAAgePoints();
             pa.educationPoints = pa.education.getPAEducationPoints();
+            pa.eduInCaBns = pa.education.getEduInCaBns();
             if (pa.ielts != null)
             {
                 pa.firstLanguageOverAll = pa.ielts.ToCLB();
@@ -325,7 +344,7 @@ namespace EE
             pa.CofQAndLauangePoints = getCofQPoints(pa);
                 //Total points
             if (!pa.isSecondLanguage) pa.secondLanguagePoints = 0;
-            pa.totalPoints = pa.agePoints + pa.educationPoints + pa.firstLanguagePoints + pa.secondLanguagePoints + pa.canadianWorkExperiencePoints + EduLangCaWE + CFWEP + pa.CofQAndLauangePoints;
+            pa.totalPoints = pa.agePoints + pa.educationPoints + pa.eduInCaBns + pa.firstLanguagePoints + pa.secondLanguagePoints + pa.canadianWorkExperiencePoints + EduLangCaWE + CFWEP + pa.CofQAndLauangePoints;
             sp.totalPoints =sp.educationPoints + sp.firstLanguagePoints + sp.canadianWorkExperiencePoints;
         }
         private static  int getEduLang(Person pa)

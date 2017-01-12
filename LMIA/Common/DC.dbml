@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Common" Class="DCDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=immigration.database.windows.net;Initial Catalog=Common;User ID=Jacky;Connect Timeout=60" SettingsObjectName="Common.Properties.Settings" SettingsPropertyName="CommonConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tblEmployee" Member="tblEmployees">
+    <Type Name="tblEmployee">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PersonId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OutCanadaCity" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="OutCanadaCountry" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="StatusinCanada" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="CanadaCity" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="CanadaProvince" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Visitor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Student" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ForeignWorker" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RefugeeClaimant" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Hired" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Duration" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblEmployer" Member="tblEmployers">
+    <Type Name="tblEmployer">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ESDCId" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="CRA_BN" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="LegalName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OperatingName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FranchiseName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FranchiseAware" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CompanyType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MailAddressId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BizAddressId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BizTelephone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Website" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BizStartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="BizActivity" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ContactFirstName" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ContactMiddleName" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ContactLastName" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ContactJobTitle" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ContactPhone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ContactFax" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="ContactEmail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="theWitness" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblJobOffer" Member="tblJobOffers">
+    <Type Name="tblJobOffer">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="applicationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="jobTile" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="numOfTFWs" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="duration" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="durationUnit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="durationRationale" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="startDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="languageRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="readingEnglishFrenchRequied" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="readingEnglishRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="readingFrenchRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="readingEnglishOrFrenchRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="readingEnglishAndFrenchRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="writingEnglishFrenchRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="writingEnglishRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="writingFrenchRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="writingEnglishOrFrenchRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="writingEnglishAndFrenchRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="otherLanguageRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="otherLanguageExplanation" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="vacationDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="remuneration" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="otherBenefit" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="isSeasonal" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isFullyCoveredLMIA" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="notFullyCoveredReason" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="isJobLicensed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="licenseAuthority" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="licenseReady" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="licenseReadyTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="licenseReadyUnit" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="isJobUnion" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="unionNameLocation" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="isUnionConsulted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="unionNotExplanation" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="unionOpinion" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="attemptedRecruitCanadian" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="notAttemptedReason" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="OfficialAdNumber" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="briefBenefit" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="detailedBenefit" Type="System.String" DbType="VarChar(4000)" CanBeNull="true" />
+      <Column Name="briefRationaleOfferingJob" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="detailedRationaleOfferingJob" Type="System.String" DbType="VarChar(4000)" CanBeNull="true" />
+      <Column Name="trainCanadian" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="noTrainReason" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="trainPlanBrief" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="trainPlanDetails" Type="System.String" DbType="VarChar(4000)" CanBeNull="true" />
+      <Column Name="willProvideAccomadation" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="notProvideButOffer" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="provideRent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="provideUnit" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="accommodationDescription" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="accomadationNotApplicalbe" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="whoIsFillingBrief" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="whoIsFillingDetail" Type="System.String" DbType="VarChar(4000)" CanBeNull="true" />
+      <Column Name="howDidYouFindBrief" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="howDidYouFindDetail" Type="System.String" DbType="VarChar(4000)" CanBeNull="true" />
+      <Column Name="howDidYouDetermineBrief" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="howDidYouDetermineDetail" Type="System.String" DbType="VarChar(4000)" CanBeNull="true" />
+      <Column Name="howAndWhenOfferBrief" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="howAndWhenOfferDetail" Type="System.String" DbType="VarChar(4000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblLMIAApplication" Member="tblLMIAApplications">
+    <Type Name="tblLMIAApplication">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProgramType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StreamType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmployerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmployeeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RCICId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WorkLocationId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="SubmittedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ClosedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ApplicationNumber" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ApplicationFee" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SecondEmployer" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="NumberofPosition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApplicationFeePerPosition" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PayMethod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MoreThanOneEmployer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AnotherEmployerName" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

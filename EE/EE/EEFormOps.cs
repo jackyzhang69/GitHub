@@ -18,6 +18,15 @@ namespace EE
             PA.applicantName = ee.txtClientName.Text;
             if (ee.cmbHighestEdu.SelectedIndex != -1) PA.education = new Education(ee.cmbHighestEdu.Text);
             else return;
+            if (ee.ckbEduInCa.Checked == true)
+            {
+                PA.education.EduInCa = true;
+                 PA.eduInCaBns = PA.education.getEduInCaBns();
+            }
+            else {
+                PA.education.EduInCa = false;
+                 PA.eduInCaBns = 0;
+            }
             if (ee.cmbLanguageType1.Text == "IELTS")
             {
                 PA.ielts = new IELTS(getFloatValue(ee.txtR1.Text), getFloatValue(ee.txtW1.Text), getFloatValue(ee.txtL1.Text), getFloatValue(ee.txtS1.Text));
@@ -77,10 +86,12 @@ namespace EE
                 SP.canadianWorkExperiencePoints = 0;
                 SP.totalPoints = 0;
             }
+            if (!ee.ckbEduInCa.Checked) PA.eduInCaBns = 0;
             if (!PA.isSecondLanguage) PA.secondLanguagePoints = 0;
 
             ee.txtAgeScore.Text = PA.agePoints.ToString();
             ee.txtEduScore.Text = PA.educationPoints.ToString();
+            ee.txtCndEduBns.Text = PA.eduInCaBns.ToString();
             ee.txtSPEduScore.Text = SP.educationPoints.ToString();
             ee.txtEEFirstLanguagePoints.Text = PA.firstLanguagePoints.ToString();
             ee.txtEESecondLanguagePoints.Text = PA.secondLanguagePoints.ToString();

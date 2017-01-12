@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 13.75" name="DC">
+  <DataContextMoniker Name="/DCDataContext" />
+  <nestedChildShapes>
+    <classShape Id="ca43c507-5fcc-4792-b522-f0362f40bf94" absoluteBounds="0.75, 0.75, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/DCDataContext/tblEmployee" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a6f7b953-2e3a-4163-9e9e-539df3254809" absoluteBounds="0.765, 1.21, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d475a74a-225f-49c6-867d-67425de72367" absoluteBounds="3.75, 0.75, 2, 5.0400211588541657">
+      <DataClassMoniker Name="/DCDataContext/tblEmployer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8ae64585-0078-4dd4-a9c9-f6ef9e17f5e6" absoluteBounds="3.765, 1.21, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e8fbf15c-446a-4ee3-a53d-b794d8580580" absoluteBounds="6.75, 0.75, 2, 12.732078450520833">
+      <DataClassMoniker Name="/DCDataContext/tblJobOffer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e29fe53c-ed06-459d-9dac-079c922f5046" absoluteBounds="6.765, 1.21, 1.9700000000000002, 12.172078450520832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ca850403-719a-490d-95a5-c7516d745306" absoluteBounds="0.75, 6.75, 2, 4.2708154296874987">
+      <DataClassMoniker Name="/DCDataContext/tblLMIAApplication" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f235a06a-5d16-4bed-8744-5b664b578ff5" absoluteBounds="0.765, 7.21, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
